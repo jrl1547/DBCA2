@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Statushistory{
+public class StatusHistory{
 
 
 
@@ -14,16 +14,16 @@ public class Statushistory{
    *                                   CONSTRUCTORS                                  *
    **********************************************************************************/
   
-   public Statushistory(){
+   public StatusHistory(){
       capstone_project = new Database();
   
    }
   
-   public Statushistory(String _capstoneid){
+   public StatusHistory(String _capstoneid){
       capstone_project = new Database();
    }
   
-   public Statushistory(String _capstoneid, String _sid, String _date){
+   public StatusHistory(String _capstoneid, String _sid, String _date){
       capstone_project = new Database();
    }
   
