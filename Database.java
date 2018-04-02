@@ -32,7 +32,6 @@ public class Database{
       try {
          Class.forName(driver); 
          conn = DriverManager.getConnection( uri, user, password );
-         System.out.println("Connected.");
          return true;
       }
       catch( SQLException sqle){
@@ -54,7 +53,6 @@ public class Database{
    public boolean close(){
       try{
          conn.close();
-         System.out.println("Closed.");
          return true;
       }
       catch( Exception sqle){
@@ -100,7 +98,6 @@ public class Database{
    
       ArrayList<ArrayList<String>> data = new ArrayList<ArrayList<String>>();
       PreparedStatement ps = prepare(SQL, values);
-      System.out.println(ps);
       
       try{
          ArrayList<String> name = new ArrayList<String>();
@@ -147,6 +144,7 @@ public class Database{
          row = test.executeUpdate();
       }
       catch(SQLException sqle){
+         sqle.printStackTrace();
          return row;
       }
       
@@ -163,9 +161,11 @@ public class Database{
       int exc = executeStmt(SQL, values);
       
       if(exc > -1){
+         close();
          return true;
       }
       else{
+         close();
          return false;
       }
    }
