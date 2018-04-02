@@ -1,7 +1,7 @@
 import java.util.*;
 import java.sql.*;
 
-public class Ritcalendar{
+public class RITCalendar{
    int term;
    String startDate;
    String addDropDeadline;
@@ -9,10 +9,10 @@ public class Ritcalendar{
    String endDate;
    Database db = new Database();
       
-   public Ritcalendar(){
+   public RITCalendar(){
    }
    
-   public Ritcalendar(int term){
+   public RITCalendar(int term){
       this.term = term;
    }
    

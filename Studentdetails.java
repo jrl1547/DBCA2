@@ -99,7 +99,7 @@ public class StudentDetails{
     }
 
     public boolean delete(){
-        ArrayList<String> args = new ArrayList<String>;
+        ArrayList<String> args = new ArrayList<String>();
         args.add(username);
         String delete = "DELETE FROM studentdetails WHERE username = ?";
         boolean del = capstone_project.setData(delete, args);
