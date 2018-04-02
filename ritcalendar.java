@@ -1,8 +1,7 @@
 import java.util.*;
-import Database.java;
 import java.sql.*;
 
-public class ritcalendar{
+public class Ritcalendar{
    int term;
    String startDate;
    String addDropDeadline;
@@ -10,10 +9,10 @@ public class ritcalendar{
    String endDate;
    Database db = new Database();
       
-   public ritCalendar();
+   public Ritcalendar(){
    }
    
-   public ritCalendar(int term){
+   public Ritcalendar(int term){
       this.term = term;
    }
    
@@ -21,7 +20,7 @@ public class ritcalendar{
       return startDate;
    }
    
-   public setStartDate(String startDate){
+   public void setStartDate(String startDate){
       this.startDate = startDate;
    }
    
@@ -29,7 +28,7 @@ public class ritcalendar{
       return this.addDropDeadline;
    }
    
-   public setAddDropDeadline(String addDropDeadline){
+   public void setAddDropDeadline(String addDropDeadline){
       this.addDropDeadline = addDropDeadline;
    }
    
@@ -37,15 +36,15 @@ public class ritcalendar{
       return this.gradeDeadline;
    }
    
-   public setGradeDeadline(String gradeDeadline){
+   public void setGradeDeadline(String gradeDeadline){
       this.gradeDeadline = gradeDeadline;
    }
    
-   public getEndDate(){
+   public String getEndDate(){
       return this.endDate;
    }
    
-   public setEndDate(String endDate){
+   public void setEndDate(String endDate){
       this.endDate = endDate;
    }
    
@@ -54,8 +53,8 @@ public class ritcalendar{
    */
    public boolean fetch(){
       String select = "SELECT * FROM ritcalendar WHERE term = ?";
-      ArrayList<String> args = new ArrayList<String>;
-      args.add(this.term);
+      ArrayList<String> args = new ArrayList<String>();
+      args.add(""+this.term);
       ArrayList<ArrayList<String>> fetchData = db.getData(select, args);
       fetchData.remove(0);
       this.term            = fetchData.get(0).get(0).toString();
@@ -70,7 +69,7 @@ public class ritcalendar{
    */
    public int put(){
       String update = "UPDATE ritcalendar SET startDate = ?, addDropDeadline = ?, gradeDeadline = ?, endDate = ? WHERE term = ?;";
-      ArrayList<String> args = new ArrayList<String>;
+      ArrayList<String> args = new ArrayList<String>();
       args.add(this.startDate);
       args.add(this.addDropDeadline);
       args.add(this.gradeDeadline);
@@ -87,13 +86,13 @@ public class ritcalendar{
    */
    public int post(){
       String insert = "INSERT INTO ritcalendar SET(term, startDate, addDropDeadline, gradeDeadline, endDate) VALUES(?,?,?,?,?);";
-      ArrayList<String> args = new ArrayList<String>;
+      ArrayList<String> args = new ArrayList<String>();
       args.add(this.term);
       args.add(this.startDate);
       args.add(this.addDropDeadline);
       args.add(this.gradeDeadline);
       args.add(this.endDate);
-      if(db.setData(insert, args){
+      if(db.setData(insert, args)){
          return 1;//success
       }
       return 0;//failure
@@ -104,9 +103,9 @@ public class ritcalendar{
    */
    public int delete(){
       String delete = "DELETE FROM ritcalendar WHERE term = ?;";
-      ArrayList<String> args = new ArrayList<String>;
+      ArrayList<String> args = new ArrayList<String>();
       args.add(ths.term);
-      if(db.setData(delete, args){
+      if(db.setData(delete, args)){
          return 1;//success
       }
       return 0;//failure

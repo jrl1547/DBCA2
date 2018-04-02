@@ -21,6 +21,13 @@ public class Users{
    private String department;
    private Database capstone_project;
 
+   /**********************************************************************************
+   *                                   CONSTRUCTORS                                  *
+   **********************************************************************************/
+
+   /*
+   *  Default Constructor
+   */
    public Users(){
       capstone_project = new Database();  
    }
@@ -172,6 +179,11 @@ public class Users{
    void setDepartment(String _department){
       department = _department;
    }
+
+   /**********************************************************************************
+   *                                   METHODS                                       *
+   **********************************************************************************/
+
 
    /**
    *  This method calls getData and sends a String and ArrayList, it  gets back a 2D ArrayList that holds the contents of what was returned. 
