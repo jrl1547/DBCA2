@@ -11,6 +11,8 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
@@ -96,6 +98,11 @@
                               </Text>
                               <TextField fx:id="studentHistorySeachText" layoutX="213.0" layoutY="61.0" />
                               <Button fx:id="studentHistorySeachButton" layoutX="372.0" layoutY="61.0" mnemonicParsing="false" text="Search" />
+                              <ImageView fitHeight="53.0" fitWidth="140.0" layoutX="1127.0" layoutY="641.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../Desktop/download.png" />
+                                 </image>
+                              </ImageView>
                            </children></AnchorPane>
                   </content>
                 </Tab>
@@ -150,6 +157,11 @@
                               <TextField fx:id="updateStudentLN" disable="true" layoutX="827.0" layoutY="398.0" prefHeight="25.0" prefWidth="106.0" promptText="Last Name" />
                               <Button fx:id="updateStudentInfoButton" layoutX="827.0" layoutY="435.0" mnemonicParsing="false" text="Update" />
                               <Button fx:id="updateStudentComboMenuButton" layoutX="288.0" layoutY="398.0" mnemonicParsing="false" text="Update" />
+                              <ImageView fitHeight="53.0" fitWidth="140.0" layoutX="1136.0" layoutY="642.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../Desktop/download.png" />
+                                 </image>
+                              </ImageView>
                            </children>
                         </AnchorPane>
                      </content>
