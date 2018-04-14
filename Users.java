@@ -224,6 +224,79 @@ public class Users{
          return false;     
       }               
    }
+   
+   /**
+   *  This method takes in a username, then fetches information about them.
+   *  After that, it calls fetchData and gets a 2D arraylist.
+   *  Instead of handling array on the front end, it slices the 2D array into a regular arraylist and sends it out.
+   *  @return ArrayList<String> item that holds capstone information.
+   */
+   
+   public ArrayList<String> getCapstoneInfo(String username){
+      ArrayList<String> item = new ArrayList<String>();
+      fetch(username);
+      item.add(getUsername());
+      ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT users.username, capstone.capstoneid, capstone.title, capstone.desc, type FROM users JOIN committee ON users.username = committee.username JOIN capstone ON committee.capstoneid = capstone.capstoneid WHERE committee.position LIKE student AND users.username = ?;",item);
+      item.remove(1);
+      item.add(fetchData.get(0).get(0));  //username
+      item.add(fetchData.get(0).get(1));  //capstoneid
+      item.add(fetchData.get(0).get(2));  //title
+      item.add(fetchData.get(0).get(3));  //description (abstract)
+      item.add(fetchData.get(0).get(4));  //type (thesis or project)
+      
+      return item;
+   }
+   
+   /**
+   *  This method calls getData and sends a the username and password somebody is attempting to login with. 
+   *  On the return of getData, login checks to see if the arraylist is empty or not. If it is not empty,
+   *  it is assumed the login is correct.
+   *  @return boolean if capstone was successfully created. 
+   */
+   public boolean createNewCapstone(String _username, String _title, String _abstract, String _type, String... _committee){
+      boolean created = false;
+      boolean post = false;
+      ArrayList<String> committee = new ArrayList<String>(Arrays.asList(_committee));
+      ArrayList<String> item = new ArrayList<String>();
+      
+      fetch(_username);
+      item.add(_title);
+      item.add(_abstract);
+      item.add(_type);
+      post = capstone_project.setData("INSERT INTO capstone (`title`, `desc`,`type`) VALUES (?,?,?);", item);
+      if(!post){
+         return false; 
+      }
+      
+      ArrayList<ArrayList<String>> capid = capstone_project.getData("SELECT capstoneid FROM capstone WHERE title = ? AND desc = ? AND type = ?;",item);
+      
+      String studentSetup = _username + "-" + "student";
+      committee.add(0, studentSetup);
+      ArrayList<String> comInfo = new ArrayList<String>();
+      for(String user : committee){
+         
+         String[] split = user.split("-");
+         comInfo.add(split[0]);
+         comInfo.add(capid.get(0).get(0));
+         comInfo.add(split[1]);
+         
+         
+         post = capstone_project.setData("INSERT INTO committee (`username`, `capstoneid`, `position`) VALUES (?,?,?);", comInfo);
+         
+         if(!post){
+            return false;
+         }
+      }
+      
+      //if post is still true, then inserts have been successful. 
+      if(post){
+         created = true; 
+      }
+      
+      return created;
+   }
+   
+   
 
    /**
    *  This method calls setData and sends a String and ArrayList, it gets back a boolean if the put was successsful or not.
