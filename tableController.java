@@ -10,6 +10,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import static com.sun.xml.internal.fastinfoset.alphabet.BuiltInRestrictedAlphabets.table;
@@ -38,17 +39,16 @@ public class tableController implements Initializable {
         if(viewText.getText() != null || viewText.getText() != ""){
             capid = viewText.getText();
         }
-        try {
-            Database dbconn = new Database();
-            String select = "SELECT capstoneid, studentname, desc FROM capstone WHERE capstoneid = ?;";
-            ResultSet rs = dbconn.getData(select, capid);
-            while(rs.next()){
-                oblist.add(new ModelTable(rs.getString("capstoneid"), rs.getString("studentname"), rs.getString("desc")));
-            }
+        ArrayList<String> values = new ArrayList<>();
+            values.add(capid);
+
+        Database dbconn = new Database();
+        String select = "SELECT capstoneid, studentname, desc FROM capstone WHERE capstoneid = ?;";
+        ArrayList<ArrayList<String>> rs = dbconn.getData(select, values);
+        if(!rs.isEmpty()){
+            oblist.add(new ModelTable(rs.get(0).get(0), rs.get(0).get(1), rs.get(0).get(2)));
         }
-        catch(SQLException sqle){
-            sqle.printStackTrace();
-        }
+
         col_capstoneid.setCellValueFactory(new PropertyValueFactory<>("id"));
         col_studentName.setCellValueFactory(new PropertyValueFactory<>("name"));
         col_abstract.setCellValueFactory(new PropertyValueFactory<>("abstrac"));

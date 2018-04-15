@@ -43,7 +43,7 @@
       <children>
             <TabPane prefHeight="545.0" prefWidth="738.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
-                <Tab text="Project">
+                <Tab text="Project" onSelectionChanged="#loadProject">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -118,7 +118,7 @@
                            </children></AnchorPane>
                   </content>
                 </Tab>
-                <Tab text="Admin">
+                <Tab text="Admin" onSelectionChanged="#loadAdmin">
                   <content>
                     <AnchorPane disable="true" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -145,7 +145,7 @@
                            </children></AnchorPane>
                   </content>
                 </Tab>
-                  <Tab text="New Capstone">
+                  <Tab text="New Capstone" onSelectionChanged="#loadNewCapstone">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="410.0" prefWidth="640.0">
                            <children>
@@ -222,7 +222,7 @@
                                     <Font name="Noto Sans Regular" size="17.0" />
                                  </font>
                               </Text>
-                              <Button layoutX="559.0" layoutY="394.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="89.0" text="Submit" />
+                              <Button layoutX="559.0" layoutY="394.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="89.0" text="Submit" onAction="#submitNewCapstone" />
                               <ImageView fitHeight="53.0" fitWidth="140.0" layoutX="591.0" layoutY="462.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../Desktop/download.png" />
