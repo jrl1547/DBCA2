@@ -48,18 +48,18 @@
                                     <Font name="Noto Sans Regular" size="26.0" />
                                  </font>
                               </Text>
-                              <TableView editable="true" layoutX="49.0" layoutY="36.0" prefHeight="162.0" prefWidth="640.0">
+                              <TableView fx:id="facultyAcceptedTable" editable="true" layoutX="49.0" layoutY="36.0" prefHeight="162.0" prefWidth="640.0">
                                 <columns>
-                                  <TableColumn prefWidth="131.0" text="Capstone" />
-                                  <TableColumn prefWidth="141.0" text="Student Name" />
-                                    <TableColumn prefWidth="367.0" text="Abstract" />
+                                  <TableColumn fx:id="accepted_col_capstone" prefWidth="131.0" text="Capstone" />
+                                  <TableColumn fx:id="accepted_col_name" prefWidth="141.0" text="Student Name" />
+                                    <TableColumn fx:id="accepted_col_abstract" prefWidth="367.0" text="Abstract" />
                                 </columns>
                               </TableView>
-                              <TableView editable="true" layoutX="49.0" layoutY="258.0" prefHeight="162.0" prefWidth="640.0">
+                              <TableView fx:id="facultyInvitedTable" editable="true" layoutX="49.0" layoutY="258.0" prefHeight="162.0" prefWidth="640.0">
                                  <columns>
-                                    <TableColumn prefWidth="131.0" text="Capstone" />
-                                    <TableColumn prefWidth="141.0" text="Student Name" />
-                                    <TableColumn prefWidth="367.0" text="Abstract" />
+                                    <TableColumn fx:id="invited_col_capstone" prefWidth="131.0" text="Capstone" />
+                                    <TableColumn fx:id="invited_col_name" prefWidth="141.0" text="Student Name" />
+                                    <TableColumn fx:id="invited_col_abstract" prefWidth="367.0" text="Abstract" />
                                  </columns>
                               </TableView>
                               <Text layoutX="170.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capstone Information (Accepted)" textAlignment="CENTER" wrappingWidth="423.13671875">
@@ -77,6 +77,8 @@
                                     <Image url="@../../../Desktop/download.png" />
                                  </image>
                               </ImageView>
+                              <Button fx:id="accepted_load_button" layoutX="49.0" layoutY="207.0" mnemonicParsing="false" onAction="#handleAcceptedLoadButtonAction" text="Load" />
+                              <Button fx:id="invited_load_button" layoutX="49.0" layoutY="430.0" mnemonicParsing="false" text="Load" />
                            </children></AnchorPane>
                   </content>
                 </Tab>
@@ -84,11 +86,12 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="410.0" prefWidth="640.0">
                            <children>
-                              <TableView editable="true" layoutX="49.0" layoutY="96.0" prefHeight="162.0" prefWidth="640.0">
+                              <TableView fx:id="facultyTrackTable" editable="true" layoutX="49.0" layoutY="96.0" prefHeight="162.0" prefWidth="640.0">
                                  <columns>
-                                    <TableColumn prefWidth="131.0" text="Capstone" />
-                                    <TableColumn prefWidth="141.0" text="Student Name" />
-                                    <TableColumn prefWidth="367.0" text="Abstract" />
+                                    <TableColumn fx:id="track_col_capstoneid" prefWidth="102.0" text="Capstone" />
+                                    <TableColumn fx:id="track_col_name" prefWidth="138.0" text="Student Name" />
+                                    <TableColumn fx:id="track_col_abstract" prefWidth="303.0" text="Abstract" />
+                                    <TableColumn fx:id="track_col_last_update" minWidth="0.0" prefWidth="96.0" text="Last Update" />
                                  </columns>
                               </TableView>
                               <Text layoutX="157.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capstone Information (Tracking)" textAlignment="CENTER" wrappingWidth="423.13671875">
@@ -96,13 +99,14 @@
                                     <Font size="26.0" />
                                  </font>
                               </Text>
-                              <Button layoutX="421.0" layoutY="301.0" mnemonicParsing="false" text="Track" />
-                              <TextField layoutX="272.0" layoutY="301.0" promptText="Capstone ID" />
+                              <Button fx:id="track_track_button" layoutX="421.0" layoutY="301.0" mnemonicParsing="false" onAction="#handleTrackTrackButtonAction" text="Track" />
+                              <TextField fx:id="trackText" layoutX="272.0" layoutY="301.0" promptText="Capstone ID" />
                               <ImageView fitHeight="53.0" fitWidth="140.0" layoutX="598.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../Desktop/download.png" />
                                  </image>
                               </ImageView>
+                              <Button fx:id="track_load_button" layoutX="99.0" layoutY="276.0" mnemonicParsing="false" onAction="#handleTrackLoadButtonAction" text="Load" />
                            </children>
                         </AnchorPane>
                      </content>
@@ -115,7 +119,7 @@
                                  <columns>
                                     <TableColumn fx:id="col_capstoneid" prefWidth="131.0" text="Capstone" />
                                     <TableColumn fx:id="col_studentName" prefWidth="141.0" text="Student Name" />
-                                    <TableColumn fx:id="col_Abstract" prefWidth="367.0" text="Abstract" />
+                                    <TableColumn fx:id="col_abstract" prefWidth="367.0" text="Abstract" />
                                  </columns>
                               </TableView>
                               <Text layoutX="157.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capstone Information " textAlignment="CENTER" wrappingWidth="423.13671875">
@@ -123,8 +127,8 @@
                                     <Font size="26.0" />
                                  </font>
                               </Text>
-                              <Button layoutX="400.0" layoutY="302.0" mnemonicParsing="false" onAction="#loadViewDataFromDatabase" text="View" />
-                              <TextField layoutX="251.0" layoutY="302.0" promptText="Capstone ID" />
+                              <Button layoutX="400.0" layoutY="302.0" mnemonicParsing="false" onAction="#handleViewViewButtonAction" text="View" />
+                              <TextField fx:id="viewText" layoutX="251.0" layoutY="302.0" promptText="Capstone ID" />
                               <Button layoutX="442.0" layoutY="302.0" mnemonicParsing="false" text="Track" />
                               <ImageView fitHeight="53.0" fitWidth="140.0" layoutX="598.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

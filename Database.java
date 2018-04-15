@@ -128,6 +128,39 @@ public class Database{
       close();
       return data;
    }
+
+   /*
+      Just a function to return a result set from the data layer if it needs to be prepared
+    */
+   public ResultSet getResultSet(String SQL, ArrayList<String> values){
+      PreparedStatement ps = prepare(SQL, values);
+      ResultSet rs;
+      try{
+         rs = ps.executeQuery();
+      }
+      catch(SQLException  sqle){
+         return null;
+      }
+      close();
+      return rs;
+   }
+
+
+   /*
+   Function to get result set if it doesn't need preparing
+    */
+   public ResultSet getResultSetSelect(String SQL){
+      ResultSet rs = null;
+      try{
+         Statement st = conn.createStatement();
+         rs = st.executeQuery(SQL);
+      }
+      catch(SQLException sqle){
+         sqle.printStackTrace();
+      }
+      close();
+      return rs;
+   }
    
    /**
    * The purpose of executeStmt is to take a SQL string, an arraylist of String values, 
