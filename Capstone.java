@@ -44,7 +44,7 @@ public class Capstone{
       this.title = title;
       this.desc = description;
       this.defensedate = defensedate;
-      postInit();
+      //postInit();
    }
    
    
