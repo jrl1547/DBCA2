@@ -38,6 +38,14 @@ public class Capstone{
       type           = _type;
       defensedate    = _defensedate;
    }
+
+   //Create initial Capstone
+   public Capstone(String title, String description, String defensedate){
+      this.title = title;
+      this.desc = description;
+      this.defensedate = defensedate;
+      postInit();
+   }
    
    
    
@@ -153,6 +161,15 @@ public class Capstone{
       item.add(type);
       item.add(defensedate);
       boolean post = capstone_project.setData("INSERT INTO `capstone_project`.`capstone` (`capstoneid`, `title`, `desc`, `plagerismscore`, `grade`, `type`, `defensedate`) VALUES (?,?,?,?,?,?,?);", item);
+      return post;
+   }
+
+   public boolean postInit(){
+      ArrayList<String> item = new ArrayList<String>();
+      item.add(title);
+      item.add(desc);
+      item.add(defensedate);
+      boolean post = capstone_project.setData("INSERT INTO `capstone_project`.`capstone` (`title`, `desc`, `defensedate`) VALUES (?,?,?);", item);
       return post;
    }
    

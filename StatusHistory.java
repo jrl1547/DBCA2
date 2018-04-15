@@ -1,8 +1,6 @@
 import java.util.*;
 public class StatusHistory {
 
-
-
     String capstoneid;
     String sid;
     String date;

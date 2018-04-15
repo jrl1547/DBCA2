@@ -23,7 +23,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="570.0" prefWidth="738.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="570.0" prefWidth="738.0" xmlns="http://javafx.com/javafx/9.0.1"  fx:controller="StudentController"  xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <MenuBar prefHeight="43.0" prefWidth="721.0" VBox.vgrow="NEVER">
       <menus>
