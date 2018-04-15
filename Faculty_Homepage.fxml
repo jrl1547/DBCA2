@@ -97,7 +97,7 @@
                                  </font>
                               </Text>
                               <Button layoutX="421.0" layoutY="301.0" mnemonicParsing="false" text="Track" />
-                              <TextField layoutX="272.0" layoutY="301.0" />
+                              <TextField layoutX="272.0" layoutY="301.0" promptText="Capstone ID" />
                               <ImageView fitHeight="53.0" fitWidth="140.0" layoutX="598.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../Desktop/download.png" />
@@ -124,7 +124,7 @@
                                  </font>
                               </Text>
                               <Button layoutX="400.0" layoutY="302.0" mnemonicParsing="false" onAction="#loadViewDataFromDatabase" text="View" />
-                              <TextField layoutX="251.0" layoutY="302.0" />
+                              <TextField layoutX="251.0" layoutY="302.0" promptText="Capstone ID" />
                               <Button layoutX="442.0" layoutY="302.0" mnemonicParsing="false" text="Track" />
                               <ImageView fitHeight="53.0" fitWidth="140.0" layoutX="598.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
