@@ -96,7 +96,7 @@
                                     <Font name="Noto Sans Regular" size="17.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="studentHistorySeachText" layoutX="213.0" layoutY="61.0" />
+                              <TextField fx:id="studentHistorySeachText" layoutX="213.0" layoutY="61.0" promptText="Student Name" />
                               <Button fx:id="studentHistorySeachButton" layoutX="372.0" layoutY="61.0" mnemonicParsing="false" text="Search" />
                               <ImageView fitHeight="53.0" fitWidth="140.0" layoutX="1127.0" layoutY="641.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -130,7 +130,7 @@
                                     <Cursor fx:constant="TEXT" />
                                  </cursor>
                               </Rectangle>
-                              <TextField fx:id="updateStudentSearchStudentText" layoutX="213.0" layoutY="61.0" />
+                              <TextField fx:id="updateStudentSearchStudentText" layoutX="213.0" layoutY="61.0" promptText="Student Name" />
                               <Button fx:id="updateStudentSearchStudentButton" layoutX="372.0" layoutY="61.0" mnemonicParsing="false" text="Search" />
                               <TableView fx:id="updateStudentProjectTable" disable="true" layoutX="117.0" layoutY="148.0" prefHeight="200.0" prefWidth="415.0">
                                 <columns>
