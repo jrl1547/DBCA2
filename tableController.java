@@ -1,12 +1,15 @@
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.awt.event.ActionEvent;
+import javafx.event.ActionEvent;
+
+import javax.xml.soap.Text;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,7 +17,7 @@ import java.util.ArrayList;
 /**
  * Created by cjcot on 4/14/2018.
  */
-public class tableController {
+public class tableController{
     //Brings in the elements from the FXML that we'll be writing to or getting data from
     @FXML
     private TableView<trackTable> facultyTrackTable;
@@ -50,6 +53,7 @@ public class tableController {
             while(rs.next()){
                 trackobList.add(new trackTable(rs.getString("capstoneid"), rs.getString("fullname"), rs.getString("abstract"), rs.getString("description")));
             }
+            dbconn.close();
         }
         catch(SQLException sqle){
             sqle.printStackTrace();
@@ -90,6 +94,7 @@ public class tableController {
             while(rs.next()){
                 acceptedobList.add(new acceptedTable(rs.getString("title"), rs.getString("fullname"), rs.getString("abstract")));
             }
+            dbconn.close();
         }
         catch(SQLException sqle){
             sqle.printStackTrace();
@@ -123,11 +128,11 @@ public class tableController {
                     "        JOIN users ON capstone.capstoneid = users.capstoneid" +
                     "        JOIN committee ON capstone.capstoneid = committee.capstoneid" +
                     "        WHERE was_invited = 1";//selects capstones that are being tracked, needs the WHERE fixed
-            ArrayList<String> args = new ArrayList<String>();
             ResultSet rs = dbconn.getResultSetSelect(select);
             while(rs.next()){
                 acceptedobList.add(new acceptedTable(rs.getString("title"), rs.getString("fullname"), rs.getString("abstract")));
             }
+            dbconn.close();
         }
         catch(SQLException sqle){
             sqle.printStackTrace();
@@ -161,6 +166,7 @@ public class tableController {
         ArrayList<String> args = new ArrayList<String>();
         args.add(capid);
         dbconn.setData(update, args);
+        dbconn.close();
     }
 
 
@@ -179,20 +185,21 @@ public class tableController {
     ObservableList<viewTable> viewobList = FXCollections.observableArrayList();
 
 
-    @FXML protected void handleViewViewButtonAction(ActionEvent event){
+    @FXML protected void handleViewViewButtonAction(){
         String capid = "";
         if(viewText.getText() != null && viewText.getText() != ""){
             capid = viewText.getText();
         }
         try {
             Database dbconn = new Database();
-            String select = "SELECT capstoneid, studentname, desc FROM capstone WHERE capstoneid = ?;";
+            String select = "SELECT capstoneid, username, abstract FROM capstone WHERE capstoneid = ?;";
             ArrayList<String> args = new ArrayList<String>();
             args.add(capid);
             ResultSet rs = dbconn.getResultSet(select, args);
             while(rs.next()){
-                viewobList.add(new viewTable(rs.getString("capstoneid"), rs.getString("studentname"), rs.getString("desc")));
+                viewobList.add(new viewTable(rs.getString("capstoneid"), rs.getString("username"), rs.getString("abstract")));
             }
+            dbconn.close();
         }
         catch(SQLException sqle){
             sqle.printStackTrace();
@@ -203,4 +210,5 @@ public class tableController {
 
         facultyViewTable.setItems(viewobList);
     }
+
 }
