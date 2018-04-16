@@ -130,6 +130,42 @@ public class Database{
       return data;
    }
 
+    public ArrayList<ArrayList<String>> getData(String SQL){
+        connect();
+        ArrayList<ArrayList<String>> data = new ArrayList<ArrayList<String>>();
+
+        try{
+            ArrayList<String> name = new ArrayList<String>();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(SQL);
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int len = rsmd.getColumnCount();
+
+            rs.beforeFirst();
+            while(rs.next()){
+
+                ArrayList<String> row = new ArrayList<String>();
+
+                for(int i=1;i<=len;i++){
+                    name.add(rsmd.getColumnName(i));
+                }
+                data.add(name);
+
+                for (int i = 1; i <= len; i++) {
+                    row.add(rs.getString(i));
+                }
+                data.add(row);
+            }
+
+        }
+        catch(SQLException  sqle){
+            return null;
+        } finally {
+            close();
+        }
+        return data;
+    }
+
    /*
       Just a function to return a result set from the data layer if it needs to be prepared
     */

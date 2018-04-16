@@ -1,12 +1,14 @@
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -17,6 +19,8 @@ import java.util.ResourceBundle;
 public class StudentController implements Initializable{
     private StudentDetails student;
     private Capstone capstone;
+    private Database db = new Database();
+    private ArrayList<ArrayList<String>> typesLookup;
     @FXML private TextField newCapTitle;
     @FXML private TextArea newCapAbstract,
             capInfoTextArea,
@@ -26,6 +30,7 @@ public class StudentController implements Initializable{
             updateInfo1,
             updateDate2,
             updateInfo2;
+    @FXML private ComboBox newCapType;
 
 
     @FXML
@@ -124,6 +129,16 @@ public class StudentController implements Initializable{
     public void loadNewCapstone() {
         //does anything need to be loaded       -- faculty?? or should that be a validation check
         //                                              don't necessarily need it until submission
+        //TODO load types into cap
+        getTypeLookup();
+        ObservableList<String> typeList = FXCollections.observableArrayList(typesLookup.get(1));
+        newCapType.setItems(typeList);
+
+    }
+
+    public void getTypeLookup(){
+        String query = "SELECT * FROM types";
+        typesLookup = db.getData(query);
     }
 
     @FXML

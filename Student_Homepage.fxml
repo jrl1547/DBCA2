@@ -4,6 +4,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -23,7 +24,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="570.0" prefWidth="738.0" xmlns="http://javafx.com/javafx/9.0.1"  fx:controller="StudentController"  xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="570.0" prefWidth="738.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StudentController">
   <children>
     <MenuBar prefHeight="43.0" prefWidth="721.0" VBox.vgrow="NEVER">
       <menus>
@@ -43,7 +44,7 @@
       <children>
             <TabPane prefHeight="545.0" prefWidth="738.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
-                <Tab text="Project" onSelectionChanged="#loadProject">
+                <Tab onSelectionChanged="#loadProject" text="Project">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -100,14 +101,12 @@
                                     <Insets />
                                  </opaqueInsets>
                               </TextArea>
-                              <Button fx:id="viewUpdate" layoutX="82.0" layoutY="440.0" mnemonicParsing="false" text="View Updates"
-                                    onAction="#viewUpdates">
+                              <Button fx:id="viewUpdate" layoutX="82.0" layoutY="440.0" mnemonicParsing="false" onAction="#viewUpdates" text="View Updates">
                                  <font>
                                     <Font name="Noto Sans Regular" size="14.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="editUpdate" layoutX="208.0" layoutY="440.0" mnemonicParsing="false" text="Edit"
-                                    onAction="#editCapstone">
+                              <Button fx:id="editUpdate" layoutX="208.0" layoutY="440.0" mnemonicParsing="false" onAction="#editCapstone" text="Edit">
                                  <font>
                                     <Font name="Noto Sans Regular" size="14.0" />
                                  </font>
@@ -120,7 +119,7 @@
                            </children></AnchorPane>
                   </content>
                 </Tab>
-                <Tab text="Admin" onSelectionChanged="#loadAdmin">
+                <Tab onSelectionChanged="#loadAdmin" text="Admin">
                   <content>
                     <AnchorPane disable="true" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -147,7 +146,7 @@
                            </children></AnchorPane>
                   </content>
                 </Tab>
-                  <Tab text="New Capstone" onSelectionChanged="#loadNewCapstone">
+                  <Tab onSelectionChanged="#loadNewCapstone" text="New Capstone">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="410.0" prefWidth="640.0">
                            <children>
@@ -219,17 +218,23 @@
                                  </children>
                               </GridPane>
                               <DatePicker fx:id="newCapDefenseDate" layoutX="398.0" layoutY="246.0" />
-                              <Text layoutX="395.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Defense Date:" wrappingWidth="179.13671875">
-                                 <font>
-                                    <Font name="Noto Sans Regular" size="17.0" />
-                                 </font>
-                              </Text>
-                              <Button layoutX="559.0" layoutY="394.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="89.0" text="Submit" onAction="#submitNewCapstone" />
+                              <Button layoutX="559.0" layoutY="394.0" mnemonicParsing="false" onAction="#submitNewCapstone" prefHeight="35.0" prefWidth="89.0" text="Submit" />
                               <ImageView fitHeight="53.0" fitWidth="140.0" layoutX="591.0" layoutY="462.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../Desktop/download.png" />
                                  </image>
                               </ImageView>
+                              <ComboBox id="newCapType" layoutX="398.0" layoutY="330.0" prefHeight="26.0" prefWidth="175.0" promptText="-Select Project Type-" />
+                              <Text layoutX="395.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Defense Date:" wrappingWidth="179.13671875">
+                                 <font>
+                                    <Font name="Noto Sans Regular" size="17.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="395.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type:" wrappingWidth="179.13671875">
+                                 <font>
+                                    <Font name="Noto Sans Regular" size="17.0" />
+                                 </font>
+                              </Text>
                            </children>
                         </AnchorPane>
                      </content>

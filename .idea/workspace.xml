@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68838bde-c6dd-4009-96a8-c10ef56b9e63" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Capstone.java" afterPath="$PROJECT_DIR$/Capstone.java" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/Database.java" afterPath="$PROJECT_DIR$/Database.java" />
       <change beforePath="$PROJECT_DIR$/StudentController.java" afterPath="$PROJECT_DIR$/StudentController.java" />
-      <change beforePath="$PROJECT_DIR$/StudentDetails.java" afterPath="$PROJECT_DIR$/StudentDetails.java" />
+      <change beforePath="$PROJECT_DIR$/Student_Homepage.fxml" afterPath="$PROJECT_DIR$/Student_Homepage.fxml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,12 +19,15 @@
       <file leaf-file-name="StudentController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/StudentController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="150" column="45" lean-forward="false" selection-start-line="150" selection-start-column="45" selection-end-line="150" selection-end-column="45" />
+            <state relative-caret-position="171">
+              <caret line="140" column="0" lean-forward="false" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#958#959#0" expanded="true" />
-                <element signature="e#987#988#0" expanded="true" />
+                <element signature="e#1182#1183#0" expanded="true" />
+                <element signature="e#1211#1212#0" expanded="true" />
+                <element signature="method#loadProject#0;class#StudentController#0" expanded="false" />
+                <element signature="method#loadAdmin#0;class#StudentController#0" expanded="false" />
+                <element signature="method#submitNewCapstone#0;class#StudentController#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -42,8 +46,21 @@
       <file leaf-file-name="Database.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Database.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+            <state relative-caret-position="359">
+              <caret line="164" column="9" lean-forward="false" selection-start-line="164" selection-start-column="9" selection-end-line="164" selection-end-column="9" />
+              <folding>
+                <element signature="e#3655#3674#0" expanded="true" />
+                <element signature="e#3742#3750#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FXMLLoader.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="33">
+              <caret line="1772" column="0" lean-forward="false" selection-start-line="1772" selection-start-column="0" selection-end-line="1772" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -52,10 +69,9 @@
       <file leaf-file-name="Student_Homepage.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Student_Homepage.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="136" column="68" lean-forward="false" selection-start-line="136" selection-start-column="47" selection-end-line="136" selection-end-column="68" />
+            <state relative-caret-position="2659">
+              <caret line="135" column="68" lean-forward="false" selection-start-line="135" selection-start-column="68" selection-end-line="135" selection-end-column="68" />
               <folding>
-                <element signature="n#Tab#0;n#tabs#0;n#TabPane#0;n#children#0;n#AnchorPane#0;n#children#0;n#VBox#0;n#!!top" expanded="false" />
                 <element signature="n#Tab#2;n#tabs#0;n#TabPane#0;n#children#0;n#AnchorPane#0;n#children#0;n#VBox#0;n#!!top" expanded="false" />
               </folding>
             </state>
@@ -68,8 +84,8 @@
       <file leaf-file-name="StudentDetails.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/StudentDetails.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="946">
-              <caret line="94" column="0" lean-forward="true" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+            <state relative-caret-position="2376">
+              <caret line="86" column="27" lean-forward="true" selection-start-line="86" selection-start-column="27" selection-end-line="86" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -123,11 +139,11 @@
         <option value="$PROJECT_DIR$/StatusHistory.java" />
         <option value="$PROJECT_DIR$/tableController.java" />
         <option value="$PROJECT_DIR$/Student_Homepage.fxml" />
-        <option value="$PROJECT_DIR$/Database.java" />
         <option value="$PROJECT_DIR$/StudentTester.java" />
         <option value="$PROJECT_DIR$/StudentDetails.java" />
         <option value="$PROJECT_DIR$/Capstone.java" />
         <option value="$PROJECT_DIR$/StudentController.java" />
+        <option value="$PROJECT_DIR$/Database.java" />
       </list>
     </option>
   </component>
@@ -307,7 +323,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="69" y="-9" width="1860" height="1098" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -322,12 +337,12 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24972856" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24972856" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -369,7 +384,17 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/StudentController.java</url>
+          <line>140</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="2" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -379,8 +404,11 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#958#959#0" expanded="true" />
-            <element signature="e#987#988#0" expanded="true" />
+            <element signature="e#1182#1183#0" expanded="true" />
+            <element signature="e#1211#1212#0" expanded="true" />
+            <element signature="method#loadProject#0;class#StudentController#0" expanded="false" />
+            <element signature="method#loadAdmin#0;class#StudentController#0" expanded="false" />
+            <element signature="method#submitNewCapstone#0;class#StudentController#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -419,7 +447,6 @@
         <state relative-caret-position="5643">
           <caret line="171" column="61" lean-forward="false" selection-start-line="171" selection-start-column="47" selection-end-line="171" selection-end-column="61" />
           <folding>
-            <element signature="n#Tab#0;n#tabs#0;n#TabPane#0;n#children#0;n#AnchorPane#0;n#children#0;n#VBox#0;n#!!top" expanded="false" />
             <element signature="n#Tab#2;n#tabs#0;n#TabPane#0;n#children#0;n#AnchorPane#0;n#children#0;n#VBox#0;n#!!top" expanded="false" />
           </folding>
         </state>
@@ -486,14 +513,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Database.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/StudentTester.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
@@ -504,24 +523,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Student_Homepage.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="136" column="68" lean-forward="false" selection-start-line="136" selection-start-column="47" selection-end-line="136" selection-end-column="68" />
+        <state relative-caret-position="2659">
+          <caret line="135" column="68" lean-forward="false" selection-start-line="135" selection-start-column="68" selection-end-line="135" selection-end-column="68" />
           <folding>
-            <element signature="n#Tab#0;n#tabs#0;n#TabPane#0;n#children#0;n#AnchorPane#0;n#children#0;n#VBox#0;n#!!top" expanded="false" />
             <element signature="n#Tab#2;n#tabs#0;n#TabPane#0;n#children#0;n#AnchorPane#0;n#children#0;n#VBox#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StudentDetails.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="946">
-          <caret line="94" column="0" lean-forward="true" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Capstone.java">
@@ -535,14 +545,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/StudentDetails.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2376">
+          <caret line="86" column="27" lean-forward="true" selection-start-line="86" selection-start-column="27" selection-end-line="86" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="1772" column="0" lean-forward="false" selection-start-line="1772" selection-start-column="0" selection-end-line="1772" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Database.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="164" column="9" lean-forward="false" selection-start-line="164" selection-start-column="9" selection-end-line="164" selection-end-column="9" />
+          <folding>
+            <element signature="e#3655#3674#0" expanded="true" />
+            <element signature="e#3742#3750#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/StudentController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="150" column="45" lean-forward="false" selection-start-line="150" selection-start-column="45" selection-end-line="150" selection-end-column="45" />
+        <state relative-caret-position="171">
+          <caret line="140" column="0" lean-forward="false" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#958#959#0" expanded="true" />
-            <element signature="e#987#988#0" expanded="true" />
+            <element signature="e#1182#1183#0" expanded="true" />
+            <element signature="e#1211#1212#0" expanded="true" />
+            <element signature="method#loadProject#0;class#StudentController#0" expanded="false" />
+            <element signature="method#loadAdmin#0;class#StudentController#0" expanded="false" />
+            <element signature="method#submitNewCapstone#0;class#StudentController#0" expanded="false" />
           </folding>
         </state>
       </provider>
