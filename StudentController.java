@@ -6,17 +6,21 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.ResourceBundle;
 
 public class StudentController implements Initializable{
     private StudentDetails student;
+    private Capstone capstone;
     @FXML private TextField newCapTitle;
     @FXML private TextArea newCapAbstract,
-            capInfoTextArea;
+            capInfoTextArea,
+            adminUserInfoTextArea;
     @FXML private DatePicker newCapDefenseDate;
     @FXML private Text updateDate1,
             updateInfo1,
@@ -37,35 +41,83 @@ public class StudentController implements Initializable{
     }
 
     @FXML
+    /**
+     * Get and print out all available information on the student's current capstone if one is available
+     */
     public void loadProject() {
-        //TODO load current project
-        if (student != null) {
-            String capId = student.getCapstoneId(),
-                    output = "";
-            if (capId != null) {
-                Capstone cap = new Capstone(capId);
-                cap.fetch(capId);
-                output += "Title: " + cap.getTitle() + "\n Description: " + cap.getDesc();
-                capInfoTextArea.setText(output);
-            } else {
-                capInfoTextArea.setText("No Current Capstone");
+        String output = ""; //output to build on
+        if (student != null) {  //check that student has be set
+            String capId = student.getCapstoneId(); //get students capstone if
+            if (capId != null) {    //check that capId is not null
+                capstone = new Capstone(capId); //initialize capstone
+                ArrayList<ArrayList<String>> capInfo = capstone.fetch(capId);    //fetch cap info
+                if(capInfo.size() == 2) {   //check that we have 2 rows, titles and info
+                    //loop through and print each title and its corresponing info
+                    for (int i = 0, len = capInfo.get(0).size(); i < len; i++) {
+                        String title = capInfo.get(0).get(i),
+                                info = capInfo.get(1).get(i);
+
+                        String lower = title.toLowerCase();
+                        if (info != null && !lower.contains("id")) {    //not printing ids or null info
+                            output += title.substring(0, 1).toUpperCase() + title.substring(1) +
+                                    ": " + info + "\n";
+                        }
+                    }
+                } else {    //give no info
+                    output = "No available capstone";
+                }
+            } else {    //give no info
+                output = "No Current Capstone";
             }
+
+            capInfoTextArea.setText(output);    //set text
         }
     }
 
     @FXML
+    /**
+     * View 2 most recent updates made to capstone if any
+     */
     public void viewUpdates(){
         //TODO view the 2 most recent updates made to project
     }
 
     @FXML
+    /**
+     * Make changes to capstone
+     */
     public void editCapstone(){
         //TODO open/build capstone edit page
     }
 
     @FXML
+    /**
+     * Load admin information, all available info about the student
+     */
     public void loadAdmin() {
-        //not really loading anything for this either, just updating info
+        String output = ""; //output to build on
+        if (student != null) {  //check that student has been set
+            ArrayList<ArrayList<String>> studentInfo = student.fetch(); //fetch all data
+            if(studentInfo.size() == 2) {   //make sure we have title row and info row
+                //then go through and print all title and their info
+                for (int i = 0, len = studentInfo.get(0).size(); i < len; i++) {
+                    String title = studentInfo.get(0).get(i),
+                            info = studentInfo.get(1).get(i);
+
+                    String lower = title.toLowerCase();
+                    if (info != null && !lower.contains("id")) {    //not printing ids or null info
+                        output += title.substring(0, 1).toUpperCase() + title.substring(1) +
+                                ": " + info + "\n";
+                    }
+                }
+            } else{ //give no info
+                output = "No information available";
+            }
+        } else {    //give no info
+            output = "No information available";
+        }
+
+        adminUserInfoTextArea.setText(output);  //set text
     }
 
     @FXML
@@ -75,7 +127,7 @@ public class StudentController implements Initializable{
     }
 
     @FXML
-    protected Capstone submitNewCapstone(ActionEvent actionEvent) {
+    protected void submitNewCapstone(ActionEvent actionEvent) {
 
         //Get information from from inputs and create it
         String newTitle = newCapTitle.getText(),
@@ -83,7 +135,7 @@ public class StudentController implements Initializable{
 
         if (newTitle.equals("") || newDesc.equals("") || newCapDefenseDate.getValue() == null){
             //give feedback that data is missing
-            return null;
+            return;
         }
 
         LocalDate ld = newCapDefenseDate.getValue();
@@ -96,7 +148,7 @@ public class StudentController implements Initializable{
 
         //Give some sort of feed back before returning
         student.setCapstonestart("true");
-        return new Capstone(newTitle, newDesc, newDate.toString());
+        //capstone =  new Capstone(newTitle, newDesc, newDate.toString(), student.getUsername());
     }
 
 }

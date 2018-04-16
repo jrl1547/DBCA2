@@ -3,14 +3,8 @@ import java.util.*;
 public class Capstone{
 
 
-   String capstoneid;
-   String title;
-   String desc;
-   String plagerismscore;
-   String grade;
-   String type;
-   String defensedate;
-   Database capstone_project;
+   private String capstoneid, title, desc, plagerismscore, grade, type, defensedate, username;
+   private Database capstone_project;
 
 
    
@@ -40,11 +34,13 @@ public class Capstone{
    }
 
    //Create initial Capstone
-   public Capstone(String title, String description, String defensedate){
+   public Capstone(String title, String username, String type, String description, String defensedate){
       this.title = title;
+      this.username = username;
+      this.type = type;
       this.desc = description;
       this.defensedate = defensedate;
-      //postInit();
+      postInit();
    }
    
    
@@ -122,15 +118,15 @@ public class Capstone{
       ArrayList<String> item = new ArrayList<String>();
       item.add(_capstoneid);
       ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT * FROM capstone WHERE capstoneid = ?;",item);
-      fetchData.remove(0);
+
       if (!fetchData.isEmpty()) {
-         capstoneid = fetchData.get(0).get(0);
-         title = fetchData.get(0).get(1);
-         desc = fetchData.get(0).get(2);
-         plagerismscore = fetchData.get(0).get(3);
-         grade = fetchData.get(0).get(4);
-         type = fetchData.get(0).get(5);
-         defensedate = fetchData.get(0).get(6);
+         capstoneid = fetchData.get(1).get(0);
+         title = fetchData.get(1).get(1);
+         desc = fetchData.get(1).get(2);
+         plagerismscore = fetchData.get(1).get(3);
+         grade = fetchData.get(1).get(4);
+         type = fetchData.get(1).get(5);
+         defensedate = fetchData.get(1).get(6);
       }
       return fetchData;               
       
@@ -166,10 +162,13 @@ public class Capstone{
 
    public boolean postInit(){
       ArrayList<String> item = new ArrayList<String>();
-      item.add(title);
-      item.add(desc);
-      item.add(defensedate);
-      boolean post = capstone_project.setData("INSERT INTO `capstone_project`.`capstone` (`title`, `desc`, `defensedate`) VALUES (?,?,?);", item);
+          item.add(title);
+          item.add(username);
+          item.add(type);
+          item.add(desc);
+          item.add(defensedate);
+      boolean post = capstone_project.setData("INSERT INTO capstone_project.capstone (title, username, type," +
+              " desc, defensedate) VALUES (?,?,?,?);", item);
       return post;
    }
    

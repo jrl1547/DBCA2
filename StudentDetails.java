@@ -78,6 +78,21 @@ public class StudentDetails{
         return fetchData;
     }
 
+    public ArrayList<ArrayList<String>> fetch(){
+        if (username == null){
+            return null;
+        }
+        ArrayList<String> args = new ArrayList<String>();
+        String select = "SELECT * from studentdetails WHERE username = ?;";
+        args.add(username);
+        ArrayList<ArrayList<String>> fetchData = capstone_project.getData(select, args);
+
+        username = fetchData.get(1).get(0);
+        mastersstart = fetchData.get(1).get(1);
+        capstonestart = fetchData.get(1).get(2);
+        return fetchData;
+    }
+
     public boolean put(){
         ArrayList<String> args = new ArrayList<String>();
         args.add(mastersstart);
