@@ -67,22 +67,22 @@
                                     <Font name="Noto Sans Regular" size="26.0" />
                                  </font>
                               </Text>
-                              <Text layoutX="43.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UPDATE: APPEND DATE HERE" wrappingWidth="275.13671875">
+                              <Text fx:id="updateDate1" layoutX="43.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UPDATE: APPEND DATE HERE" wrappingWidth="275.13671875">
                                  <font>
                                     <Font name="Noto Sans Regular" size="17.0" />
                                  </font>
                               </Text>
-                              <Text layoutX="82.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UPDATE TEXT TO BE REPLACED WITH ACTUAL TEXT" wrappingWidth="222.13671875">
+                              <Text fx:id="updateInfo1" layoutX="82.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UPDATE TEXT TO BE REPLACED WITH ACTUAL TEXT" wrappingWidth="222.13671875">
                                  <font>
                                     <Font name="Noto Sans Regular" size="14.0" />
                                  </font>
                               </Text>
-                              <Text layoutX="42.0" layoutY="376.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UPDATE: " wrappingWidth="262.13671875">
+                              <Text fx:id="updateDate2" layoutX="42.0" layoutY="376.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UPDATE: " wrappingWidth="262.13671875">
                                  <font>
                                     <Font name="Noto Sans Regular" size="17.0" />
                                  </font>
                               </Text>
-                              <Text layoutX="82.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UPDATE TEXT TO BE REPLACED WITH ACTUAL TEXT" wrappingWidth="222.13671875">
+                              <Text fx:id="updateInfo2" layoutX="82.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UPDATE TEXT TO BE REPLACED WITH ACTUAL TEXT" wrappingWidth="222.13671875">
                                  <font>
                                     <Font name="Noto Sans Regular" size="14.0" />
                                  </font>
@@ -100,12 +100,14 @@
                                     <Insets />
                                  </opaqueInsets>
                               </TextArea>
-                              <Button fx:id="viewUpdate" layoutX="82.0" layoutY="440.0" mnemonicParsing="false" text="View Updates">
+                              <Button fx:id="viewUpdate" layoutX="82.0" layoutY="440.0" mnemonicParsing="false" text="View Updates"
+                                    onAction="#viewUpdates">
                                  <font>
                                     <Font name="Noto Sans Regular" size="14.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="editUpdate" layoutX="208.0" layoutY="440.0" mnemonicParsing="false" text="Edit">
+                              <Button fx:id="editUpdate" layoutX="208.0" layoutY="440.0" mnemonicParsing="false" text="Edit"
+                                    onAction="#editCapstone">
                                  <font>
                                     <Font name="Noto Sans Regular" size="14.0" />
                                  </font>

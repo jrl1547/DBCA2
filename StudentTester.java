@@ -21,7 +21,15 @@ public class StudentTester extends Application
     //Always needs to be below format
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Student_Homepage.fxml"));
+        StudentDetails student = new StudentDetails("teststudent");
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Student_Homepage.fxml"));
+
+        Parent root = fxmlLoader.load();
+        StudentController controller = fxmlLoader.getController();
+        controller.setStudent(student);
+
+        stage.show();
 
         Scene scene = new Scene(root);
         stage.setTitle("FXML Welcome");

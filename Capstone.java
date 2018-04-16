@@ -123,15 +123,15 @@ public class Capstone{
       item.add(_capstoneid);
       ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT * FROM capstone WHERE capstoneid = ?;",item);
       fetchData.remove(0);
-      
-      capstoneid      = fetchData.get(0).get(0).toString();
-      title           = fetchData.get(0).get(1).toString();
-      desc            = fetchData.get(0).get(2).toString();
-      plagerismscore  = fetchData.get(0).get(3).toString();
-      grade           = fetchData.get(0).get(4).toString();
-      type            = fetchData.get(0).get(5).toString();
-      defensedate     = fetchData.get(0).get(6).toString();
-      
+      if (!fetchData.isEmpty()) {
+         capstoneid = fetchData.get(0).get(0);
+         title = fetchData.get(0).get(1);
+         desc = fetchData.get(0).get(2);
+         plagerismscore = fetchData.get(0).get(3);
+         grade = fetchData.get(0).get(4);
+         type = fetchData.get(0).get(5);
+         defensedate = fetchData.get(0).get(6);
+      }
       return fetchData;               
       
    }

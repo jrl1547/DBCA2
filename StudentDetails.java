@@ -18,15 +18,13 @@ public class StudentDetails{
     }
 
     public StudentDetails(String _username){
-        capstone_project = new Database();
+        this();
 
         username = _username;
     }
 
     public StudentDetails(String _username, String _mastersstart, String _capstonestart){
-        capstone_project = new Database();
-
-        username      = _username;
+        this();
         mastersstart  = _mastersstart;
         capstonestart = _capstonestart;
     }
@@ -45,6 +43,8 @@ public class StudentDetails{
     String getCapstonestart(){
         return capstonestart;
     }
+
+
 
 
     /**********************************************************************************
@@ -106,6 +106,18 @@ public class StudentDetails{
         return del;
     }
 
+    public String getCapstoneId(){
+        ArrayList<String> args = new ArrayList<String>();
+            args.add(username);
 
+        String select = "SELECT capstoneId FROM capstone WHERE username = ?;";
+        ArrayList<ArrayList<String>> fetchData = capstone_project.getData(select, args);
+        fetchData.remove(0);
+        if(!fetchData.isEmpty()) {
+            return fetchData.get(0).get(0);
+        } else {
+            return null;
+        }
+    }
 
 }

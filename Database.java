@@ -13,10 +13,11 @@ import java.util.*;
 public class Database{
 
    Connection conn = null;
-   String uri = "jdbc:mysql://localhost/capstone_project?autoReconnect=true&useSSL=false";
+   String uri = "jdbc:mysql://localhost/cap?autoReconnect=true&useSSL=false";
+      //"jdbc:mysql://localhost/capstone_project?autoReconnect=true&useSSL=false";
    String driver = "com.mysql.jdbc.Driver";      
    String user = "root";
-   String password = "student";
+   String password = "password";//"student";
    Statement smt = null;
 
 
