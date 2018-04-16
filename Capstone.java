@@ -167,9 +167,9 @@ public class Capstone{
           item.add(type);
           item.add(desc);
           item.add(defensedate);
-      boolean post = capstone_project.setData("INSERT INTO capstone_project.capstone (title, username, type," +
-              " desc, defensedate) VALUES (?,?,?,?);", item);
-      return post;
+      return capstone_project.setData("INSERT INTO capstone (title, username, type," +
+              " desc, defensedate) VALUES (?,?,?,?,?);", item);
+
    }
    
    public boolean delete(){

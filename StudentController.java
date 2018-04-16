@@ -9,6 +9,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class StudentController implements Initializable{
     private StudentDetails student;
     private Capstone capstone;
     private Database db = new Database();
-    private ArrayList<ArrayList<String>> typesLookup;
+    private ArrayList<ArrayList<String>> typesLookup = new ArrayList<>();
     @FXML private TextField newCapTitle;
     @FXML private TextArea newCapAbstract,
             capInfoTextArea,
@@ -30,7 +31,7 @@ public class StudentController implements Initializable{
             updateInfo1,
             updateDate2,
             updateInfo2;
-    @FXML private ComboBox newCapType;
+    @FXML private ComboBox<String> newCapType;
 
 
     @FXML
@@ -127,18 +128,34 @@ public class StudentController implements Initializable{
 
     @FXML
     public void loadNewCapstone() {
-        //does anything need to be loaded       -- faculty?? or should that be a validation check
-        //                                              don't necessarily need it until submission
-        //TODO load types into cap
+       //get types as a look up list and add them to combobox
         getTypeLookup();
         ObservableList<String> typeList = FXCollections.observableArrayList(typesLookup.get(1));
         newCapType.setItems(typeList);
 
     }
 
+    /**
+     * get types and append them to a lookup 2d array
+     */
     public void getTypeLookup(){
         String query = "SELECT * FROM types";
-        typesLookup = db.getData(query);
+        ArrayList<ArrayList<String>> tempData = db.getData(query);
+        typesLookup.add(new ArrayList<String>());
+        typesLookup.add(new ArrayList<String>());
+        for ( ArrayList<String> arr: tempData ) {
+            typesLookup.get(0).add(arr.get(0));
+            typesLookup.get(1).add(arr.get(1));
+        }
+    }
+
+    public String getStatusId(String status){
+        for ( ArrayList<String> arr: typesLookup) {
+            if (arr.get(1).equals(status)){
+                return arr.get(0);
+            }
+        }
+        return null;
     }
 
     @FXML
@@ -146,7 +163,9 @@ public class StudentController implements Initializable{
 
         //Get information from from inputs and create it
         String newTitle = newCapTitle.getText(),
-                newDesc = newCapAbstract.getText();
+                newDesc = newCapAbstract.getText(),
+                newType = getStatusId(newCapType.getValue());
+
 
         if (newTitle.equals("") || newDesc.equals("") || newCapDefenseDate.getValue() == null){
             //give feedback that data is missing
@@ -163,7 +182,7 @@ public class StudentController implements Initializable{
 
         //Give some sort of feed back before returning
         student.setCapstonestart("true");
-        //capstone =  new Capstone(newTitle, newDesc, newDate.toString(), student.getUsername());
+        capstone =  new Capstone(newTitle, student.getUsername(), newType, newDesc, newDate.toString());
     }
 
 }

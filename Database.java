@@ -130,40 +130,35 @@ public class Database{
       return data;
    }
 
-    public ArrayList<ArrayList<String>> getData(String SQL){
-        connect();
-        ArrayList<ArrayList<String>> data = new ArrayList<ArrayList<String>>();
-
-        try{
-            ArrayList<String> name = new ArrayList<String>();
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(SQL);
+    public ArrayList<ArrayList<String>> getData(String query) {
+        this.connect();
+        Statement stmt;
+        ArrayList<ArrayList<String>> data = new ArrayList<>();
+        try {
+            stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
             ResultSetMetaData rsmd = rs.getMetaData();
-            int len = rsmd.getColumnCount();
+            int fields = rsmd.getColumnCount();
+            data = new ArrayList<>();
 
-            rs.beforeFirst();
-            while(rs.next()){
-
-                ArrayList<String> row = new ArrayList<String>();
-
-                for(int i=1;i<=len;i++){
-                    name.add(rsmd.getColumnName(i));
+            int row = 0;
+            while ( rs.next() ){
+                data.add(new ArrayList<>());
+                for ( int i = 1; i <= fields; i++ ) {
+                    data.get(row).add(rs.getString(i));
+                    //System.out.println(data.get( row ).get(i - 1));
                 }
-                data.add(name);
-
-                for (int i = 1; i <= len; i++) {
-                    row.add(rs.getString(i));
-                }
-                data.add(row);
+                row++;
             }
+            stmt.close();
+            this.close();
 
+            return data;
+
+        } catch (SQLException sqle) {
+            System.out.println("Error: " + sqle);
+            return new ArrayList<>();
         }
-        catch(SQLException  sqle){
-            return null;
-        } finally {
-            close();
-        }
-        return data;
     }
 
    /*

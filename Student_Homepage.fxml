@@ -224,7 +224,7 @@
                                     <Image url="@../../../Desktop/download.png" />
                                  </image>
                               </ImageView>
-                              <ComboBox id="newCapType" layoutX="398.0" layoutY="330.0" prefHeight="26.0" prefWidth="175.0" promptText="-Select Project Type-" />
+                              <ComboBox fx:id="newCapType" layoutX="398.0" layoutY="330.0" prefHeight="26.0" prefWidth="175.0" promptText="-Select Project Type-" />
                               <Text layoutX="395.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Defense Date:" wrappingWidth="179.13671875">
                                  <font>
                                     <Font name="Noto Sans Regular" size="17.0" />
