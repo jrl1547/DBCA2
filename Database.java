@@ -173,7 +173,6 @@ public class Database{
       catch(SQLException  sqle){
          return null;
       }
-      close();
       return rs;
    }
 
@@ -190,7 +189,6 @@ public class Database{
       catch(SQLException sqle){
          sqle.printStackTrace();
       }
-      close();
       return rs;
    }
    
