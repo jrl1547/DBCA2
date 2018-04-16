@@ -127,9 +127,9 @@
                                     <Font size="26.0" />
                                  </font>
                               </Text>
-                              <Button layoutX="400.0" layoutY="302.0" mnemonicParsing="false" onAction="#handleViewViewButtonAction" text="View" />
+                              <Button fx:id="view_view_button" layoutX="400.0" layoutY="302.0" mnemonicParsing="false" onAction="#handleViewViewButtonAction" text="View" />
                               <TextField fx:id="viewText" layoutX="251.0" layoutY="302.0" promptText="Capstone ID" />
-                              <Button layoutX="442.0" layoutY="302.0" mnemonicParsing="false" text="Track" />
+                              <Button layoutX="442.0" layoutY="302.0" mnemonicParsing="false" onAction="#handleTrackTrackButtonAction" text="Track" />
                               <ImageView fitHeight="53.0" fitWidth="140.0" layoutX="598.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../Desktop/download.png" />
