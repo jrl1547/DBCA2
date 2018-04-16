@@ -93,23 +93,22 @@ public class StudentController implements Initializable{
                 Status status = new Status();
                 ArrayList<ArrayList<String>> historyInfo = history.fetch(capId);    //fetch cap info
 
-                if(historyInfo.size() == 1) {   //check that we have 2 rows, titles and info
-                    //loop through and print each title and its corresponing info
-                    updateDate1.setText(historyInfo.get(0).get(2));
+                if(historyInfo.size() == 1) {   //exactly one status history
                     status.fetch(historyInfo.get(0).get(0));
-                    updateInfo1.setText(status.getDescription());
+                    updateDate1.setText(historyInfo.get(0).get(2));
+                    updateInfo1.setText(status.getName());
 
                     updateDate2.setText("No available update");
                     updateInfo2.setText("");
-                } else  if (historyInfo.size() >= 2){
-                    updateDate1.setText(historyInfo.get(0).get(2));
+                } else  if (historyInfo.size() >= 2){   //at least 2 status history
                     status.fetch(historyInfo.get(0).get(0));
-                    updateInfo1.setText(status.getDescription());
+                    updateDate1.setText(historyInfo.get(0).get(2));
+                    updateInfo1.setText(status.getName());
 
-                    updateDate2.setText(historyInfo.get(1).get(2));
                     status.fetch(historyInfo.get(1).get(0));
-                    updateInfo2.setText(status.getDescription());
-                }else {    //give no info
+                    updateDate2.setText(historyInfo.get(1).get(2));
+                    updateInfo2.setText(status.getName());
+                }else {   //no status history
                     updateDate1.setText("No available update");
                     updateInfo1.setText("");
                     updateDate2.setText("No available update");
