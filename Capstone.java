@@ -35,6 +35,7 @@ public class Capstone{
 
    //Create initial Capstone
    public Capstone(String title, String username, String type, String description, String defensedate){
+       this();
       this.title = title;
       this.username = username;
       this.type = type;
@@ -156,19 +157,17 @@ public class Capstone{
       item.add(grade);
       item.add(type);
       item.add(defensedate);
-      boolean post = capstone_project.setData("INSERT INTO `capstone_project`.`capstone` (`capstoneid`, `title`, `desc`, `plagerismscore`, `grade`, `type`, `defensedate`) VALUES (?,?,?,?,?,?,?);", item);
+      boolean post = capstone_project.setData("INSERT INTO `capstone_project`.`capstone` (`capstoneid`, `title`, `abstrac`, `plagerismscore`, `grade`, `typeid`, `defensedate`) VALUES (?,?,?,?,?,?,?);", item);
       return post;
    }
 
    public boolean postInit(){
       ArrayList<String> item = new ArrayList<String>();
-          item.add(title);
           item.add(username);
           item.add(type);
+          item.add(title);
           item.add(desc);
-          item.add(defensedate);
-      return capstone_project.setData("INSERT INTO capstone (title, username, type," +
-              " desc, defensedate) VALUES (?,?,?,?,?);", item);
+      return capstone_project.setData("INSERT INTO capstone (username, typeid, title, abstract) VALUES (?,?,?,?);", item);
 
    }
    

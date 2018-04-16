@@ -69,13 +69,13 @@ public class StatusHistory {
     public ArrayList<ArrayList<String>> fetch(String _capstoneid){
         ArrayList<String> args = new ArrayList<String>();
         args.add(_capstoneid);
-        String select = "SELECT * from statushistory WHERE capstoneid = ?";
+        String select = "SELECT * from statushistory WHERE capstoneid = ? ORDER BY date DESC";
         ArrayList<ArrayList<String>> fetchData = capstone_project.getData(select, args);
         fetchData.remove(0);
 
-        capstoneid = fetchData.get(0).get(0).toString();
-        sid        = fetchData.get(0).get(1).toString();
-        date       = fetchData.get(0).get(2).toString();
+        capstoneid = fetchData.get(0).get(0);
+        sid        = fetchData.get(0).get(1);
+        date       = fetchData.get(0).get(2);
 
         return fetchData;
     }

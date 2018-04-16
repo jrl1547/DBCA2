@@ -81,13 +81,13 @@ public class Status{
    public ArrayList<ArrayList<String>> fetch(String _sid){
       ArrayList<String> item = new ArrayList<String>();
       item.add(_sid);
-      ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT * FROM status WHERE sid = ?;",item);
+      ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT * FROM status WHERE statusid = ?;",item);
       fetchData.remove(0);
       
-      sid         = fetchData.get(0).get(0).toString();
-      name        = fetchData.get(0).get(1).toString();
-      stepcode    = fetchData.get(0).get(3).toString();
-      description = fetchData.get(0).get(4).toString();
+      sid         = fetchData.get(0).get(0);
+      name        = fetchData.get(0).get(1);
+      stepcode    = fetchData.get(0).get(2);
+      description = fetchData.get(0).get(3);
       
       return fetchData;               
       

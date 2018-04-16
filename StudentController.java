@@ -9,7 +9,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -86,6 +85,43 @@ public class StudentController implements Initializable{
      */
     public void viewUpdates(){
         //TODO view the 2 most recent updates made to project
+        String output = ""; //output to build on
+        if (student != null) {  //check that student has be set
+            String capId = student.getCapstoneId(); //get students capstone if
+            if (capId != null) {    //check that capId is not null
+                StatusHistory history = new StatusHistory(); //initialize status history
+                Status status = new Status();
+                ArrayList<ArrayList<String>> historyInfo = history.fetch(capId);    //fetch cap info
+
+                if(historyInfo.size() == 1) {   //check that we have 2 rows, titles and info
+                    //loop through and print each title and its corresponing info
+                    updateDate1.setText(historyInfo.get(0).get(2));
+                    status.fetch(historyInfo.get(0).get(0));
+                    updateInfo1.setText(status.getDescription());
+
+                    updateDate2.setText("No available update");
+                    updateInfo2.setText("");
+                } else  if (historyInfo.size() >= 2){
+                    updateDate1.setText(historyInfo.get(0).get(2));
+                    status.fetch(historyInfo.get(0).get(0));
+                    updateInfo1.setText(status.getDescription());
+
+                    updateDate2.setText(historyInfo.get(1).get(2));
+                    status.fetch(historyInfo.get(1).get(0));
+                    updateInfo2.setText(status.getDescription());
+                }else {    //give no info
+                    updateDate1.setText("No available update");
+                    updateInfo1.setText("");
+                    updateDate2.setText("No available update");
+                    updateInfo2.setText("");
+                }
+            } else {    //give no info
+                updateDate1.setText("No available update");
+                updateInfo1.setText("");
+                updateDate2.setText("No available update");
+                updateInfo2.setText("");
+            }
+        }
     }
 
     @FXML
@@ -130,25 +166,28 @@ public class StudentController implements Initializable{
     public void loadNewCapstone() {
        //get types as a look up list and add them to combobox
         getTypeLookup();
-        ObservableList<String> typeList = FXCollections.observableArrayList(typesLookup.get(1));
+        ArrayList<String> temp = new ArrayList<>();
+        for ( ArrayList<String> arr: typesLookup) {
+            temp.add(arr.get(1));
+        }
+        ObservableList<String> typeList = FXCollections.observableArrayList(temp);
         newCapType.setItems(typeList);
-
     }
 
     /**
-     * get types and append them to a lookup 2d array
+     * Get types and append them to a lookup 2d array
      */
     public void getTypeLookup(){
         String query = "SELECT * FROM types";
-        ArrayList<ArrayList<String>> tempData = db.getData(query);
-        typesLookup.add(new ArrayList<String>());
-        typesLookup.add(new ArrayList<String>());
-        for ( ArrayList<String> arr: tempData ) {
-            typesLookup.get(0).add(arr.get(0));
-            typesLookup.get(1).add(arr.get(1));
-        }
+        typesLookup = db.getData(query);
     }
 
+    /**
+     * Go through typesLookup and look for status, return id for that status
+     *      if it doesn't exist return null
+     * @param status    status to get id of
+     * @return      returns status id
+     */
     public String getStatusId(String status){
         for ( ArrayList<String> arr: typesLookup) {
             if (arr.get(1).equals(status)){
@@ -159,15 +198,18 @@ public class StudentController implements Initializable{
     }
 
     @FXML
+    /**
+     * Get information for new capstone and add it to the database
+     */
     protected void submitNewCapstone(ActionEvent actionEvent) {
 
-        //Get information from from inputs and create it
+        //Get information from from inputs
         String newTitle = newCapTitle.getText(),
                 newDesc = newCapAbstract.getText(),
                 newType = getStatusId(newCapType.getValue());
 
-
-        if (newTitle.equals("") || newDesc.equals("") || newCapDefenseDate.getValue() == null){
+        //check for missing data
+        if (newTitle.equals("") || newDesc.equals("") || newCapDefenseDate.getValue() == null || newCapType.getValue() == null){
             //give feedback that data is missing
             return;
         }
@@ -183,6 +225,7 @@ public class StudentController implements Initializable{
         //Give some sort of feed back before returning
         student.setCapstonestart("true");
         capstone =  new Capstone(newTitle, student.getUsername(), newType, newDesc, newDate.toString());
+        student.setCapstonestart("true");
     }
 
 }
