@@ -216,13 +216,21 @@ public class Users{
       ArrayList<String> item = new ArrayList<String>();
       item.add(username);
       item.add(password);
-      ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT username FROM users WHERE username = ? AND password = ?;",item);
+      ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT username FROM users WHERE username = ? AND password = sha1(?);",item);
       if(!fetchData.isEmpty()){
          return true;
       }
       else{
          return false;     
       }               
+   }
+   
+   public String getRole(String username){
+      ArrayList<String> item = new ArrayList<String>();
+      item.add(username);
+      ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT role FROM users JOIN roles on users.roleid = roles.roleid WHERE username = ?;", item);
+      item.remove(0);
+      return fetchData.get(1).get(0);
    }
    
    /**
@@ -311,7 +319,7 @@ public class Users{
       item.add(phone);
       item.add(department);
       item.add(username);
-      boolean put = capstone_project.setData("UPDATE users SET role = ?, password = ?, fullname = ?, email = ?, phone = ?, department = ? WHERE username = ?;", item);
+      boolean put = capstone_project.setData("UPDATE users SET role = ?, password = sha1(?), fullname = ?, email = ?, phone = ?, department = ? WHERE username = ?;", item);
       return put;
    }
    
@@ -328,7 +336,7 @@ public class Users{
       item.add(email);
       item.add(phone);
       item.add(department);
-      boolean post = capstone_project.setData("INSERT INTO users (`username`, `role`, `password`, `fullname`, `email`, `phone`, `department`) VALUES (?,?,?,?,?,?,?);", item);
+      boolean post = capstone_project.setData("INSERT INTO users (`username`, `role`, `password`, `fullname`, `email`, `phone`, `department`) VALUES (?,?,sha1(?),?,?,?,?);", item);
       return post;
    }
    

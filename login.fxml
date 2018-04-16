@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="914.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXMLLoginController">
+   <children>
+      <TextField fx:id="username" layoutX="407.0" layoutY="236.0" />
+      <PasswordField fx:id="password" layoutX="407.0" layoutY="283.0" />
+      <Label layoutX="344.0" layoutY="240.0" text="Username" />
+      <Label layoutX="346.0" layoutY="287.0" text="Password" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="118.0" prefHeight="122.0" prefWidth="914.0" text="RIT Capstone Tracker" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS">
+         <font>
+            <Font name="Segoe UI" size="31.0" />
+         </font>
+      </Label>
+      <Button fx:id="loginbutton" layoutX="431.0" layoutY="348.0" mnemonicParsing="false" onAction="#checklogin" text="Login" />
+      <Text fx:id="loginstatus" fill="#b50606" layoutX="442.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+   </children>
+</Pane>
