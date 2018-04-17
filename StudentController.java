@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 public class StudentController implements Initializable{
     private StudentDetails student;
     private Capstone capstone;
-    private Database db = new Database();
+    private ProjectTypes types = new ProjectTypes();
     private ArrayList<ArrayList<String>> typesLookup = new ArrayList<>();
     @FXML private TextField newCapTitle;
     @FXML private TextArea newCapAbstract,
@@ -164,7 +164,7 @@ public class StudentController implements Initializable{
     @FXML
     public void loadNewCapstone() {
        //get types as a look up list and add them to combobox
-        getTypeLookup();
+        typesLookup = types.getTypes();
         ArrayList<String> temp = new ArrayList<>();
         for ( ArrayList<String> arr: typesLookup) {
             temp.add(arr.get(1));
@@ -173,13 +173,6 @@ public class StudentController implements Initializable{
         newCapType.setItems(typeList);
     }
 
-    /**
-     * Get types and append them to a lookup 2d array
-     */
-    public void getTypeLookup(){
-        String query = "SELECT * FROM types";
-        typesLookup = db.getData(query);
-    }
 
     /**
      * Go through typesLookup and look for status, return id for that status
