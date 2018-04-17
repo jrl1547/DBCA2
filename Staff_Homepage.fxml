@@ -19,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="768.0" prefWidth="1281.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="570.0" prefWidth="738.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StaffController">
   <children>
     <MenuBar prefHeight="43.0" prefWidth="721.0" VBox.vgrow="NEVER">
       <menus>
@@ -39,7 +39,7 @@
       <children>
             <TabPane prefHeight="725.0" prefWidth="1281.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
-                <Tab text="Capstones">
+                <Tab onSelectionChanged="#loadCapstoneTab" text="Capstones">
                   <content>
                     <AnchorPane prefHeight="576.0" prefWidth="820.0">
                            <children>
@@ -75,7 +75,7 @@
                            </children></AnchorPane>
                   </content>
                 </Tab>
-                <Tab text="Student History">
+                <Tab onSelectionChanged="#loadStudentHistoryTab" text="Student History">
                   <content>
                     <AnchorPane disable="true" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -97,7 +97,7 @@
                                  </font>
                               </Text>
                               <TextField fx:id="studentHistorySeachText" layoutX="213.0" layoutY="61.0" promptText="Student Name" />
-                              <Button fx:id="studentHistorySeachButton" layoutX="372.0" layoutY="61.0" mnemonicParsing="false" text="Search" />
+                              <Button fx:id="studentHistorySeachButton" layoutX="372.0" layoutY="61.0" mnemonicParsing="false" onAction="#HandleStudentHistorySearchButtonAction" text="Search" />
                               <ImageView fitHeight="53.0" fitWidth="140.0" layoutX="1127.0" layoutY="641.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../Desktop/download.png" />
@@ -106,7 +106,7 @@
                            </children></AnchorPane>
                   </content>
                 </Tab>
-                  <Tab text="Update Student">
+                  <Tab onSelectionChanged="#loadStudentUpdateTab" text="Update Student">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="567.0" prefWidth="804.0">
                            <children>
@@ -131,7 +131,7 @@
                                  </cursor>
                               </Rectangle>
                               <TextField fx:id="updateStudentSearchStudentText" layoutX="213.0" layoutY="61.0" promptText="Student Name" />
-                              <Button fx:id="updateStudentSearchStudentButton" layoutX="372.0" layoutY="61.0" mnemonicParsing="false" text="Search" />
+                              <Button fx:id="updateStudentSearchStudentButton" layoutX="372.0" layoutY="61.0" mnemonicParsing="false" onAction="#HandleUpdateStudentSearchStudentButtonAction" text="Search" />
                               <TableView fx:id="updateStudentProjectTable" disable="true" layoutX="117.0" layoutY="148.0" prefHeight="200.0" prefWidth="415.0">
                                 <columns>
                                   <TableColumn prefWidth="75.0" text="Student " />
@@ -151,12 +151,12 @@
                                     <TableColumn prefWidth="69.0" text="Start Date" />
                                  </columns>
                               </TableView>
-                              <Button fx:id="updateStudentPlagiarismScoreButton" layoutX="501.0" layoutY="398.0" mnemonicParsing="false" text="Update" />
+                              <Button fx:id="updateStudentPlagiarismScoreButton" layoutX="501.0" layoutY="398.0" mnemonicParsing="false" onAction="#HandleUpdateStudentPlagiarismScoreButtonAction" text="Update" />
                               <TextField fx:id="updateStudentEmail" disable="true" layoutX="706.0" layoutY="435.0" prefHeight="25.0" prefWidth="106.0" promptText="Email" />
                               <TextField fx:id="updateStudentFN" disable="true" layoutX="706.0" layoutY="398.0" prefHeight="25.0" prefWidth="106.0" promptText="First Name" />
                               <TextField fx:id="updateStudentLN" disable="true" layoutX="827.0" layoutY="398.0" prefHeight="25.0" prefWidth="106.0" promptText="Last Name" />
-                              <Button fx:id="updateStudentInfoButton" layoutX="827.0" layoutY="435.0" mnemonicParsing="false" text="Update" />
-                              <Button fx:id="updateStudentComboMenuButton" layoutX="288.0" layoutY="398.0" mnemonicParsing="false" text="Update" />
+                              <Button fx:id="updateStudentInfoButton" layoutX="827.0" layoutY="435.0" mnemonicParsing="false" onAction="#HandleUpdateStudentInfoButtonAction" text="Update" />
+                              <Button fx:id="updateStudentComboMenuButton" layoutX="288.0" layoutY="398.0" mnemonicParsing="false" onAction="#HandleUpdateStudentComboMenuButtonAction" text="Update" />
                               <ImageView fitHeight="53.0" fitWidth="140.0" layoutX="1136.0" layoutY="642.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../Desktop/download.png" />
