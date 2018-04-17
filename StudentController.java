@@ -20,7 +20,9 @@ public class StudentController implements Initializable{
     private StudentDetails student;
     private Capstone capstone;
     private ProjectTypes types = new ProjectTypes();
+
     private ArrayList<ArrayList<String>> typesLookup = new ArrayList<>();
+
     @FXML private TextField newCapTitle;
     @FXML private TextArea newCapAbstract,
             capInfoTextArea,
@@ -173,16 +175,15 @@ public class StudentController implements Initializable{
         newCapType.setItems(typeList);
     }
 
-
     /**
      * Go through typesLookup and look for status, return id for that status
      *      if it doesn't exist return null
-     * @param status    status to get id of
+     * @param type    status to get id of
      * @return      returns status id
      */
-    public String getStatusId(String status){
+    private String getTypeId(String type){
         for ( ArrayList<String> arr: typesLookup) {
-            if (arr.get(1).equals(status)){
+            if (arr.get(1).equals(type)){
                 return arr.get(0);
             }
         }
@@ -198,7 +199,7 @@ public class StudentController implements Initializable{
         //Get information from from inputs
         String newTitle = newCapTitle.getText(),
                 newDesc = newCapAbstract.getText(),
-                newType = getStatusId(newCapType.getValue());
+                newType = getTypeId(newCapType.getValue());
 
         //check for missing data
         if (newTitle.equals("") || newDesc.equals("") || newCapDefenseDate.getValue() == null || newCapType.getValue() == null){

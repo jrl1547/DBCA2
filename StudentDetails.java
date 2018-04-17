@@ -125,7 +125,7 @@ public class StudentDetails{
         ArrayList<String> args = new ArrayList<String>();
             args.add(username);
 
-        String select = "SELECT capstoneId FROM capstone WHERE username = ?;";
+        String select = "SELECT capstoneId FROM capstone WHERE username = ? ORDER BY capstoneid DESC;";
         ArrayList<ArrayList<String>> fetchData = capstone_project.getData(select, args);
         fetchData.remove(0);
         if(!fetchData.isEmpty()) {

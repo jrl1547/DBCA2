@@ -71,12 +71,15 @@ public class StatusHistory {
         args.add(_capstoneid);
         String select = "SELECT * from statushistory WHERE capstoneid = ? ORDER BY date DESC";
         ArrayList<ArrayList<String>> fetchData = capstone_project.getData(select, args);
-        fetchData.remove(0);
 
-        capstoneid = fetchData.get(0).get(0);
-        sid        = fetchData.get(0).get(1);
-        date       = fetchData.get(0).get(2);
-
+        if(!fetchData.isEmpty()) {
+            fetchData.remove(0);
+            if (!fetchData.isEmpty()) {
+                capstoneid = fetchData.get(0).get(0);
+                sid = fetchData.get(0).get(1);
+                date = fetchData.get(0).get(2);
+            }
+        }
         return fetchData;
     }
 
