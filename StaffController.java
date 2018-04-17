@@ -23,6 +23,8 @@ public class StaffController{
     
     @FXML private TableView updateStudentProjectTable,updateStudentInfoTable,capstonesTable,
                   studentHistoryTable;
+    private Capstone capstone;
+    private Database db = new Database();
    
      
     @FXML protected void HandleStudentHistorySearchButtonAction(){
