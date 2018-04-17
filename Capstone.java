@@ -16,31 +16,28 @@ public class Capstone{
       capstone_project = new Database();
    }
    
-   public Capstone(String _capstoneid){
+   public Capstone(String _username){
       capstone_project = new Database();
-      capstoneid  = _capstoneid;
+      username  = _username;
    }
    
-   public Capstone(String _capstoneid, String _title, String _desc, String _plagerismscore, String _grade, String _type, String _defensedate){
+   public Capstone(String _username, String _title, String _desc, String _plagerismscore, String _grade, String _type){
       capstone_project = new Database();
-      
-      capstoneid     = _capstoneid;
+      username       = _username;
       title          = _title;
       desc           = _desc;
       plagerismscore = _plagerismscore;
       grade          = _grade;
       type           = _type;
-      defensedate    = _defensedate;
    }
 
    //Create initial Capstone
-   public Capstone(String title, String username, String type, String description, String defensedate){
+   public Capstone(String title, String username, String type, String description){
        this();
       this.title = title;
       this.username = username;
       this.type = type;
       this.desc = description;
-      this.defensedate = defensedate;
       postInit();
    }
    
@@ -56,6 +53,10 @@ public class Capstone{
    
    String getTitle(){
       return title;
+   }
+   
+   String getUsername(){
+      return username;
    }
    
    String getDesc(){
@@ -83,7 +84,7 @@ public class Capstone{
    **********************************************************************************/
       
    void setCapstoneID(String _capstoneid){
-      capstoneid = _capstoneid;
+      capstoneid = getCapstoneId(username);
    }
    
    void setTitle(String _title){
@@ -122,12 +123,13 @@ public class Capstone{
 
       if (!fetchData.isEmpty()) {
          capstoneid = fetchData.get(1).get(0);
-         title = fetchData.get(1).get(1);
-         desc = fetchData.get(1).get(2);
-         plagerismscore = fetchData.get(1).get(3);
-         grade = fetchData.get(1).get(4);
-         type = fetchData.get(1).get(5);
-         defensedate = fetchData.get(1).get(6);
+         username = fetchData.get(1).get(1);
+         type = fetchData.get(1).get(2);
+         title = fetchData.get(1).get(3);
+         desc = fetchData.get(1).get(4);
+         plagerismscore = fetchData.get(1).get(5);
+         grade = fetchData.get(1).get(6);
+         
       }
       return fetchData;               
       
@@ -140,14 +142,13 @@ public class Capstone{
       item.add(plagerismscore);
       item.add(grade);
       item.add(type);
-      item.add(defensedate);
       item.add(""+capstoneid);
-      boolean put = capstone_project.setData("UPDATE capstone SET title = ?, desc = ?, plagerismscore = ?, grade = ?, type = ?, defensedate = ? WHERE capstoneid = ?;", item);
+      boolean put = capstone_project.setData("UPDATE capstone SET title = ?, desc = ?, plagerismscore = ?, grade = ?, type = ? WHERE capstoneid = ?;", item);
       return put;
       
    }
    
-   
+   //unneccary with postInit?
    public boolean post(){
       ArrayList<String> item = new ArrayList<String>();
       item.add(""+capstoneid);
@@ -176,6 +177,19 @@ public class Capstone{
       item.add(""+capstoneid);
       boolean delete = capstone_project.setData("DELETE FROM capstone WHERE capstoneid = ?;",item);
       return delete;
+   }
+   
+   public String getCapstoneId(String _username){
+   
+      ArrayList<String> item = new ArrayList<String>();
+      item.add(_username);
+      ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT * FROM capstone WHERE username = ?;",item);
+
+      if (!fetchData.isEmpty()) {
+         capstoneid = fetchData.get(1).get(1);
+
+      }
+      return capstoneid;
    }
    
 }

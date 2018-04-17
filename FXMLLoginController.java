@@ -54,7 +54,7 @@ public class FXMLLoginController {
          try{
             root = FXMLLoader.load(getClass().getClassLoader().getResource(loader));
             Stage stage = new Stage();
-            stage.setTitle("RIT Capstone: Student Page");
+            stage.setTitle("RIT Capstone: " + loader);
             stage.setScene(new Scene(root, 1280, 800));
             stage.show();
             ((Node)(ae.getSource())).getScene().getWindow().hide();

@@ -105,8 +105,8 @@ public class Committee{
       ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT * FROM committee WHERE capstoneid = ?;",item);
       fetchData.remove(0);
       
-      username       = fetchData.get(0).get(0).toString();
-      capstoneid     = fetchData.get(0).get(1).toString();
+      capstoneid     = fetchData.get(0).get(0).toString();
+      username       = fetchData.get(0).get(1).toString();
       has_accepted   = fetchData.get(0).get(2).toString();
       has_declined   = fetchData.get(0).get(3).toString();
       position       = fetchData.get(0).get(4).toString();
