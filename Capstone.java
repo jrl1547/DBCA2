@@ -191,5 +191,18 @@ public class Capstone{
       }
       return capstoneid;
    }
+
+   public ArrayList<ArrayList<String>> getView(String _username){
+      ArrayList<String> item = new ArrayList<String>();
+      item.add(_username);
+      ArrayList<ArrayList<String>> fetchData = capstone_project.getData("select capstone.title, users.fullname, capstone.username, capstone.abstract," +
+              "statushistory.date, capstone.plagerismscore, capstone.grade FROM capstone\n" +
+              "JOIN users ON capstone.username = users.username\n" +
+              "JOIN statushistory ON capstone.capstoneid = statushistory.capstoneid\n" +
+              "WHERE capstone.username = ?;",item);
+      fetchData.remove(0);
+      return fetchData;
+
+   }
    
 }

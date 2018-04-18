@@ -125,7 +125,7 @@ public class Committee{
       item.add(position);
       item.add(tracking);
       item.add(""+capstoneid);
-      boolean put = capstone_project.setData("UPDATE committee SET username = ?, has_accepted = ?, has_declined = ?, position = ?, tracking = ? WHERE capstoneid = ?;", item);
+      boolean put = capstone_project.setData("UPDATE committee SET username = ?, has_accepted = ?, has_declined = ?, positionid = ?, tracking = ? WHERE capstoneid = ?;", item);
       return put;
       
    }
@@ -140,7 +140,7 @@ public class Committee{
       item.add(position);
       item.add(tracking);
       
-      boolean post = capstone_project.setData("INSERT INTO `capstone_project`.`committee` (`username`, `capstoneid`, `has_accepted`, `has_declined`, `position`, `tracking`) VALUES (?, ?, ?, ?,?,?);", item);
+      boolean post = capstone_project.setData("INSERT INTO `cap`.`committee` (`capstoneid`, `username`, `has_accepted`, `has_declined`, `positionid`, `tracking`) VALUES (?, ?, ?, ?,?,?);", item);
       return post;
    }
    
@@ -154,7 +154,11 @@ public class Committee{
    public ArrayList<ArrayList<String>> getAcceptedCapstones(String _username){
       ArrayList<String> item = new ArrayList<String>();
       item.add(_username);
-      ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT * FROM committee WHERE username = ? AND has_accepted = true;",item);
+      ArrayList<ArrayList<String>> fetchData = capstone_project.getData(
+              "SELECT capstone.title, users.fullname, capstone.username, capstone.abstract, capstone.grade FROM capstone\n" +
+              "JOIN users ON capstone.username = users.username\n" +
+              "JOIN committee ON capstone.capstoneid = committee.capstoneid\n" +
+              "WHERE committee.username = ? AND has_accepted = true;",item);
       fetchData.remove(0);
       
       return fetchData;               
@@ -164,7 +168,10 @@ public class Committee{
    public ArrayList<ArrayList<String>> getInvitedCapstones(String _username){
       ArrayList<String> item = new ArrayList<String>();
       item.add(_username);
-      ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT * FROM committee WHERE username = ? AND has_accepted = false AND has_declined = false AND tracking= false AND positionid != '1';",item);
+      ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT capstone.title, users.fullname, capstone.username, capstone.abstract, capstone.grade FROM capstone\n" +
+              "JOIN users ON capstone.username = users.username\n" +
+              "JOIN committee ON capstone.capstoneid = committee.capstoneid\n" +
+              "WHERE committee.username = ? AND committee.has_accepted = false AND committee.has_declined = false AND committee.positionid != '1';",item);
       fetchData.remove(0);
       
       return fetchData;               

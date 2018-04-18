@@ -83,7 +83,7 @@
                                  </image>
                               </ImageView>
                               <Button fx:id="accepted_load_button" layoutX="52.0" layoutY="285.0" mnemonicParsing="false" onAction="#handleAcceptedLoadButtonAction" text="Load" />
-                              <Button fx:id="invited_load_button" layoutX="73.0" layoutY="566.0" mnemonicParsing="false" text="Load" />
+                              <Button fx:id="invited_load_button" layoutX="73.0" layoutY="566.0" mnemonicParsing="false" onAction="#handleInvitedLoadButtonAction" text="Load" />
                            </children></AnchorPane>
                   </content>
                 </Tab>
