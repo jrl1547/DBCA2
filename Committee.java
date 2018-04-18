@@ -151,5 +151,25 @@ public class Committee{
       return delete;
    }
 
+   public ArrayList<ArrayList<String>> getAcceptedCapstones(String _username){
+      ArrayList<String> item = new ArrayList<String>();
+      item.add(_username);
+      ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT * FROM committee WHERE username = ? AND has_accepted = true;",item);
+      fetchData.remove(0);
+      
+      return fetchData;               
+      
+   }
+   
+   public ArrayList<ArrayList<String>> getInvitedCapstones(String _username){
+      ArrayList<String> item = new ArrayList<String>();
+      item.add(_username);
+      ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT * FROM committee WHERE username = ? AND has_accepted = false AND has_declined = false AND tracking= false AND positionid != '1';",item);
+      fetchData.remove(0);
+      
+      return fetchData;               
+      
+   }
+
 
 }
