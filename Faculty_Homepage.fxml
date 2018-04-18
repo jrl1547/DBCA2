@@ -19,9 +19,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="570.0" prefWidth="738.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXMLFacultyController">
+<VBox prefHeight="700.0" prefWidth="1236.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXMLFacultyController">
   <children>
-    <MenuBar prefHeight="43.0" prefWidth="721.0" VBox.vgrow="NEVER">
+    <MenuBar prefHeight="51.0" prefWidth="1164.0" VBox.vgrow="NEVER">
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
@@ -37,7 +37,7 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <TabPane prefHeight="545.0" prefWidth="738.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane prefHeight="649.0" prefWidth="1236.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab text="Home">
                   <content>
@@ -48,26 +48,31 @@
                                     <Font name="Noto Sans Regular" size="26.0" />
                                  </font>
                               </Text>
-                              <TableView fx:id="facultyAcceptedTable" editable="true" layoutX="49.0" layoutY="36.0" prefHeight="162.0" prefWidth="640.0">
+                              <TableView fx:id="facultyAcceptedTable" editable="true" layoutX="9.0" layoutY="36.0" prefHeight="244.0" prefWidth="1215.0">
                                 <columns>
-                                  <TableColumn fx:id="accepted_col_capstone" prefWidth="131.0" text="Capstone" />
-                                  <TableColumn fx:id="accepted_col_name" prefWidth="141.0" text="Student Name" />
-                                    <TableColumn fx:id="accepted_col_abstract" prefWidth="367.0" text="Abstract" />
+                                  <TableColumn fx:id="accepted_col_capstone" prefWidth="146.0" text="Capstone" />
+                                  <TableColumn fx:id="accepted_col_name" prefWidth="215.0" text="Student Name" />
+                                    <TableColumn fx:id="accepted_col_username" prefWidth="147.0" text="Username" />
+                                    <TableColumn fx:id="accepted_col_abstract" prefWidth="478.0" text="Abstract" />
+                                    <TableColumn fx:id="accepted_col_status" minWidth="9.0" prefWidth="168.0" text="Status" />
+                                    <TableColumn fx:id="accepted_col_grade" prefWidth="60.0" text="Grade" />
                                 </columns>
                               </TableView>
-                              <TableView fx:id="facultyInvitedTable" editable="true" layoutX="49.0" layoutY="258.0" prefHeight="162.0" prefWidth="640.0">
+                              <TableView fx:id="facultyInvitedTable" editable="true" layoutX="9.0" layoutY="373.0" prefHeight="181.0" prefWidth="1210.0">
                                  <columns>
                                     <TableColumn fx:id="invited_col_capstone" prefWidth="131.0" text="Capstone" />
-                                    <TableColumn fx:id="invited_col_name" prefWidth="141.0" text="Student Name" />
-                                    <TableColumn fx:id="invited_col_abstract" prefWidth="367.0" text="Abstract" />
+                                    <TableColumn fx:id="invited_col_name" prefWidth="144.0" text="Student Name" />
+                                    <TableColumn fx:id="invited_col_username" prefWidth="138.0" text="Username" />
+                                    <TableColumn fx:id="invited_col_abstract" prefWidth="529.0" text="Abstract" />
+                                    <TableColumn fx:id="invited_col_status" prefWidth="267.0" text="Status" />
                                  </columns>
                               </TableView>
-                              <Text layoutX="170.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capstone Information (Accepted)" textAlignment="CENTER" wrappingWidth="423.13671875">
+                              <Text layoutX="364.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capstone Information (Accepted)" textAlignment="CENTER" wrappingWidth="423.13671875">
                                  <font>
                                     <Font size="26.0" />
                                  </font>
                               </Text>
-                              <Text layoutX="170.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capstone Information (Invited)" textAlignment="CENTER" wrappingWidth="423.13671875">
+                              <Text layoutX="386.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capstone Information (Invited)" textAlignment="CENTER" wrappingWidth="423.13671875">
                                  <font>
                                     <Font size="26.0" />
                                  </font>
@@ -77,8 +82,8 @@
                                     <Image url="@../../../Desktop/download.png" />
                                  </image>
                               </ImageView>
-                              <Button fx:id="accepted_load_button" layoutX="49.0" layoutY="207.0" mnemonicParsing="false" onAction="#handleAcceptedLoadButtonAction" text="Load" />
-                              <Button fx:id="invited_load_button" layoutX="49.0" layoutY="430.0" mnemonicParsing="false" text="Load" />
+                              <Button fx:id="accepted_load_button" layoutX="52.0" layoutY="285.0" mnemonicParsing="false" onAction="#handleAcceptedLoadButtonAction" text="Load" />
+                              <Button fx:id="invited_load_button" layoutX="73.0" layoutY="566.0" mnemonicParsing="false" text="Load" />
                            </children></AnchorPane>
                   </content>
                 </Tab>
@@ -86,27 +91,31 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="410.0" prefWidth="640.0">
                            <children>
-                              <TableView fx:id="facultyTrackTable" editable="true" layoutX="49.0" layoutY="96.0" prefHeight="162.0" prefWidth="640.0">
+                              <TableView fx:id="facultyTrackTable" editable="true" layoutX="12.0" layoutY="96.0" prefHeight="397.0" prefWidth="1206.0">
                                  <columns>
-                                    <TableColumn fx:id="track_col_capstoneid" prefWidth="102.0" text="Capstone" />
-                                    <TableColumn fx:id="track_col_name" prefWidth="138.0" text="Student Name" />
+                                    <TableColumn fx:id="track_col_capstoneid" prefWidth="116.0" text="Capstone" />
+                                    <TableColumn fx:id="track_col_name" prefWidth="124.0" text="Student Name" />
+                                    <TableColumn fx:id="track_col_username" prefWidth="75.0" text="Username" />
                                     <TableColumn fx:id="track_col_abstract" prefWidth="303.0" text="Abstract" />
                                     <TableColumn fx:id="track_col_last_update" minWidth="0.0" prefWidth="96.0" text="Last Update" />
+                                    <TableColumn fx:id="track_col_status" prefWidth="302.0" text="Status" />
+                                    <TableColumn fx:id="track_col_pscore" prefWidth="113.0" text="Plagiarism Score" />
+                                    <TableColumn fx:id="track_col_grade" prefWidth="76.0" text="Grade" />
                                  </columns>
                               </TableView>
-                              <Text layoutX="157.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capstone Information (Tracking)" textAlignment="CENTER" wrappingWidth="423.13671875">
+                              <Text layoutX="364.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capstone Information (Tracking)" textAlignment="CENTER" wrappingWidth="423.13671875">
                                  <font>
                                     <Font size="26.0" />
                                  </font>
                               </Text>
-                              <Button fx:id="track_track_button" layoutX="421.0" layoutY="301.0" mnemonicParsing="false" onAction="#handleTrackTrackButtonAction" text="Track" />
-                              <TextField fx:id="trackText" layoutX="272.0" layoutY="301.0" promptText="Capstone ID" />
-                              <ImageView fitHeight="53.0" fitWidth="140.0" layoutX="598.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true">
+                              <Button fx:id="track_track_button" layoutX="648.0" layoutY="537.0" mnemonicParsing="false" onAction="#handleTrackTrackButtonAction" text="Track" />
+                              <TextField fx:id="trackText" layoutX="499.0" layoutY="536.0" promptText="Capstone ID" />
+                              <ImageView fitHeight="53.0" fitWidth="140.0" layoutX="596.0" layoutY="522.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../Desktop/download.png" />
                                  </image>
                               </ImageView>
-                              <Button fx:id="track_load_button" layoutX="99.0" layoutY="276.0" mnemonicParsing="false" onAction="#handleTrackLoadButtonAction" text="Load" />
+                              <Button fx:id="track_load_button" layoutX="79.0" layoutY="536.0" mnemonicParsing="false" onAction="#handleTrackLoadButtonAction" text="Load" />
                            </children>
                         </AnchorPane>
                      </content>
@@ -115,21 +124,26 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="410.0" prefWidth="640.0">
                            <children>
-                              <TableView fx:id="facultyViewTable" editable="true" layoutX="49.0" layoutY="96.0" prefHeight="162.0" prefWidth="640.0">
+                              <TableView fx:id="facultyViewTable" editable="true" layoutX="11.0" layoutY="93.0" prefHeight="375.0" prefWidth="1214.0">
                                  <columns>
                                     <TableColumn fx:id="col_capstoneid" prefWidth="131.0" text="Capstone" />
                                     <TableColumn fx:id="col_studentName" prefWidth="141.0" text="Student Name" />
-                                    <TableColumn fx:id="col_abstract" prefWidth="367.0" text="Abstract" />
+                                    <TableColumn fx:id="col_username" prefWidth="75.0" text="Username" />
+                                    <TableColumn fx:id="col_abstract" prefWidth="336.0" text="Abstract" />
+                                    <TableColumn fx:id="col_last_update" minWidth="0.0" prefWidth="116.0" text="Last Update" />
+                                    <TableColumn fx:id="col_status" prefWidth="251.0" text="Status" />
+                                    <TableColumn fx:id="col_pscore" prefWidth="118.0" text="Plagiarism Score" />
+                                    <TableColumn fx:id="col_grade" prefWidth="45.0" text="Grade" />
                                  </columns>
                               </TableView>
-                              <Text layoutX="157.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capstone Information " textAlignment="CENTER" wrappingWidth="423.13671875">
+                              <Text layoutX="386.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capstone Information " textAlignment="CENTER" wrappingWidth="423.13671875">
                                  <font>
                                     <Font size="26.0" />
                                  </font>
                               </Text>
-                              <Button fx:id="view_view_button" layoutX="400.0" layoutY="302.0" mnemonicParsing="false" onAction="#handleViewViewButtonAction" text="View" />
-                              <TextField fx:id="viewText" layoutX="251.0" layoutY="302.0" promptText="Capstone ID" />
-                              <Button layoutX="442.0" layoutY="302.0" mnemonicParsing="false" onAction="#handleTrackTrackButtonAction" text="Track" />
+                              <Button fx:id="view_view_button" layoutX="629.0" layoutY="509.0" mnemonicParsing="false" onAction="#handleViewViewButtonAction" text="View" />
+                              <TextField fx:id="viewText" layoutX="480.0" layoutY="509.0" promptText="Capstone ID" />
+                              <Button layoutX="671.0" layoutY="509.0" mnemonicParsing="false" onAction="#handleTrackTrackButtonAction" text="Track" />
                               <ImageView fitHeight="53.0" fitWidth="140.0" layoutX="598.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../Desktop/download.png" />

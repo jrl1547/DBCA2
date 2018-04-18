@@ -31,43 +31,38 @@ public class FXMLFacultyController{
     @FXML
     private TableColumn<trackTable, String> track_col_name;
     @FXML
+    private TableColumn<trackTable, String> track_col_username;
+    @FXML
     private TableColumn<trackTable, String> track_col_abstract;
     @FXML
     private TableColumn<trackTable, String> track_col_last_update;
+    @FXML
+    private TableColumn<trackTable, String> track_col_status;
+    @FXML
+    private TableColumn<trackTable, String> track_col_pscore;
+    @FXML
+    private TableColumn<trackTable, String> track_col_grade;
 
 
     ObservableList<trackTable> trackobList = FXCollections.observableArrayList();
-
+    //implement function in capstone to get capstone title/student name/username/abstract/lastupdate/status/pscore/grade returns arraylist<String>
     @FXML protected void handleTrackLoadButtonAction(ActionEvent event){
         String capid = "";
         //Check if the text box has anything in it
         if(trackText.getText() != null && trackText.getText() != ""){
             capid = trackText.getText();
         }
-        try{
-            Database dbconn = new Database();
-            //String to get data to fill the table on the tracking page
-            String select = "SELECT capstone.capstoneid, users.fullname, capstone.abstract, status.description FROM capstone" +
-                    "        JOIN users ON capstone.capstoneid = users.capstoneid" +
-                    "        JOIN status ON capstone.capstoneid = status.capstoneid" +
-                    "        WHERE capstoneid = ?;";
-            ArrayList<String> args = new ArrayList<String>();
-            args.add(capid);
-            ResultSet rs = dbconn.getResultSet(select, args);
-            //adds everything to the observable list to be added to the table
-            while(rs.next()){
-                trackobList.add(new trackTable(rs.getString("capstoneid"), rs.getString("fullname"), rs.getString("abstract"), rs.getString("description")));
-            }
-            dbconn.close();
-        }
-        catch(SQLException sqle){
-            sqle.printStackTrace();
-        }
+
+        //needs implementation still
         //the args for these are the variables set in the associated table (ie trackTable.java has four variables to set)
         track_col_capstoneid.setCellValueFactory(new PropertyValueFactory<>("id"));
         track_col_name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        track_col_name.setCellValueFactory(new PropertyValueFactory<>("username"));
         track_col_abstract.setCellValueFactory(new PropertyValueFactory<>("abstrac"));
         track_col_last_update.setCellValueFactory(new PropertyValueFactory<>("lastUpdate"));
+        track_col_name.setCellValueFactory(new PropertyValueFactory<>("status"));
+        track_col_name.setCellValueFactory(new PropertyValueFactory<>("pscore"));
+        track_col_name.setCellValueFactory(new PropertyValueFactory<>("grade"));
 
         facultyTrackTable.setItems(trackobList);
     }
@@ -83,7 +78,13 @@ public class FXMLFacultyController{
     @FXML
     private TableColumn<acceptedTable, String> accepted_col_name;
     @FXML
+    private TableColumn<acceptedTable, String> accepted_col_username;
+    @FXML
     private TableColumn<acceptedTable, String> accepted_col_abstract;
+    @FXML
+    private TableColumn<acceptedTable, String> accepted_col_status;
+    @FXML
+    private TableColumn<acceptedTable, String> accepted_col_grade;
 
     ObservableList<acceptedTable> acceptedobList = FXCollections.observableArrayList();
 
@@ -91,13 +92,16 @@ public class FXMLFacultyController{
         Committee invComm = new Committee();
         ArrayList<ArrayList<String>> data = invComm.getAcceptedCapstones(curUser.getUsername());
         for (int x = 0; x < data.size(); x++) {//goes through each row
-            acceptedobList.add(new acceptedTable(data.get(x).get(0), data.get(x).get(1), data.get(x).get(2)));
+            acceptedobList.add(new acceptedTable(data.get(x).get(0), data.get(x).get(1), data.get(x).get(2), data.get(x).get(3), data.get(x).get(4), data.get(x).get(5)));
         }
-        invited_col_capstone.setCellValueFactory(new PropertyValueFactory<>("title"));
-        invited_col_name.setCellValueFactory(new PropertyValueFactory<>("name"));
-        invited_col_abstract.setCellValueFactory(new PropertyValueFactory<>("abstrac"));
+        accepted_col_capstone.setCellValueFactory(new PropertyValueFactory<>("title"));
+        accepted_col_name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        accepted_col_username.setCellValueFactory(new PropertyValueFactory<>("username"));
+        accepted_col_abstract.setCellValueFactory(new PropertyValueFactory<>("abstrac"));
+        accepted_col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
+        accepted_col_grade.setCellValueFactory(new PropertyValueFactory<>("grade"));
 
-        facultyInvitedTable.setItems(acceptedobList);
+        facultyAcceptedTable.setItems(acceptedobList);
     }
 
 
@@ -110,7 +114,11 @@ public class FXMLFacultyController{
     @FXML
     private TableColumn<acceptedTable, String> invited_col_name;
     @FXML
+    private TableColumn<acceptedTable, String> invited_col_username;
+    @FXML
     private TableColumn<acceptedTable, String> invited_col_abstract;
+    @FXML
+    private TableColumn<acceptedTable, String> invited_col_status;
 
     ObservableList<acceptedTable> invitedobList = FXCollections.observableArrayList();
 
@@ -118,11 +126,13 @@ public class FXMLFacultyController{
         Committee invComm = new Committee();
         ArrayList<ArrayList<String>> data = invComm.getInvitedCapstones(curUser.getUsername());
         for (int x = 0; x < data.size(); x++) {//goes through each row
-            invitedobList.add(new acceptedTable(data.get(x).get(0), data.get(x).get(1), data.get(x).get(2)));
+            invitedobList.add(new acceptedTable(data.get(x).get(0), data.get(x).get(1), data.get(x).get(2), data.get(x).get(3), data.get(x).get(4), data.get(x).get(5)));
         }
         invited_col_capstone.setCellValueFactory(new PropertyValueFactory<>("title"));
         invited_col_name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        invited_col_username.setCellValueFactory(new PropertyValueFactory<>("username"));
         invited_col_abstract.setCellValueFactory(new PropertyValueFactory<>("abstrac"));
+        invited_col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
 
         facultyInvitedTable.setItems(invitedobList);
     }
@@ -159,9 +169,19 @@ public class FXMLFacultyController{
     @FXML
     private TableColumn<viewTable, String> col_studentName;
     @FXML
+    private TableColumn<viewTable, String>  col_username;
+    @FXML
     private TableColumn<viewTable, String> col_abstract;
+    @FXML
+    private TableColumn<viewTable, String>  col_last_update;
+    @FXML
+    private TableColumn<viewTable, String>  col_status;
+    @FXML
+    private TableColumn<viewTable, String>  col_pscore;
+    @FXML
+    private TableColumn<viewTable, String>  col_grade;
 
-
+    //implement function in capstone to get capstone title/student name/username/abstract/lastupdate/status/pscore/grade returns arraylist<String>
     ObservableList<viewTable> viewobList = FXCollections.observableArrayList();
 
     //should be good
@@ -171,11 +191,16 @@ public class FXMLFacultyController{
             capid = viewText.getText();
         }
         Capstone viewCap = new Capstone();
-        viewCap.fetch(capid);
-        viewobList.add(new viewTable(viewCap.getTitle(), viewCap.getUsername(), viewCap.getDesc()));
+        //ArrayList<String> capToView = viewCap.fetchView(capid);
+        //viewobList.add(new viewTable(capToView.get(0), capToView.get(1), capToView.get(2), capToView.get(3), capToView.get(4), capToView.get(5), capToView.get(6), capToView.get(7)));
         col_capstoneid.setCellValueFactory(new PropertyValueFactory<>("id"));
         col_studentName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        col_username.setCellValueFactory(new PropertyValueFactory<>("username"));
         col_abstract.setCellValueFactory(new PropertyValueFactory<>("abstrac"));
+        col_last_update.setCellValueFactory(new PropertyValueFactory<>("last_update"));
+        col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
+        col_pscore.setCellValueFactory(new PropertyValueFactory<>("pscore"));
+        col_grade.setCellValueFactory(new PropertyValueFactory<>("grade"));
 
         facultyViewTable.setItems(viewobList);
     }
