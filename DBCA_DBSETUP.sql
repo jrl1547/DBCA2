@@ -106,12 +106,7 @@ CREATE TABLE IF NOT EXISTS `cap`.`status` (
   `name` VARCHAR(45) NULL,
   `stepcode` VARCHAR(45) NULL,
   `description` VARCHAR(255) NULL,
-  PRIMARY KEY (`statusid`),
-  CONSTRAINT `fk_status_statushistory`
-    FOREIGN KEY (`statusid`)
-    REFERENCES `cap`.`statushistory` (`statusid`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`statusid`))
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
@@ -201,16 +196,6 @@ COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `capstone`.`statushistory`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `cap`;
-INSERT INTO `cap`.`statushistory` (`capstoneid`, `statusid`, `date`) VALUES (1, 1, NULL);
-
-COMMIT;
-
-
--- -----------------------------------------------------
 -- Data for table `capstone`.`status`
 -- -----------------------------------------------------
 START TRANSACTION;
@@ -233,6 +218,16 @@ INSERT INTO `cap`.`status` (`statusid`, `name`, `stepcode`, `description`) VALUE
 INSERT INTO `cap`.`status` (`statusid`, `name`, `stepcode`, `description`) VALUES (1500, 'Final committee approval', '', '9. After getting the final approval from the committee');
 INSERT INTO `cap`.`status` (`statusid`, `name`, `stepcode`, `description`) VALUES (1600, 'Grade reported', '', '10. Committee chair report the capstone grade to the IST department office.');
 INSERT INTO `cap`.`status` (`statusid`, `name`, `stepcode`, `description`) VALUES (1700, 'Capstone finished', '', '11. All work for capstone is completed by the students, staff and faculty.');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `capstone`.`statushistory`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `cap`;
+INSERT INTO `cap`.`statushistory` (`capstoneid`, `statusid`, `date`) VALUES (1, 100, NULL);
 
 COMMIT;
 
