@@ -27,7 +27,7 @@ public class StudentTester extends Application
 
         Parent root = fxmlLoader.load();
         StudentController controller = fxmlLoader.getController();
-        controller.setStudent(student);
+        controller.setUsername("teststudent");
 
         stage.show();
 

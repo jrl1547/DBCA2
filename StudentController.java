@@ -18,6 +18,7 @@ import java.util.ResourceBundle;
 
 public class StudentController implements Initializable, iUserController{
     private StudentDetails student;
+    private Users studentUser;
     private Capstone capstone;
     private ProjectTypes types = new ProjectTypes();
 
@@ -37,10 +38,6 @@ public class StudentController implements Initializable, iUserController{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadProject();
-    }
-
-    public void setStudent(StudentDetails student){
-
     }
 
     @FXML
@@ -114,14 +111,6 @@ public class StudentController implements Initializable, iUserController{
 
     @FXML
     /**
-     * Make changes to capstone
-     */
-    public void editCapstone(){
-        //TODO open/build capstone edit page
-    }
-
-    @FXML
-    /**
      * Load admin information, all available info about the student
      */
     public void loadAdmin() {
@@ -151,7 +140,7 @@ public class StudentController implements Initializable, iUserController{
     }
 
     @FXML
-    public void loadNewCapstone() {
+    public void loadCapstone() {
        //get types as a look up list and add them to combobox
         typesLookup = types.getTypes();
         ArrayList<String> temp = new ArrayList<>();
@@ -207,6 +196,38 @@ public class StudentController implements Initializable, iUserController{
         capstone =  new Capstone(newTitle, student.getUsername(), newType, newDesc, newDate.toString());
         student.setCapstonestart("true");
     }
+
+    @FXML
+    /**
+     * Get information for new capstone and add it to the database
+     */
+    protected void uploadCapstoneEdits(ActionEvent actionEvent) {
+
+        //Get information from from inputs
+        String newTitle = newCapTitle.getText(),
+                newDesc = newCapAbstract.getText(),
+                newType = getTypeId(newCapType.getValue());
+
+        //check for missing data
+        if (newTitle.equals("") || newDesc.equals("") || newCapDefenseDate.getValue() == null || newCapType.getValue() == null){
+            //give feedback that data is missing
+            return;
+        }
+
+        LocalDate ld = newCapDefenseDate.getValue();
+        Calendar c =  Calendar.getInstance();
+        c.set(ld.getYear(), ld.getMonthValue() - 1, ld.getDayOfMonth());
+        Date newDate = c.getTime();
+
+
+        System.out.println("Title: " + newTitle + ", Desc: " + newDesc + ", Date: " + newDate.toString());
+
+        //Give some sort of feed back before returning
+        student.setCapstonestart("true");
+        capstone =  new Capstone(newTitle, student.getUsername(), newType, newDesc, newDate.toString());
+        student.setCapstonestart("true");
+    }
+
 
     @Override
     public void setUsername(String username) {
