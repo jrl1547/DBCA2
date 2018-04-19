@@ -286,7 +286,7 @@ public class Users{
       item.add(email);
       item.add(phone);
       item.add(department);
-      boolean post = capstone_project.setData("INSERT INTO users (`username`, `role`, `password`, `fullname`, `email`, `phone`, `department`) VALUES (?,?,sha1(?),?,?,?,?);", item);
+      boolean post = capstone_project.setData("INSERT INTO users (`username`, `roleid`, `password`, `fullname`, `email`, `phone`, `department`) VALUES (?,?,sha1(?),?,?,?,?);", item);
       return post;
    }
    

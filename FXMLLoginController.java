@@ -43,10 +43,10 @@ public class FXMLLoginController {
             loader = "Staff_Homepage.fxml";
          }
          else if( role.equals("super")){
-            loader = "Super_Homepage.fxml";
+            loader = "Admin_Login.fxml";
          }
          else if( role.equals("admin")){
-            loader = "Admin_Homepage.fxml"; 
+            loader = "Admin_Login.fxml"; 
          }
          else{
             //no role?

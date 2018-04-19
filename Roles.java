@@ -20,10 +20,37 @@ public class Roles{
       ArrayList<String> item = new ArrayList<String>();
       item.add("%");
       ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT * FROM roles like ?;",item);
-      roleid   = fetchData.get(1).get(0).toString();
-      role     = fetchData.get(1).get(1).toString();
+      System.out.println(fetchData);
       return fetchData;               
       
+   }
+   
+   public ArrayList<ArrayList<String>> listRoles(){
+      ArrayList<String> item = new ArrayList<String>();
+      item.add("%");
+      ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT role FROM roles WHERE role LIKE ?;",item);
+      for(ArrayList<String> rol : fetchData){
+         rol.removeAll(Arrays.asList("role"));
+      }
+      return fetchData;    
+   }
+   
+   public String getRoleId(){
+      ArrayList<String> item = new ArrayList<String>();
+      item.add(role);
+      ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT roleid FROM roles WHERE role = ?;",item);
+      item.remove(0);
+      item.add(fetchData.get(1).get(0));
+      return item.get(0);
+   }
+   
+   public String getRoleId(String _role){
+      ArrayList<String> item = new ArrayList<String>();
+      item.add(_role);
+      ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT roleid FROM roles WHERE role = ?;",item);
+      item.remove(0);
+      item.add(fetchData.get(1).get(0));
+      return item.get(0);
    }
    
    public boolean put(){
