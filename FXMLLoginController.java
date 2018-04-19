@@ -49,10 +49,15 @@ public class FXMLLoginController {
             loader = "Admin_Login.fxml"; 
          }
          else{
-            //no role?
+            loginstatus.setText("FAIL.");
+            return;
          }
          try{
-            root = FXMLLoader.load(getClass().getClassLoader().getResource(loader));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(loader));
+            root = fxmlLoader.load();
+            iUserController controller = fxmlLoader.getController();
+            controller.setUsername(userlogin.getUsername());
+
             Stage stage = new Stage();
             stage.setTitle("RIT Capstone: " + loader);
             stage.setScene(new Scene(root, 1280, 800));

@@ -32,12 +32,13 @@ public class Capstone{
    }
 
    //Create initial Capstone
-   public Capstone(String title, String username, String type, String description){
+   public Capstone(String title, String username, String type, String description, String defensedate){
        this();
       this.title = title;
       this.username = username;
       this.type = type;
       this.desc = description;
+      this.defensedate = defensedate;
       postInit();
    }
    

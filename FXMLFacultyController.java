@@ -17,7 +17,7 @@ import java.util.ArrayList;
 /**
  * Created by cjcot on 4/14/2018.
  */
-public class FXMLFacultyController{
+public class FXMLFacultyController implements iUserController{
     private Users curUser;
 
     public void setFaculty(Users curUser){
@@ -206,5 +206,8 @@ public class FXMLFacultyController{
     }
 
 
+    @Override
+    public void setUsername(String username) {
 
+    }
 }

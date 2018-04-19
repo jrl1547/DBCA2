@@ -20,7 +20,7 @@ import javafx.event.*;
 import javafx.fxml.FXMLLoader;
 import java.util.*;
 
-public class FXMLAdminController {
+public class FXMLAdminController implements iUserController {
 
    ArrayList<String> list = new ArrayList<String>();
 
@@ -118,4 +118,8 @@ public class FXMLAdminController {
    
    }
 
+   @Override
+   public void setUsername(String username) {
+
+   }
 }

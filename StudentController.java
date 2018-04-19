@@ -16,7 +16,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-public class StudentController implements Initializable{
+public class StudentController implements Initializable, iUserController{
     private StudentDetails student;
     private Capstone capstone;
     private ProjectTypes types = new ProjectTypes();
@@ -28,9 +28,7 @@ public class StudentController implements Initializable{
             capInfoTextArea,
             adminUserInfoTextArea;
     @FXML private DatePicker newCapDefenseDate;
-    @FXML private Text updateDate1,
-            updateInfo1,
-            updateDate2,
+    @FXML private Text updateInfo1,
             updateInfo2;
     @FXML private ComboBox<String> newCapType;
 
@@ -42,9 +40,7 @@ public class StudentController implements Initializable{
     }
 
     public void setStudent(StudentDetails student){
-        this.student = student;
-        System.out.println(student.getUsername());
-        loadProject();
+
     }
 
     @FXML
@@ -74,7 +70,7 @@ public class StudentController implements Initializable{
                     output = "No available capstone";
                 }
             } else {    //give no info
-                output = "No Current Capstone";
+                output = "No available capstone";
             }
 
             capInfoTextArea.setText(output);    //set text
@@ -86,7 +82,6 @@ public class StudentController implements Initializable{
      * View 2 most recent updates made to capstone if any
      */
     public void viewUpdates(){
-        //TODO view the 2 most recent updates made to project
         String output = ""; //output to build on
         if (student != null) {  //check that student has be set
             String capId = student.getCapstoneId(); //get students capstone if
@@ -97,29 +92,21 @@ public class StudentController implements Initializable{
 
                 if(historyInfo.size() == 1) {   //exactly one status history
                     status.fetch(historyInfo.get(0).get(0));
-                    updateDate1.setText(historyInfo.get(0).get(2));
                     updateInfo1.setText(status.getName());
 
-                    updateDate2.setText("No available update");
                     updateInfo2.setText("");
                 } else  if (historyInfo.size() >= 2){   //at least 2 status history
                     status.fetch(historyInfo.get(0).get(0));
-                    updateDate1.setText(historyInfo.get(0).get(2));
                     updateInfo1.setText(status.getName());
 
                     status.fetch(historyInfo.get(1).get(0));
-                    updateDate2.setText(historyInfo.get(1).get(2));
                     updateInfo2.setText(status.getName());
                 }else {   //no status history
-                    updateDate1.setText("No available update");
                     updateInfo1.setText("");
-                    updateDate2.setText("No available update");
                     updateInfo2.setText("");
                 }
             } else {    //give no info
-                updateDate1.setText("No available update");
                 updateInfo1.setText("");
-                updateDate2.setText("No available update");
                 updateInfo2.setText("");
             }
         }
@@ -221,4 +208,10 @@ public class StudentController implements Initializable{
         student.setCapstonestart("true");
     }
 
+    @Override
+    public void setUsername(String username) {
+        this.student = new StudentDetails(username);
+        System.out.println(student.getUsername());
+        loadProject();
+    }
 }

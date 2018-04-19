@@ -51,7 +51,7 @@ public class tableController{
             ResultSet rs = dbconn.getResultSet(select, args);
             //adds everything to the observable list to be added to the table
             while(rs.next()){
-                trackobList.add(new trackTable(rs.getString("capstoneid"), rs.getString("fullname"), rs.getString("abstract"), rs.getString("description")));
+                //trackobList.add(new trackTable(rs.getString("capstoneid"), rs.getString("fullname"), rs.getString("abstract"), rs.getString("description")));
             }
             dbconn.close();
         }
@@ -92,7 +92,7 @@ public class tableController{
             ArrayList<String> args = new ArrayList<String>();
             ResultSet rs = dbconn.getResultSetSelect(select);
             while(rs.next()){
-                acceptedobList.add(new acceptedTable(rs.getString("title"), rs.getString("fullname"), rs.getString("abstract")));
+                //acceptedobList.add(new acceptedTable(rs.getString("title"), rs.getString("fullname"), rs.getString("abstract")));
             }
             dbconn.close();
         }
@@ -130,7 +130,7 @@ public class tableController{
                     "        WHERE was_invited = 1";//selects capstones that are being tracked, needs the WHERE fixed
             ResultSet rs = dbconn.getResultSetSelect(select);
             while(rs.next()){
-                acceptedobList.add(new acceptedTable(rs.getString("title"), rs.getString("fullname"), rs.getString("abstract")));
+                //acceptedobList.add(new acceptedTable(rs.getString("title"), rs.getString("fullname"), rs.getString("abstract")));
             }
             dbconn.close();
         }
@@ -197,7 +197,7 @@ public class tableController{
             args.add(capid);
             ResultSet rs = dbconn.getResultSet(select, args);
             while(rs.next()){
-                viewobList.add(new viewTable(rs.getString("capstoneid"), rs.getString("username"), rs.getString("abstract")));
+                //viewobList.add(new viewTable(rs.getString("capstoneid"), rs.getString("username"), rs.getString("abstract")));
             }
             dbconn.close();
         }

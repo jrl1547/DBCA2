@@ -45,7 +45,7 @@ public class FXMLStudentController {
          Users user = new Users("jrl1547");
          user.fetch("jrl1547");
          
-         user.createNewCapstone("jrl1547", "How to not suck.", "A guide on how to not suck.", "Project", committee);
+         //user.createNewCapstone("jrl1547", "How to not suck.", "A guide on how to not suck.", "Project", committee);
          
          
       }
