@@ -41,6 +41,7 @@ CREATE TABLE IF NOT EXISTS `cap`.`capstone` (
   `abstract` MEDIUMTEXT NULL,
   `plagerismscore` VARCHAR(45) NULL,
   `grade` VARCHAR(45) NULL,
+  `defensedate` VARCHAR(10) NULL,
   PRIMARY KEY (`capstoneid`, `username`, `typeid`),
   INDEX `fk_capstone_users_idx` (`username` ASC),
   CONSTRAINT `fk_capstone_users`
