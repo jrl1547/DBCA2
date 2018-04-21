@@ -3,10 +3,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
 
 import java.net.URL;
@@ -19,19 +16,18 @@ import java.util.ResourceBundle;
 public class StudentController implements Initializable, iUserController{
     private StudentDetails student;
     private Users studentUser;
+    private Committee committee;
     private Capstone capstone;
     private ProjectTypes types = new ProjectTypes();
 
     private ArrayList<ArrayList<String>> typesLookup = new ArrayList<>();
 
-    @FXML private TextField newCapTitle;
-    @FXML private TextArea newCapAbstract,
-            capInfoTextArea,
-            adminUserInfoTextArea;
+    @FXML private TextField newCapTitle, newCapChair, newCapReader1, newCapReader2;
+    @FXML private TextArea newCapAbstract, capInfoTextArea, adminUserInfoTextArea;
     @FXML private DatePicker newCapDefenseDate;
-    @FXML private Text updateInfo1,
-            updateInfo2;
+    @FXML private Text updateInfo1, updateInfo2;
     @FXML private ComboBox<String> newCapType;
+    @FXML private Label newCapErrors;
 
 
     @FXML
@@ -58,7 +54,7 @@ public class StudentController implements Initializable, iUserController{
                                 info = capInfo.get(1).get(i);
 
                         String lower = title.toLowerCase();
-                        if (info != null && !lower.contains("id")) {    //not printing ids or null info
+                        if (info != null) {    //not printing ids or null info
                             output += title.substring(0, 1).toUpperCase() + title.substring(1) +
                                     ": " + info + "\n";
                         }
@@ -123,8 +119,7 @@ public class StudentController implements Initializable, iUserController{
                     String title = studentInfo.get(0).get(i),
                             info = studentInfo.get(1).get(i);
 
-                    String lower = title.toLowerCase();
-                    if (info != null && !lower.contains("id")) {    //not printing ids or null info
+                    if (info != null) {    //not printing ids or null info
                         output += title.substring(0, 1).toUpperCase() + title.substring(1) +
                                 ": " + info + "\n";
                     }
@@ -149,6 +144,33 @@ public class StudentController implements Initializable, iUserController{
         }
         ObservableList<String> typeList = FXCollections.observableArrayList(temp);
         newCapType.setItems(typeList);
+
+        if(capstone != null){
+            //newCapType.types.getTypeName(capstone.getType());
+            newCapTitle.setText(capstone.getTitle());
+            newCapAbstract.setText(capstone.getDesc());
+            String[] dd = capstone.getDefensedate().split("-");
+            newCapDefenseDate.setValue(LocalDate.of(Integer.parseInt(dd[0]), Integer.parseInt(dd[1]),
+                    Integer.parseInt(dd[02])));
+            newCapType.setValue(types.getTypeName(capstone.getType()));
+        }
+
+        if(committee != null){
+            //chair
+            ArrayList<ArrayList<String>> users = committee.fetchRoles("2");
+            if (!users.isEmpty()) {
+                newCapChair.setText(users.get(0).get(0));
+            }
+            users = committee.fetchRoles("3");
+            if (!users.isEmpty()){
+                if (users.size() == 1){
+                    newCapReader1.setText(users.get(0).get(0));
+                } else {
+                    newCapReader1.setText(users.get(0).get(0));
+                    newCapReader2.setText(users.get(1).get(0));
+                }
+            }
+        }
     }
 
     /**
@@ -167,11 +189,83 @@ public class StudentController implements Initializable, iUserController{
     }
 
     @FXML
+    protected  void handleCapstoneSubmit(ActionEvent actionEvent){
+        //Validate form
+        String output = ""; //output to put out for user
+        if (newCapTitle.getText().equals("")){  //check for title
+            output += "Missing title, ";
+        }
+        if (newCapAbstract.getText().equals("")){   //check for description
+            output += "Missing description, ";
+        }
+        if (newCapDefenseDate.getValue() == null){  //check for defense date
+            output += "Missing defense date, ";
+        }
+        Users tempUser = new Users();   //temp user to check if chairs and readers exist
+        if (newCapType.getValue() == null){ //check type, user to check for 1 or both readers
+            output += "Missing type, ";
+            if (newCapReader1.getText().equals("")){    //check that first reader has been set
+                output += "Missing a first reader";
+            } else if (tempUser.fetch(newCapReader1.getText()).size() > 1){ //check that first reader exists
+                output += "First reader does not exist";
+            }
+            if (newCapType.getValue().equals("project")) {   //if project check for second reader
+                if (newCapReader2.getText().equals("")) {    //check if second reader set
+                    output += "Missing a second reader";
+                } else if (tempUser.fetch(newCapReader2.getText()).size() > 1) { //check if second reader exists
+                    output += "Second reader does not exist";
+                }
+            }
+        }
+        if (newCapChair.getText().equals("")){  //check that chair is set
+            output += "Missing a chair";
+        } else if (tempUser.fetch(newCapChair.getText()).size() > 1){   //check that chair exists
+            output += "Chair does not exist";
+        }
+
+        if (output.length() > 0) {  //if there are errors, escape
+            newCapErrors.setText(output);
+            return;
+        }
+
+        if (capstone == null){  //create new capstone and new committee
+            submitNewCapstone();
+            submitNewCommittee();
+        } else {    //update capstone
+            submitUpdateCapstone();
+            submitUpdateCommittee();
+        }
+    }
+
     /**
      * Get information for new capstone and add it to the database
      */
-    protected void submitNewCapstone(ActionEvent actionEvent) {
+    protected void submitNewCapstone() {
 
+        //Get information from from inputs
+        String newTitle = newCapTitle.getText(),
+                newDesc = newCapAbstract.getText(),
+                newType = getTypeId(newCapType.getValue());
+
+        LocalDate ld = newCapDefenseDate.getValue();
+        Calendar c =  Calendar.getInstance();
+        c.set(ld.getYear(), ld.getMonthValue() - 1, ld.getDayOfMonth());
+        Date newDate = c.getTime();
+
+        System.out.println("Title: " + newTitle + ", Desc: " + newDesc + ", Date: " + newDate.toString());
+
+        //Give some sort of feed back before returning
+        student.setCapstonestart("true");
+        capstone =  new Capstone(newTitle, student.getUsername(), newType, newDesc, newDate.toString());
+        student.setCapstonestart("true");
+    }
+
+    protected  void submitNewCommittee(){
+        //todo
+    }
+
+    protected void submitUpdateCapstone() {
+        //todo
         //Get information from from inputs
         String newTitle = newCapTitle.getText(),
                 newDesc = newCapAbstract.getText(),
@@ -188,13 +282,29 @@ public class StudentController implements Initializable, iUserController{
         c.set(ld.getYear(), ld.getMonthValue() - 1, ld.getDayOfMonth());
         Date newDate = c.getTime();
 
-
         System.out.println("Title: " + newTitle + ", Desc: " + newDesc + ", Date: " + newDate.toString());
 
         //Give some sort of feed back before returning
         student.setCapstonestart("true");
         capstone =  new Capstone(newTitle, student.getUsername(), newType, newDesc, newDate.toString());
         student.setCapstonestart("true");
+    }
+
+    protected void submitUpdateCommittee(){
+        //todo
+    }
+
+    /**
+     * create new Committee Member
+     */
+    protected void submitNewCommittee(String username, String role) {
+        Committee tempComm = new Committee();
+            tempComm.setAccepted("0");
+            tempComm.setDeclined("0");
+            tempComm.setCapstoneID(capstone.getCapstoneID());
+            tempComm.setUsername(username);
+            tempComm.setPosition(role);
+        tempComm.put();
     }
 
     @FXML
@@ -232,6 +342,15 @@ public class StudentController implements Initializable, iUserController{
     @Override
     public void setUsername(String username) {
         this.student = new StudentDetails(username);
+            student.fetch();
+        this.capstone = new Capstone();
+             if (capstone.fetch(student.getCapstoneId()).size() < 2){
+                 capstone = null;
+             }
+        this.committee = new Committee();
+            if (committee.fetch(student.getCapstoneId()).size() == 0){
+                committee = null;
+            }
         System.out.println(student.getUsername());
         loadProject();
     }

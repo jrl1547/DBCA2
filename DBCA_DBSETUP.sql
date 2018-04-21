@@ -67,7 +67,12 @@ CREATE TABLE IF NOT EXISTS `cap`.`committee` (
     FOREIGN KEY (`capstoneid`)
     REFERENCES `cap`.`capstone` (`capstoneid`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE NO ACTION,
+    CONSTRAINT `fk_committee_username`
+        FOREIGN KEY (`username`)
+        REFERENCES `cap`.`users` (`username`)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -170,6 +175,15 @@ INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`
 INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`, `phone`, `department`) VALUES ('teststaff', 'password', 2, 'Test Staff', NULL, NULL, NULL);
 INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`, `phone`, `department`) VALUES ('testfaculty', 'password', 3, 'Test Faculty', NULL, NULL, NULL);
 INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`, `phone`, `department`) VALUES ('testsuper', 'password', 4, 'Test Super', NULL, NULL, NULL);
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `capstone`.`users`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `cap`;
+INSERT INTO `cap`.`studentdetails` (`username`) VALUES ('teststudent');
 
 COMMIT;
 

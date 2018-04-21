@@ -14,5 +14,20 @@ public class ProjectTypes {
         return db.getData(query);
     }
 
+    public String getTypeName(String typeId){
+        String query = "SELECT type FROM types WHERE typeid = " + typeId;
+        ArrayList<ArrayList<String>> data = db.getData(query);
+        if (!data.isEmpty()) {
+            data.remove(0);
+            if (!data.isEmpty()) {
+                return data.get(0).get(0);
+            } else {
+                return null;
+            }
+        } else {
+            return null;
+        }
+    }
+
 
 }

@@ -115,6 +115,19 @@ public class Committee{
       return fetchData;               
       
    }
+
+   public ArrayList<ArrayList<String>> fetchRoles(String role){
+      ArrayList<String> item = new ArrayList<String>();
+         item.add(capstoneid);
+         item.add(role);
+
+      String query = "SELECT username, has_accepted FROM committee JOIN users USING (username) WHERE " +
+              "capstoneid = ? AND roleid = ? AND has_declined != 1";
+
+      ArrayList<ArrayList<String>> data = capstone_project.getData(query, item);
+      data.remove(0);
+      return data;
+   }
    
    public boolean put(){
       ArrayList<String> item = new ArrayList<String>();
