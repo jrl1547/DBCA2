@@ -60,16 +60,16 @@
                               </Text>
                               <TableView fx:id="capstonesTable" layoutX="14.0" layoutY="50.0" prefHeight="639.0" prefWidth="1265.0">
                                 <columns>
-                                  <TableColumn prefWidth="108.0" text="Student Name" />
-                                  <TableColumn prefWidth="96.0" text="Project Title" />
-                                    <TableColumn prefWidth="267.0" text="Abstract" />
-                                    <TableColumn minWidth="6.0" prefWidth="42.0" text="Status" />
-                                    <TableColumn prefWidth="104.0" text="Plagiarism Score" />
-                                    <TableColumn prefWidth="182.0" text="Grade" />
-                                    <TableColumn prefWidth="194.0" text="Faculty" />
-                                    <TableColumn prefWidth="76.0" text="Invited" />
-                                    <TableColumn prefWidth="95.0" text="Declined" />
-                                    <TableColumn prefWidth="100.0" text="Start Date" />
+                                  <TableColumn fx:id="col_studentName"  prefWidth="108.0" text="Student Name" />
+                                  <TableColumn fx:id="col_projectTitle" prefWidth="96.0" text="Project Title" />
+                                    <TableColumn fx:id="col_abstract" prefWidth="267.0" text="Abstract" />
+                                    <TableColumn fx:id="col_status" minWidth="6.0" prefWidth="42.0" text="Status" />
+                                    <TableColumn fx:id="col_plagarismScore" prefWidth="104.0" text="Plagiarism Score" />
+                                    <TableColumn fx:id="col_grade" prefWidth="182.0" text="Grade" />
+                                    <TableColumn fx:id="col_faculty" prefWidth="194.0" text="Faculty" />
+                                    <TableColumn fx:id="col_invited" prefWidth="76.0" text="Invited" />
+                                    <TableColumn fx:id="col_declined" prefWidth="95.0" text="Declined" />
+                                    <TableColumn fx:id="col_startDate" prefWidth="100.0" text="Start Date" />
                                 </columns>
                               </TableView>
                            </children></AnchorPane>
