@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="68838bde-c6dd-4009-96a8-c10ef56b9e63" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Committee.java" afterPath="$PROJECT_DIR$/Committee.java" />
-      <change beforePath="$PROJECT_DIR$/DBCA_DBSETUP.sql" afterPath="$PROJECT_DIR$/DBCA_DBSETUP.sql" />
-      <change beforePath="$PROJECT_DIR$/ProjectTypes.java" afterPath="$PROJECT_DIR$/ProjectTypes.java" />
       <change beforePath="$PROJECT_DIR$/StudentController.java" afterPath="$PROJECT_DIR$/StudentController.java" />
-      <change beforePath="$PROJECT_DIR$/Student_Homepage.fxml" afterPath="$PROJECT_DIR$/Student_Homepage.fxml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,8 +17,8 @@
       <file leaf-file-name="StudentController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/StudentController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="293" column="14" lean-forward="false" selection-start-line="293" selection-start-column="14" selection-end-line="293" selection-end-column="14" />
+            <state relative-caret-position="-13">
+              <caret line="258" column="61" lean-forward="false" selection-start-line="258" selection-start-column="61" selection-end-line="258" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1175#1176#0" expanded="true" />
@@ -34,9 +30,11 @@
                 <element signature="docComment;method#getTypeId#0;class#StudentController#0" expanded="false" />
                 <element signature="method#getTypeId#0;class#StudentController#0" expanded="false" />
                 <element signature="docComment;method#submitNewCapstone#0;class#StudentController#0" expanded="false" />
-                <element signature="method#submitNewCapstone#0;class#StudentController#0" expanded="false" />
-                <element signature="method#submitUpdateCapstone#0;class#StudentController#0" expanded="false" />
-                <element signature="method#uploadCapstoneEdits#0;class#StudentController#0" expanded="false" />
+                <element signature="method#submitNewCommittee#0;class#StudentController#0" expanded="false" />
+                <element signature="method#submitNewCommitteeMember#0;class#StudentController#0" expanded="false" />
+                <element signature="method#updateCapstone#0;class#StudentController#0" expanded="false" />
+                <element signature="method#updateCommittee#0;class#StudentController#0" expanded="false" />
+                <element signature="method#setUsername#0;class#StudentController#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -68,7 +66,7 @@
         <entry file="file://$PROJECT_DIR$/Committee.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="269">
-              <caret line="124" column="68" lean-forward="true" selection-start-line="124" selection-start-column="68" selection-end-line="124" selection-end-column="68" />
+              <caret line="124" column="68" lean-forward="false" selection-start-line="124" selection-start-column="68" selection-end-line="124" selection-end-column="68" />
               <folding />
             </state>
           </provider>
@@ -96,17 +94,17 @@
       </file>
       <file leaf-file-name="Student_Homepage.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Student_Homepage.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
+            <state relative-caret-position="2838">
               <caret line="181" column="31" lean-forward="false" selection-start-line="181" selection-start-column="31" selection-end-line="181" selection-end-column="31" />
               <folding>
                 <element signature="n#Tab#0;n#tabs#0;n#TabPane#0;n#children#0;n#AnchorPane#0;n#children#0;n#VBox#0;n#!!top" expanded="false" />
                 <element signature="n#Tab#1;n#tabs#0;n#TabPane#0;n#children#0;n#AnchorPane#0;n#children#0;n#VBox#0;n#!!top" expanded="false" />
               </folding>
             </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
           </provider>
         </entry>
       </file>
@@ -170,8 +168,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -183,7 +181,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -389,7 +387,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="15" />
+      <option name="time" value="16" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -482,9 +480,11 @@
             <element signature="docComment;method#getTypeId#0;class#StudentController#0" expanded="false" />
             <element signature="method#getTypeId#0;class#StudentController#0" expanded="false" />
             <element signature="docComment;method#submitNewCapstone#0;class#StudentController#0" expanded="false" />
-            <element signature="method#submitNewCapstone#0;class#StudentController#0" expanded="false" />
-            <element signature="method#submitUpdateCapstone#0;class#StudentController#0" expanded="false" />
-            <element signature="method#uploadCapstoneEdits#0;class#StudentController#0" expanded="false" />
+            <element signature="method#submitNewCommittee#0;class#StudentController#0" expanded="false" />
+            <element signature="method#submitNewCommitteeMember#0;class#StudentController#0" expanded="false" />
+            <element signature="method#updateCapstone#0;class#StudentController#0" expanded="false" />
+            <element signature="method#updateCommittee#0;class#StudentController#0" expanded="false" />
+            <element signature="method#setUsername#0;class#StudentController#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -531,6 +531,9 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Student_Homepage.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7425">
           <caret line="225" column="42" lean-forward="true" selection-start-line="225" selection-start-column="42" selection-end-line="225" selection-end-column="42" />
@@ -539,9 +542,6 @@
             <element signature="n#Tab#1;n#tabs#0;n#TabPane#0;n#children#0;n#AnchorPane#0;n#children#0;n#VBox#0;n#!!top" expanded="false" />
           </folding>
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/StudentDetails.java">
@@ -583,9 +583,11 @@
             <element signature="docComment;method#getTypeId#0;class#StudentController#0" expanded="false" />
             <element signature="method#getTypeId#0;class#StudentController#0" expanded="false" />
             <element signature="docComment;method#submitNewCapstone#0;class#StudentController#0" expanded="false" />
-            <element signature="method#submitNewCapstone#0;class#StudentController#0" expanded="false" />
-            <element signature="method#submitUpdateCapstone#0;class#StudentController#0" expanded="false" />
-            <element signature="method#uploadCapstoneEdits#0;class#StudentController#0" expanded="false" />
+            <element signature="method#submitNewCommittee#0;class#StudentController#0" expanded="false" />
+            <element signature="method#submitNewCommitteeMember#0;class#StudentController#0" expanded="false" />
+            <element signature="method#updateCapstone#0;class#StudentController#0" expanded="false" />
+            <element signature="method#updateCommittee#0;class#StudentController#0" expanded="false" />
+            <element signature="method#setUsername#0;class#StudentController#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -614,6 +616,9 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Student_Homepage.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5643">
           <caret line="171" column="61" lean-forward="false" selection-start-line="171" selection-start-column="47" selection-end-line="171" selection-end-column="61" />
@@ -622,9 +627,6 @@
             <element signature="n#Tab#1;n#tabs#0;n#TabPane#0;n#children#0;n#AnchorPane#0;n#children#0;n#VBox#0;n#!!top" expanded="false" />
           </folding>
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ModelTable.java">
@@ -789,12 +791,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Database.java">
+    <entry file="file://$PROJECT_DIR$/Student_Homepage.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        <state relative-caret-position="2838">
+          <caret line="181" column="31" lean-forward="false" selection-start-line="181" selection-start-column="31" selection-end-line="181" selection-end-column="31" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="n#Tab#0;n#tabs#0;n#TabPane#0;n#children#0;n#AnchorPane#0;n#children#0;n#VBox#0;n#!!top" expanded="false" />
+            <element signature="n#Tab#1;n#tabs#0;n#TabPane#0;n#children#0;n#AnchorPane#0;n#children#0;n#VBox#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -807,32 +813,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Database.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Committee.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="269">
-          <caret line="124" column="68" lean-forward="true" selection-start-line="124" selection-start-column="68" selection-end-line="124" selection-end-column="68" />
+          <caret line="124" column="68" lean-forward="false" selection-start-line="124" selection-start-column="68" selection-end-line="124" selection-end-column="68" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Student_Homepage.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="181" column="31" lean-forward="false" selection-start-line="181" selection-start-column="31" selection-end-line="181" selection-end-column="31" />
-          <folding>
-            <element signature="n#Tab#0;n#tabs#0;n#TabPane#0;n#children#0;n#AnchorPane#0;n#children#0;n#VBox#0;n#!!top" expanded="false" />
-            <element signature="n#Tab#1;n#tabs#0;n#TabPane#0;n#children#0;n#AnchorPane#0;n#children#0;n#VBox#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/StudentController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="293" column="14" lean-forward="false" selection-start-line="293" selection-start-column="14" selection-end-line="293" selection-end-column="14" />
+        <state relative-caret-position="-13">
+          <caret line="258" column="61" lean-forward="false" selection-start-line="258" selection-start-column="61" selection-end-line="258" selection-end-column="61" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1175#1176#0" expanded="true" />
@@ -844,9 +846,11 @@
             <element signature="docComment;method#getTypeId#0;class#StudentController#0" expanded="false" />
             <element signature="method#getTypeId#0;class#StudentController#0" expanded="false" />
             <element signature="docComment;method#submitNewCapstone#0;class#StudentController#0" expanded="false" />
-            <element signature="method#submitNewCapstone#0;class#StudentController#0" expanded="false" />
-            <element signature="method#submitUpdateCapstone#0;class#StudentController#0" expanded="false" />
-            <element signature="method#uploadCapstoneEdits#0;class#StudentController#0" expanded="false" />
+            <element signature="method#submitNewCommittee#0;class#StudentController#0" expanded="false" />
+            <element signature="method#submitNewCommitteeMember#0;class#StudentController#0" expanded="false" />
+            <element signature="method#updateCapstone#0;class#StudentController#0" expanded="false" />
+            <element signature="method#updateCommittee#0;class#StudentController#0" expanded="false" />
+            <element signature="method#setUsername#0;class#StudentController#0" expanded="false" />
           </folding>
         </state>
       </provider>

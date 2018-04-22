@@ -232,11 +232,12 @@ public class StudentController implements Initializable, iUserController{
             submitNewCapstone();
             submitNewCommittee();
         } else {    //update capstone
-            submitUpdateCapstone();
-            submitUpdateCommittee();
+            updateCapstone();
+            updateCommittee();
         }
     }
 
+    //-------------------- Perform Submissions ------------------------//
     /**
      * Get information for new capstone and add it to the database
      */
@@ -255,89 +256,110 @@ public class StudentController implements Initializable, iUserController{
         System.out.println("Title: " + newTitle + ", Desc: " + newDesc + ", Date: " + newDate.toString());
 
         //Give some sort of feed back before returning
-        student.setCapstonestart("true");
+        student.setCapstonestart(LocalDate.now().toString());
         capstone =  new Capstone(newTitle, student.getUsername(), newType, newDesc, newDate.toString());
-        student.setCapstonestart("true");
     }
 
+    /**
+     * Submit all necessary members, 1 reader and chair for all capstones
+     *      and a second reader for projects
+     */
     protected  void submitNewCommittee(){
-        //todo
-    }
-
-    protected void submitUpdateCapstone() {
-        //todo
-        //Get information from from inputs
-        String newTitle = newCapTitle.getText(),
-                newDesc = newCapAbstract.getText(),
-                newType = getTypeId(newCapType.getValue());
-
-        //check for missing data
-        if (newTitle.equals("") || newDesc.equals("") || newCapDefenseDate.getValue() == null || newCapType.getValue() == null){
-            //give feedback that data is missing
-            return;
+        submitNewCommitteeMember(newCapChair.getText(), "1");
+        submitNewCommitteeMember(newCapReader1.getText(), "2");
+        if(newCapType.getValue().equals("project")){    //check if project before creating second user
+            submitNewCommitteeMember(newCapReader2.getText(), "2");
         }
-
-        LocalDate ld = newCapDefenseDate.getValue();
-        Calendar c =  Calendar.getInstance();
-        c.set(ld.getYear(), ld.getMonthValue() - 1, ld.getDayOfMonth());
-        Date newDate = c.getTime();
-
-        System.out.println("Title: " + newTitle + ", Desc: " + newDesc + ", Date: " + newDate.toString());
-
-        //Give some sort of feed back before returning
-        student.setCapstonestart("true");
-        capstone =  new Capstone(newTitle, student.getUsername(), newType, newDesc, newDate.toString());
-        student.setCapstonestart("true");
-    }
-
-    protected void submitUpdateCommittee(){
-        //todo
     }
 
     /**
      * create new Committee Member
      */
-    protected void submitNewCommittee(String username, String role) {
+    protected void submitNewCommitteeMember(String username, String role) {
         Committee tempComm = new Committee();
-            tempComm.setAccepted("0");
-            tempComm.setDeclined("0");
-            tempComm.setCapstoneID(capstone.getCapstoneID());
-            tempComm.setUsername(username);
-            tempComm.setPosition(role);
+        tempComm.setAccepted("0");
+        tempComm.setDeclined("0");
+        tempComm.setCapstoneID(capstone.getCapstoneID());
+        tempComm.setUsername(username);
+        tempComm.setPosition(role);
         tempComm.put();
     }
 
-    @FXML
+    //-------------------- Perform Updates ------------------------//
     /**
-     * Get information for new capstone and add it to the database
+     * Insert all inputs into capstone and update capstone using a put
      */
-    protected void uploadCapstoneEdits(ActionEvent actionEvent) {
-
+    protected void updateCapstone() {
+        //todo
         //Get information from from inputs
         String newTitle = newCapTitle.getText(),
                 newDesc = newCapAbstract.getText(),
                 newType = getTypeId(newCapType.getValue());
-
-        //check for missing data
-        if (newTitle.equals("") || newDesc.equals("") || newCapDefenseDate.getValue() == null || newCapType.getValue() == null){
-            //give feedback that data is missing
-            return;
-        }
 
         LocalDate ld = newCapDefenseDate.getValue();
         Calendar c =  Calendar.getInstance();
         c.set(ld.getYear(), ld.getMonthValue() - 1, ld.getDayOfMonth());
         Date newDate = c.getTime();
 
-
-        System.out.println("Title: " + newTitle + ", Desc: " + newDesc + ", Date: " + newDate.toString());
-
-        //Give some sort of feed back before returning
-        student.setCapstonestart("true");
-        capstone =  new Capstone(newTitle, student.getUsername(), newType, newDesc, newDate.toString());
-        student.setCapstonestart("true");
+        capstone.setTitle(newTitle);
+        capstone.setDesc(newDesc);
+        capstone.setType(newType);
+        capstone.setDefensedate(newDate.toString());
+        capstone.put();
     }
 
+    /**
+     * Update chair and reader for the students committee as needed
+     */
+    protected void updateCommittee(){
+        Committee tempComm = new Committee();   //create temp committee to work with
+            tempComm.setCapstoneID(student.getCapstoneId());
+
+        ArrayList<ArrayList<String>> chair = tempComm.fetchRoles("1");  //fetch chair
+        if(chair.isEmpty() || !chair.get(0).get(0).equals(newCapChair.getText())) {    //if this user is not already a chair
+            submitNewCommitteeMember(newCapChair.getText(), "1");
+        }
+
+        ArrayList<ArrayList<String>> readers = tempComm.fetchRoles("2"); //fetch all available readers that have not declined
+        if(newCapType.getValue().equals("project")){
+            if(readers.size() == 1){    //there are no readers that have not declined, submit both new readers
+                submitNewCommitteeMember(newCapReader1.getText(), "2");
+                submitNewCommitteeMember(newCapReader2.getText(), "2");
+
+            } else if (readers.size() == 2){    //there is only 1 reader that has not declined
+                if (!readers.get(0).get(0).equals(newCapReader1.getText())) {
+                    //check that this reader has not already be submitted
+                    submitNewCommitteeMember(newCapReader1.getText(), "2");
+                }
+                if (!readers.get(0).get(0).equals(newCapReader2.getText())) {
+                    //check that this reader has not already be submitted
+                    submitNewCommitteeMember(newCapReader2.getText(), "2");
+                }
+
+            } else {    //there are 2 current readers that have not declined
+                if (!readers.get(0).get(0).equals(newCapReader1.getText()) &&
+                        !readers.get(1).get(0).equals(newCapReader1.getText())) {
+                    //check that this reader has not already be submitted
+                    submitNewCommitteeMember(newCapReader1.getText(), "2");
+                }
+                if (readers.size() > 1 && !readers.get(0).get(0).equals(newCapReader2.getText()) &&
+                        !readers.get(1).get(0).equals(newCapReader2.getText())) {
+                    //check that this reader has not already be submitted
+                    submitNewCommitteeMember(newCapReader2.getText(), "2");
+                }
+            }
+        } else {
+            if(readers.size() == 1){    //there are no readers that have not declined, submit new readers
+                submitNewCommitteeMember(newCapReader1.getText(), "2");
+
+            } else {    //there is  1 reader that has not declined
+                if (!readers.get(0).get(0).equals(newCapReader1.getText())) {
+                    //check that this reader has not already be submitted
+                    submitNewCommitteeMember(newCapReader1.getText(), "2");
+                }
+            }
+        }
+    }
 
     @Override
     public void setUsername(String username) {
