@@ -122,22 +122,25 @@ public class Committee{
          item.add(role);
 
       String query = "SELECT username, has_accepted FROM committee JOIN users USING (username) WHERE " +
-              "capstoneid = ? AND roleid = ? AND has_declined != 1";
+              "capstoneid = ? AND positionid = ? AND has_declined != 1";
 
       ArrayList<ArrayList<String>> data = capstone_project.getData(query, item);
-      data.remove(0);
+      if (data.isEmpty()){
+         return data;
+      } else {
+         data.remove(0);
+      }
       return data;
    }
    
    public boolean put(){
       ArrayList<String> item = new ArrayList<String>();
-       
-      item.add(username);
-      item.add(has_accepted);
-      item.add(has_declined);
-      item.add(position);
-      item.add(tracking);
-      item.add(""+capstoneid);
+         item.add(username);
+         item.add(has_accepted);
+         item.add(has_declined);
+         item.add(position);
+         item.add(tracking);
+         item.add(""+capstoneid);
       boolean put = capstone_project.setData("UPDATE committee SET username = ?, has_accepted = ?, has_declined = ?, positionid = ?, tracking = ? WHERE capstoneid = ?;", item);
       return put;
       
@@ -153,7 +156,7 @@ public class Committee{
       item.add(position);
       item.add(tracking);
       
-      boolean post = capstone_project.setData("INSERT INTO `cap`.`committee` (`capstoneid`, `username`, `has_accepted`, `has_declined`, `positionid`, `tracking`) VALUES (?, ?, ?, ?,?,?);", item);
+      boolean post = capstone_project.setData("INSERT INTO `cap`.`committee` (`username`, `capstoneid`, `has_accepted`, `has_declined`, `positionid`, `tracking`) VALUES (?, ?, ?, ?,?,?)", item);
       return post;
    }
    

@@ -149,9 +149,11 @@ public class StudentController implements Initializable, iUserController{
             //newCapType.types.getTypeName(capstone.getType());
             newCapTitle.setText(capstone.getTitle());
             newCapAbstract.setText(capstone.getDesc());
-            String[] dd = capstone.getDefensedate().split("-");
-            newCapDefenseDate.setValue(LocalDate.of(Integer.parseInt(dd[0]), Integer.parseInt(dd[1]),
-                    Integer.parseInt(dd[02])));
+            if(capstone.getDefensedate() != null) {
+                String[] dd = capstone.getDefensedate().split("-");
+                newCapDefenseDate.setValue(LocalDate.of(Integer.parseInt(dd[0]), Integer.parseInt(dd[1]),
+                        Integer.parseInt(dd[02])));
+            }
             newCapType.setValue(types.getTypeName(capstone.getType()));
         }
 
@@ -205,22 +207,28 @@ public class StudentController implements Initializable, iUserController{
         if (newCapType.getValue() == null){ //check type, user to check for 1 or both readers
             output += "Missing type, ";
             if (newCapReader1.getText().equals("")){    //check that first reader has been set
-                output += "Missing a first reader";
-            } else if (tempUser.fetch(newCapReader1.getText()).size() > 1){ //check that first reader exists
-                output += "First reader does not exist";
+                output += "Missing a first reader, ";
+            } else if (tempUser.fetch(newCapReader1.getText()).size() != 1){ //check that first reader exists
+                output += "First reader does not exist, ";
+            }
+        } else {
+            if (newCapReader1.getText().equals("")){    //check that first reader has been set
+                output += "Missing a first reader, ";
+            } else if (tempUser.fetch(newCapReader1.getText()).size() != 1){ //check that first reader exists
+                output += "First reader does not exist, ";
             }
             if (newCapType.getValue().equals("project")) {   //if project check for second reader
                 if (newCapReader2.getText().equals("")) {    //check if second reader set
-                    output += "Missing a second reader";
-                } else if (tempUser.fetch(newCapReader2.getText()).size() > 1) { //check if second reader exists
-                    output += "Second reader does not exist";
+                    output += "Missing a second reader, ";
+                } else if (tempUser.fetch(newCapReader2.getText()).size() != 1) { //check if second reader exists
+                    output += "Second reader does not exist, ";
                 }
             }
         }
         if (newCapChair.getText().equals("")){  //check that chair is set
-            output += "Missing a chair";
-        } else if (tempUser.fetch(newCapChair.getText()).size() > 1){   //check that chair exists
-            output += "Chair does not exist";
+            output += "Missing a chair, ";
+        } else if (tempUser.fetch(newCapChair.getText()).size() != 1){   //check that chair exists
+            output += "Chair does not exist, ";
         }
 
         if (output.length() > 0) {  //if there are errors, escape
@@ -265,10 +273,10 @@ public class StudentController implements Initializable, iUserController{
      *      and a second reader for projects
      */
     protected  void submitNewCommittee(){
-        submitNewCommitteeMember(newCapChair.getText(), "1");
-        submitNewCommitteeMember(newCapReader1.getText(), "2");
+        submitNewCommitteeMember(newCapChair.getText(), "2");
+        submitNewCommitteeMember(newCapReader1.getText(), "3");
         if(newCapType.getValue().equals("project")){    //check if project before creating second user
-            submitNewCommitteeMember(newCapReader2.getText(), "2");
+            submitNewCommitteeMember(newCapReader2.getText(), "3");
         }
     }
 
@@ -279,10 +287,11 @@ public class StudentController implements Initializable, iUserController{
         Committee tempComm = new Committee();
         tempComm.setAccepted("0");
         tempComm.setDeclined("0");
+        tempComm.setTracking("0");
         tempComm.setCapstoneID(capstone.getCapstoneID());
         tempComm.setUsername(username);
         tempComm.setPosition(role);
-        tempComm.put();
+        tempComm.post();
     }
 
     //-------------------- Perform Updates ------------------------//
@@ -315,47 +324,47 @@ public class StudentController implements Initializable, iUserController{
         Committee tempComm = new Committee();   //create temp committee to work with
             tempComm.setCapstoneID(student.getCapstoneId());
 
-        ArrayList<ArrayList<String>> chair = tempComm.fetchRoles("1");  //fetch chair
+        ArrayList<ArrayList<String>> chair = tempComm.fetchRoles("2");  //fetch chair
         if(chair.isEmpty() || !chair.get(0).get(0).equals(newCapChair.getText())) {    //if this user is not already a chair
-            submitNewCommitteeMember(newCapChair.getText(), "1");
+            submitNewCommitteeMember(newCapChair.getText(), "2");
         }
 
-        ArrayList<ArrayList<String>> readers = tempComm.fetchRoles("2"); //fetch all available readers that have not declined
+        ArrayList<ArrayList<String>> readers = tempComm.fetchRoles("3"); //fetch all available readers that have not declined
         if(newCapType.getValue().equals("project")){
-            if(readers.size() == 1){    //there are no readers that have not declined, submit both new readers
-                submitNewCommitteeMember(newCapReader1.getText(), "2");
-                submitNewCommitteeMember(newCapReader2.getText(), "2");
+            if(readers.isEmpty()){    //there are no readers that have not declined, submit both new readers
+                submitNewCommitteeMember(newCapReader1.getText(), "3");
+                submitNewCommitteeMember(newCapReader2.getText(), "3");
 
-            } else if (readers.size() == 2){    //there is only 1 reader that has not declined
+            } else if (readers.size() == 1){    //there is only 1 reader that has not declined
                 if (!readers.get(0).get(0).equals(newCapReader1.getText())) {
                     //check that this reader has not already be submitted
-                    submitNewCommitteeMember(newCapReader1.getText(), "2");
+                    submitNewCommitteeMember(newCapReader1.getText(), "3");
                 }
                 if (!readers.get(0).get(0).equals(newCapReader2.getText())) {
                     //check that this reader has not already be submitted
-                    submitNewCommitteeMember(newCapReader2.getText(), "2");
+                    submitNewCommitteeMember(newCapReader2.getText(), "3");
                 }
 
             } else {    //there are 2 current readers that have not declined
                 if (!readers.get(0).get(0).equals(newCapReader1.getText()) &&
                         !readers.get(1).get(0).equals(newCapReader1.getText())) {
                     //check that this reader has not already be submitted
-                    submitNewCommitteeMember(newCapReader1.getText(), "2");
+                    submitNewCommitteeMember(newCapReader1.getText(), "3");
                 }
                 if (readers.size() > 1 && !readers.get(0).get(0).equals(newCapReader2.getText()) &&
                         !readers.get(1).get(0).equals(newCapReader2.getText())) {
                     //check that this reader has not already be submitted
-                    submitNewCommitteeMember(newCapReader2.getText(), "2");
+                    submitNewCommitteeMember(newCapReader2.getText(), "3");
                 }
             }
         } else {
-            if(readers.size() == 1){    //there are no readers that have not declined, submit new readers
-                submitNewCommitteeMember(newCapReader1.getText(), "2");
+            if(readers.isEmpty()){    //there are no readers that have not declined, submit new readers
+                submitNewCommitteeMember(newCapReader1.getText(), "3");
 
             } else {    //there is  1 reader that has not declined
                 if (!readers.get(0).get(0).equals(newCapReader1.getText())) {
                     //check that this reader has not already be submitted
-                    submitNewCommitteeMember(newCapReader1.getText(), "2");
+                    submitNewCommitteeMember(newCapReader1.getText(), "3");
                 }
             }
         }

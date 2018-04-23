@@ -144,7 +144,7 @@ public class Capstone{
       item.add(grade);
       item.add(type);
       item.add(""+capstoneid);
-      boolean put = capstone_project.setData("UPDATE capstone SET title = ?, desc = ?, plagerismscore = ?, grade = ?, type = ? WHERE capstoneid = ?;", item);
+      boolean put = capstone_project.setData("UPDATE capstone SET title = ?, abstract = ?, plagerismscore = ?, grade = ?, type = ? WHERE capstoneid = ?;", item);
       return put;
       
    }

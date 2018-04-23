@@ -171,10 +171,11 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cap`;
-INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`, `phone`, `department`) VALUES ('teststudent', 'password', 1, 'Test Student', '', NULL, 'IST');
-INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`, `phone`, `department`) VALUES ('teststaff', 'password', 2, 'Test Staff', NULL, NULL, NULL);
-INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`, `phone`, `department`) VALUES ('testfaculty', 'password', 3, 'Test Faculty', NULL, NULL, NULL);
-INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`, `phone`, `department`) VALUES ('testsuper', 'password', 4, 'Test Super', NULL, NULL, NULL);
+INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`, `phone`, `department`) VALUES ('teststudent', sha1('password'), 1, 'Test Student', '', NULL, 'IST');
+INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`, `phone`, `department`) VALUES ('teststaff', sha1('password'), 2, 'Test Staff', NULL, NULL, NULL);
+INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`, `phone`, `department`) VALUES ('testfaculty', sha1('password'), 3, 'Test Faculty', NULL, NULL, NULL);
+INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`, `phone`, `department`) VALUES ('testfaculty2', sha1('password'), 3, 'Test Faculty', NULL, NULL, NULL);
+INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`, `phone`, `department`) VALUES ('testsuper', sha1('password'), 4, 'Test Super', NULL, NULL, NULL);
 
 COMMIT;
 

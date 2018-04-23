@@ -194,14 +194,18 @@ public class Users{
       ArrayList<String> item = new ArrayList<String>();
       item.add(username);
       ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT * FROM users WHERE username = ?;",item);
-      fetchData.remove(0);
-      username    = fetchData.get(0).get(0).toString();
-      role        = fetchData.get(0).get(1).toString();
-      password    = fetchData.get(0).get(2).toString();
-      fullname    = fetchData.get(0).get(3).toString();
-      email       = fetchData.get(0).get(4).toString();
-      phone       = fetchData.get(0).get(5).toString();
-      department  = fetchData.get(0).get(6).toString();
+      if (fetchData.isEmpty()){
+         return fetchData;
+      } else {
+         fetchData.remove(0);
+      }
+      username    = fetchData.get(0).get(0);
+      role        = fetchData.get(0).get(1);
+      password    = fetchData.get(0).get(2);
+      fullname    = fetchData.get(0).get(3);
+      email       = fetchData.get(0).get(4);
+      phone       = fetchData.get(0).get(5);
+      department  = fetchData.get(0).get(6);
       
       return fetchData;               
       

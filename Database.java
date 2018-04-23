@@ -203,6 +203,7 @@ public class Database{
       int row = -1;
    
       PreparedStatement test = prepare(SQL, values);
+      System.out.println(test);
       try{
          row = test.executeUpdate();
       }
