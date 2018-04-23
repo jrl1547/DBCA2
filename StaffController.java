@@ -21,11 +21,44 @@ public class StaffController{
    
     @FXML private ComboBox updateStudentComboMenu;
     
-    @FXML private TableView updateStudentProjectTable,updateStudentInfoTable,capstonesTable,
+    @FXML private TableView updateStudentProjectTable,updateStudentInfoTable,
                   studentHistoryTable;
-    private Capstone capstone;
-    private Database db = new Database();
+                  
+   @FXML
+    private TableView<staffHomeTable> capstonesTable;
+    @FXML
+    private TableColumn<staffHomeTable, String>  col_studentName;
+    @FXML
+    private TableColumn<staffHomeTable, String> col_projectTitle;
+    @FXML
+    private TableColumn<staffHomeTable, String>  col_abstract;
+  //  @FXML
+  //  private TableColumn<staffHomeTable, String> col_status;
+  //  @FXML
+  //  private TableColumn<staffHomeTable, String>  col_plagarismScore;
+  //  @FXML
+ //   private TableColumn<staffHomeTable, String>  col_grade;
+    
+
+    ObservableList<staffHomeTable> viewobList = FXCollections.observableArrayList();
+
+    
    
+    @FXML protected void HandleCapstoneLoad(ActionEvent event){
+    System.out.println("pressed load button");
+     
+     // String capid = "1";
+      Capstone viewCap = new Capstone();
+        ArrayList<ArrayList<String>> capToView = viewCap.getCapstonesStaff();
+        //System.out.println("got to add");
+        viewobList.add(new staffHomeTable(capToView.get(0).get(0),capToView.get(0).get(1),capToView.get(0).get(2)));
+        col_studentName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        col_projectTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
+        col_abstract.setCellValueFactory(new PropertyValueFactory<>("abstrac"));
+        
+        capstonesTable.setItems(viewobList);
+        
+        }
      
     @FXML protected void HandleStudentHistorySearchButtonAction(){
      

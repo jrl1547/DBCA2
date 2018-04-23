@@ -205,5 +205,14 @@ public class Capstone{
       return fetchData;
 
    }
-   
+     
+   public ArrayList<ArrayList<String>> getCapstonesStaff(){
+           ArrayList<String> item = new ArrayList<String>();
+           item.add("-1");
+           ArrayList<ArrayList<String>> fetchData = capstone_project.getData("select users.fullName,capstone.title,capstone.abstract FROM capstone JOIN users ON capstone.username = users.username WHERE( capstone.title != ?);",item);
+           
+                  return fetchData;
+
+   }
 }
+   

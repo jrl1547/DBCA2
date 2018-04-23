@@ -5,7 +5,7 @@ public class staffHomeTable {
 
     String name,title,abstrac,status,pscore,grade;
 
-    public staffHomeTable(String name,String title,String abstrac,String status,String pscore,String grade) {
+    public staffHomeTable(String name,String title,String abstrac) {
         this.name = name;
         this.title = title;
         this.abstrac = abstrac;

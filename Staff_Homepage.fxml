@@ -72,6 +72,7 @@
                                     <TableColumn fx:id="col_startDate" prefWidth="100.0" text="Start Date" />
                                 </columns>
                               </TableView>
+							  <Button fx:id="loadCapstoneTable" layoutX="41.0" layoutY="14.0" mnemonicParsing="false" onAction="#HandleCapstoneLoad"  text="Load" />
                            </children></AnchorPane>
                   </content>
                 </Tab>
