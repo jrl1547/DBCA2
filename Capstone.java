@@ -144,7 +144,7 @@ public class Capstone{
       item.add(grade);
       item.add(type);
       item.add(""+capstoneid);
-      boolean put = capstone_project.setData("UPDATE capstone SET title = ?, abstract = ?, plagerismscore = ?, grade = ?, type = ? WHERE capstoneid = ?;", item);
+      boolean put = capstone_project.setData("UPDATE capstone SET title = ?, desc = ?, plagerismscore = ?, grade = ?, type = ? WHERE capstoneid = ?;", item);
       return put;
       
    }
@@ -209,8 +209,8 @@ public class Capstone{
    public ArrayList<ArrayList<String>> getCapstonesStaff(){
            ArrayList<String> item = new ArrayList<String>();
            item.add("-1");
-           ArrayList<ArrayList<String>> fetchData = capstone_project.getData("select users.fullName,capstone.title,capstone.abstract FROM capstone JOIN users ON capstone.username = users.username WHERE( capstone.title != ?);",item);
-           
+           ArrayList<ArrayList<String>> fetchData = capstone_project.getData("select users.fullName,capstone.title,capstone.abstract,capstone.plagerismscore,capstone.grade FROM capstone JOIN users ON capstone.username = users.username WHERE( capstone.title != ?);",item);
+            fetchData.remove(0);
                   return fetchData;
 
    }

@@ -34,10 +34,10 @@ public class StaffController{
     private TableColumn<staffHomeTable, String>  col_abstract;
   //  @FXML
   //  private TableColumn<staffHomeTable, String> col_status;
-  //  @FXML
-  //  private TableColumn<staffHomeTable, String>  col_plagarismScore;
-  //  @FXML
- //   private TableColumn<staffHomeTable, String>  col_grade;
+    @FXML
+    private TableColumn<staffHomeTable, String>  col_plagarismScore;
+    @FXML
+    private TableColumn<staffHomeTable, String>  col_grade;
     
 
     ObservableList<staffHomeTable> viewobList = FXCollections.observableArrayList();
@@ -51,10 +51,14 @@ public class StaffController{
       Capstone viewCap = new Capstone();
         ArrayList<ArrayList<String>> capToView = viewCap.getCapstonesStaff();
         //System.out.println("got to add");
-        viewobList.add(new staffHomeTable(capToView.get(0).get(0),capToView.get(0).get(1),capToView.get(0).get(2)));
+        viewobList.add(new staffHomeTable(capToView.get(0).get(0),capToView.get(0).get(1),capToView.get(0).get(2),capToView.get(0).get(3),capToView.get(0).get(4)));
+        System.out.println(viewobList);
         col_studentName.setCellValueFactory(new PropertyValueFactory<>("name"));
         col_projectTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
         col_abstract.setCellValueFactory(new PropertyValueFactory<>("abstrac"));
+        col_plagarismScore.setCellValueFactory(new PropertyValueFactory<>("pscore"));
+        col_grade.setCellValueFactory(new PropertyValueFactory<>("grade"));
+
         
         capstonesTable.setItems(viewobList);
         
