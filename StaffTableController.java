@@ -26,12 +26,17 @@ public class StaffTableController{
     private TableColumn<staffHomeTable, String> col_projectTitle;
     @FXML
     private TableColumn<staffHomeTable, String>  col_abstract;
-   // @FXML
-   // private TableColumn<staffHomeTable, String> col_status;
+    @FXML
+    private TableColumn<staffHomeTable, String> col_status;
     @FXML
     private TableColumn<staffHomeTable, String>  col_plagarismScore;
    @FXML
    private TableColumn<staffHomeTable, String>  col_grade;
+    @FXML
+    private TableColumn<staffHomeTable, String>  col_faculty;
+    @FXML
+     private TableColumn<staffHomeTable, String>  col_declined;
+
    
     ObservableList<staffHomeTable> homeobList = FXCollections.observableArrayList();
 
@@ -57,6 +62,11 @@ public class StaffTableController{
         col_abstract.setCellValueFactory(new PropertyValueFactory<>("abstrac"));
         col_plagarismScore.setCellValueFactory(new PropertyValueFactory<>("pscore"));
         col_grade.setCellValueFactory(new PropertyValueFactory<>("grade"));
+        col_faculty.setCellValueFactory(new PropertyValueFactory<>("faculty"));
+        col_declined.setCellValueFactory(new PropertyValueFactory<>("declined"));
+        col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
+
+
         capstonesTable.setItems(homeobList);
     }
    }

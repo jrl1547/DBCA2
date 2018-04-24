@@ -214,5 +214,14 @@ public class Capstone{
                   return fetchData;
 
    }
+    public ArrayList<ArrayList<String>> getCapstonesStatus(){
+           ArrayList<String> item = new ArrayList<String>();
+           item.add("-1");
+           ArrayList<ArrayList<String>> fetchData = capstone_project.getData("select statusid from statushistory join capstone on capstone.capstoneid= statushistory.capstoneid WHERE(capstone.capstoneid != ?);",item);
+            fetchData.remove(0);
+                  return fetchData;
+
+   }
+
 }
    

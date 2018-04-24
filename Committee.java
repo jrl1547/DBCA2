@@ -193,6 +193,22 @@ public class Committee{
       return fetchData;               
       
    }
+   public ArrayList<ArrayList<String>> getCommitteeFaculty(){
+           ArrayList<String> item = new ArrayList<String>();
+           item.add("1");
+           ArrayList<ArrayList<String>> fetchData = capstone_project.getData("select committee.username from capstone join committee where capstone.capstoneid = committee.capstoneid  and has_accepted = ?;",item);
+            fetchData.remove(0);
+                  return fetchData;
+
+   }
+ public ArrayList<ArrayList<String>> getDeclinedCommitteeFaculty(){
+           ArrayList<String> item = new ArrayList<String>();
+           item.add("1");
+           ArrayList<ArrayList<String>> fetchData = capstone_project.getData("select committee.username from capstone join committee where capstone.capstoneid = committee.capstoneid  and has_declined = ?;",item);
+            fetchData.remove(0);
+                  return fetchData;
+
+   }
 
 
 }

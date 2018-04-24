@@ -3,15 +3,17 @@
  */
 public class staffHomeTable {
 
-    String name,title,abstrac,status,pscore,grade;
+    String name,title,abstrac,status,pscore,grade,faculty,declined;
 
-    public staffHomeTable(String name,String title,String abstrac, String pscore, String grade) {
+    public staffHomeTable(String name,String title,String abstrac, String pscore, String grade, String faculty, String declined, String status) {
         this.name = name;
         this.title = title;
         this.abstrac = abstrac;
         this.status = status;
         this.pscore = pscore;
         this.grade = grade;
+        this.faculty = faculty;
+        this.declined = declined;
     }
 
    
@@ -22,6 +24,22 @@ public class staffHomeTable {
     public void setName(String name) {
         this.name = name;
     }
+    public String getFaculty() {
+        return faculty;
+    }
+
+    public void setFaculty(String Faculty) {
+        this.faculty = faculty;
+    }
+
+   public String getDeclined() {
+        return declined;
+    }
+
+    public void setdeclined(String declined) {
+        this.declined = declined;
+    }
+
 
     public String getTitle() {
         return title;
