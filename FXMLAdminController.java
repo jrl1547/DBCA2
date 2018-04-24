@@ -25,7 +25,7 @@ public class FXMLAdminController implements iUserController {
    ArrayList<String> list = new ArrayList<String>();
 
    @FXML private Button btn_tabledit, btn_loadtables, btn_download, btn_loadcsv, btn_insertMany, btn_insertOne, btn_delete;
-   @FXML private TextField tf_sqlquery, tf_username, tf_fullname, tf_email, tf_phone, tf_dept, tf_csvDir, tf_delUser;
+   @FXML private TextField tf_capstonestart, tf_mastersstart, tf_sqlquery, tf_username, tf_fullname, tf_email, tf_phone, tf_dept, tf_csvDir, tf_delUser;
    @FXML private PasswordField tf_pass, tf_confirmpass;
    @FXML private MenuButton mb_role, mnu_listtables;
    @FXML private MenuItem mi_student, mi_staff, mi_faculty, mi_super, mi_admin;
@@ -110,6 +110,15 @@ public class FXMLAdminController implements iUserController {
           
          Users user = new Users(tf_username.getText(), roleid, tf_pass.getText(), tf_fullname.getText(), tf_email.getText(), tf_phone.getText(), tf_dept.getText() );
          user.post(); 
+         
+         try{
+            StudentDetails details = new StudentDetails(tf_username.getText(), tf_mastersstart.getText(), tf_capstonestart.getText());
+            details.post();
+         }
+         catch(Exception e){
+            txt_result.setText("Master Start in YYYY-MM-DD format.");
+         }
+         
          txt_result.setText("USER SUCCESSFULLY ADDED.");    
       }
       else{

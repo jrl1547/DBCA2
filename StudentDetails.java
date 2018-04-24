@@ -18,13 +18,13 @@ public class StudentDetails{
     }
 
     public StudentDetails(String _username){
-        this();
-
+        capstone_project = new Database();
         username = _username;
     }
 
     public StudentDetails(String _username, String _mastersstart, String _capstonestart){
-        this();
+        capstone_project = new Database();
+        username = _username;
         mastersstart  = _mastersstart;
         capstonestart = _capstonestart;
     }
