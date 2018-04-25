@@ -47,6 +47,8 @@ public class StaffController implements iUserController{
    @FXML private TableView<staffStudentHistory> studentHistoryTable;
    @FXML
     private TableColumn<staffStudentHistory, String>  hist_col_studentName;
+    @FXML
+    private TableColumn<staffStudentHistory, String>  hist_col_studentStatus;
 
     ObservableList<staffHomeTable> viewobList = FXCollections.observableArrayList();
 
@@ -94,8 +96,12 @@ public class StaffController implements iUserController{
         
 
      ArrayList<ArrayList<String>> students = viewCap.getStudentHistoryName(user);
-     staffStuHist.add(new staffStudentHistory(students.get(0).get(0)));
+     ArrayList<ArrayList<String>> status = viewCap.getCapstonesStatusByName(user);
+
+     staffStuHist.add(new staffStudentHistory(students.get(0).get(0),status.get(0).get(0)));
      hist_col_studentName.setCellValueFactory(new PropertyValueFactory<>("name"));
+     hist_col_studentStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+
 
      studentHistoryTable.setItems(staffStuHist);
      }

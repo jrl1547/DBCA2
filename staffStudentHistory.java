@@ -3,10 +3,11 @@
  */
 public class staffStudentHistory {
 
-    String name;
+    String name,status;
 
-    public staffStudentHistory(String name) {
+    public staffStudentHistory(String name, String status) {
         this.name = name;
+        this.status = status;
             }
 
    
@@ -17,4 +18,12 @@ public class staffStudentHistory {
     public void setName(String name) {
         this.name = name;
     }
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     }
