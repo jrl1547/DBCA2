@@ -21,7 +21,7 @@ public class StaffController implements iUserController{
    
     @FXML private ComboBox updateStudentComboMenu;
     
-    @FXML private TableView updateStudentProjectTable,updateStudentInfoTable;
+   // @FXML private updateStudentInfoTable;
                   
    @FXML
     private TableView<staffHomeTable> capstonesTable;
@@ -43,12 +43,26 @@ public class StaffController implements iUserController{
     private TableColumn<staffHomeTable, String>  col_declined;
     
 
-
+//student history table
    @FXML private TableView<staffStudentHistory> studentHistoryTable;
    @FXML
     private TableColumn<staffStudentHistory, String>  hist_col_studentName;
     @FXML
     private TableColumn<staffStudentHistory, String>  hist_col_studentStatus;
+    
+    
+    //update tab
+    @FXML private TableView<staffUpdate> updateStudentProjectTable;
+    @FXML
+    private TableColumn<staffUpdate, String>  update_col_student;
+    @FXML
+    private TableColumn<staffUpdate, String>  update_col_title;
+    @FXML
+    private TableColumn<staffUpdate, String>  update_col_status;
+    @FXML
+    private TableColumn<staffUpdate, String>  update_col_pscore;
+
+
 
     ObservableList<staffHomeTable> viewobList = FXCollections.observableArrayList();
 
@@ -106,10 +120,26 @@ public class StaffController implements iUserController{
      studentHistoryTable.setItems(staffStuHist);
      }
 
+    ObservableList<staffUpdate> staffUpdateOb = FXCollections.observableArrayList();
 
     @FXML protected void HandleUpdateStudentSearchStudentButtonAction(){
     //function to handle updateSearchStudentButton
-    return;
+    Capstone viewCap = new Capstone();
+    String user = "";
+
+    if(updateStudentSearchStudentText.getText() != null && updateStudentSearchStudentText.getText() != ""){
+            user = updateStudentSearchStudentText.getText();
+        }
+        
+      ArrayList<ArrayList<String>> table = viewCap.getStaffUpdate(user);  
+      staffUpdateOb.add(new staffUpdate(table.get(0).get(0),table.get(0).get(1),table.get(0).get(2)));
+      update_col_student.setCellValueFactory(new PropertyValueFactory<>("username"));
+      update_col_title.setCellValueFactory(new PropertyValueFactory<>("title"));
+      update_col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
+     // update_col_pscore.setCellValueFactory(new PropertyValueFactory<>("plagiarismscore"));
+      updateStudentProjectTable.setItems(staffUpdateOb);
+
+  
     }
     
     @FXML protected void HandleUpdateStudentPlagiarismScoreButtonAction(){

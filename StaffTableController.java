@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class StaffTableController{
 
-
+//landing page
  @FXML
     private TableView<staffHomeTable> capstonesTable;
     @FXML
@@ -37,7 +37,7 @@ public class StaffTableController{
     @FXML
      private TableColumn<staffHomeTable, String>  col_declined;
 
-   
+   // history table declarations
    @FXML
     private TableView<staffStudentHistory> studentHistoryTable;
    @FXML
@@ -47,9 +47,11 @@ public class StaffTableController{
 
     ObservableList<staffHomeTable> homeobList = FXCollections.observableArrayList();
 
+//landing page load button
 
 @FXML protected void HandleCapstoneLoad(){
           try {
+        System.out.println("this executed");
         col_studentName.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         col_projectTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
         col_abstract.setCellValueFactory(new PropertyValueFactory<>("abstrac"));
@@ -69,6 +71,8 @@ public class StaffTableController{
             e.printStackTrace();
         }
        }
+       
+       //search button
        ObservableList<staffStudentHistory> histobList = FXCollections.observableArrayList();
 
    @FXML protected void HandleStudentHistorySearchButtonAction(){
@@ -84,6 +88,9 @@ public class StaffTableController{
             e.printStackTrace();
         }
        }
+       
+       
+       
    
    
    }

@@ -245,5 +245,18 @@ public class Capstone{
 
    }
 
-}
+
+   
+  public ArrayList<ArrayList<String>> getStaffUpdate(String _username){
+           ArrayList<String> item = new ArrayList<String>();
+           item.add(_username);
+           ArrayList<ArrayList<String>> fetchData = capstone_project.getData("select capstone.username, capstone.title ,statushistory.statusid from statushistory join capstone on capstone.capstoneid= statushistory.capstoneid WHERE capstone.username = ?;",item);
+            fetchData.remove(0);
+            System.out.println(fetchData);
+                  return fetchData;
+
+
+
+   }
+  }
    
