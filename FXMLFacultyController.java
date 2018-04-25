@@ -18,11 +18,8 @@ import java.util.ArrayList;
  * Created by cjcot on 4/14/2018.
  */
 public class FXMLFacultyController implements iUserController{
-    private Users curUser;
+    private String curUser;
 
-    public void setFaculty(Users curUser){
-        this.curUser = curUser;
-    }
     //Brings in the elements from the FXML that we'll be writing to or getting data from
     @FXML
     private TableView<trackTable> facultyTrackTable;
@@ -90,7 +87,7 @@ public class FXMLFacultyController implements iUserController{
 
     @FXML protected void handleAcceptedLoadButtonAction(ActionEvent event){
         Committee invComm = new Committee();
-        ArrayList<ArrayList<String>> data = invComm.getAcceptedCapstones(curUser.getUsername());
+        ArrayList<ArrayList<String>> data = invComm.getAcceptedCapstones(curUser);
         for (int x = 0; x < data.size(); x++) {//goes through each row
             acceptedobList.add(new acceptedTable(data.get(x).get(0), data.get(x).get(1), data.get(x).get(2), data.get(x).get(3), data.get(x).get(1), data.get(x).get(4)));
         }
@@ -124,7 +121,7 @@ public class FXMLFacultyController implements iUserController{
 
     @FXML protected void handleInvitedLoadButtonAction(ActionEvent event) {
         Committee invComm = new Committee();
-        ArrayList<ArrayList<String>> data = invComm.getInvitedCapstones(curUser.getUsername());
+        ArrayList<ArrayList<String>> data = invComm.getInvitedCapstones(curUser);
         for (int x = 0; x < data.size(); x++) {//goes through each row
             invitedobList.add(new acceptedTable(data.get(x).get(0), data.get(x).get(1), data.get(x).get(2), data.get(x).get(3), data.get(x).get(4), data.get(x).get(4)));
         }
@@ -135,6 +132,18 @@ public class FXMLFacultyController implements iUserController{
         invited_col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
 
         facultyInvitedTable.setItems(invitedobList);
+    }
+
+
+    @FXML protected void handleHistoryLoadButtonAction(ActionEvent event){
+        String username = "";
+        if(historyText.getText() != null && historyText.getText() != ""){
+            username = historyText.getText();
+        }
+        Capstone getid = new Capstone();
+        String capid = getid.getCapstoneId(username);
+        StatusHistory hist = new StatusHistory();
+        ArrayList<ArrayList<String>> data = hist.getCapstoneHistory(capid);
     }
 
 
@@ -155,10 +164,62 @@ public class FXMLFacultyController implements iUserController{
         }
         //needs if statement to check if they are invited to committee, if they are, edit that record instead of creating one
         //if they're not invited to the committee
-        Committee trackCom = new Committee(capid, curUser.getUsername(), "0", "0", "none", "1");
+        Committee trackCom = new Committee(capid, curUser, "0", "0", "none", "1");
         trackCom.post();
     }
 
+    @FXML
+    TextField accepted_grade_box;
+    @FXML
+    TextField accepted_username_box;
+
+    @FXML protected void handleAcceptedGradeButtonAction(ActionEvent event){
+        String username = "";
+        String grade = "";
+        if(accepted_grade_box.getText() != null && accepted_grade_box.getText() != ""){
+            grade = accepted_grade_box.getText();
+        }
+        if(accepted_username_box.getText() != null && accepted_username_box.getText() != ""){
+            username = accepted_username_box.getText();
+        }
+        //get capstone item, set grade then post
+        Capstone toGrade = new Capstone();
+        String capid = toGrade.getCapstoneId(username);
+        toGrade.fetch(capid);
+        toGrade.setGrade(grade);
+        toGrade.put();
+    }
+
+    @FXML
+    TextField invited_text_area;//user inputs username of capstone they want to accept/reject
+     // Takes in the username given in invited_text_area and accepts the capstone for this.
+    @FXML protected void handleInvitedAcceptButtonAction(ActionEvent event){
+        String username = "";
+        if(invited_text_area.getText() != null && invited_text_area.getText() != ""){
+            username = invited_text_area.getText();
+        }
+        //get committee item, set accepted to 1 then post
+        Capstone getid = new Capstone();//just to grab the capid
+        String capid = getid.getCapstoneId(username);
+        Committee toAccept = new Committee();
+        toAccept.fetch(capid, curUser);
+        toAccept.setAccepted("1");//accepts the invite
+        toAccept.put();
+    }
+    //Takes in the username given from the invited_text_area and rejects the capstone for this.
+    @FXML protected void handleInvitedRejectButtonAction(ActionEvent event){
+        String username = "";
+        if(invited_text_area.getText() != null && invited_text_area.getText() != ""){
+            username = invited_text_area.getText();
+        }
+        //get committee item, set declined to 1 then post
+        Capstone getid = new Capstone();
+        String capid = getid.getCapstoneId(username);
+        Committee toReject = new Committee();
+        toReject.fetch(capid, curUser);
+        toReject.setDeclined("1");
+        toReject.put();
+    }
 
 
     //view tab info
@@ -208,6 +269,6 @@ public class FXMLFacultyController implements iUserController{
 
     @Override
     public void setUsername(String username) {
-
+        curUser = username;
     }
 }

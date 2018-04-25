@@ -111,5 +111,19 @@ public class StatusHistory {
         return del;
     }
 
+    public ArrayList<ArrayList<String>> getCapstoneHistory(String _capid){
+        ArrayList<String> item = new ArrayList<String>();
+        item.add(_capid);
+        ArrayList<ArrayList<String>> fetchData = capstone_project.getData(
+                "SELECT capstone.username, capstone.title, status.name, status.description, statushistory.date FROM status \n" +
+                        "JOIN statushistory ON status.statusid = statushistory.statusid \n" +
+                        "JOIN capstone ON statushistory.capstoneid = capstone.capstoneid\n" +
+                        "WHERE capstone.capstoneid = 1;",item);
+        fetchData.remove(0);
+
+        return fetchData;
+
+    }
+
 
 }

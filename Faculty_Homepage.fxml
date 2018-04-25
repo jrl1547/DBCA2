@@ -58,7 +58,7 @@
                                     <TableColumn fx:id="accepted_col_grade" prefWidth="60.0" text="Grade" />
                                 </columns>
                               </TableView>
-                              <TableView fx:id="facultyInvitedTable" editable="true" layoutX="9.0" layoutY="373.0" prefHeight="181.0" prefWidth="1210.0">
+                              <TableView fx:id="facultyInvitedTable" editable="true" layoutX="7.0" layoutY="373.0" prefHeight="181.0" prefWidth="1210.0">
                                  <columns>
                                     <TableColumn fx:id="invited_col_capstone" prefWidth="131.0" text="Capstone" />
                                     <TableColumn fx:id="invited_col_name" prefWidth="144.0" text="Student Name" />
@@ -84,6 +84,12 @@
                               </ImageView>
                               <Button fx:id="accepted_load_button" layoutX="52.0" layoutY="285.0" mnemonicParsing="false" onAction="#handleAcceptedLoadButtonAction" text="Load" />
                               <Button fx:id="invited_load_button" layoutX="73.0" layoutY="566.0" mnemonicParsing="false" onAction="#handleInvitedLoadButtonAction" text="Load" />
+                              <Button fx:id="invted_accept_button" layoutX="650.0" layoutY="566.0" mnemonicParsing="false" onAction="#handleInvitedAcceptButtonAction" text="Accept" />
+                              <Button fx:id="invited_reject_button" layoutX="702.0" layoutY="566.0" mnemonicParsing="false" onAction="#handleInvitedRejectButtonAction" text="Reject" />
+                              <TextField fx:id="invited_text_area" layoutX="501.0" layoutY="566.0" />
+                              <TextField fx:id="accepted_username_box" layoutX="523.0" layoutY="298.0" />
+                              <TextField fx:id="accepted_grade_box" layoutX="672.0" layoutY="298.0" prefHeight="25.0" prefWidth="33.0" />
+                              <Button fx:id="accepted_grade_button" layoutX="717.0" layoutY="298.0" mnemonicParsing="false" onAction="#handleAcceptedGradeButtonAction" text="Submit Final Grade" />
                            </children></AnchorPane>
                   </content>
                 </Tab>
@@ -152,6 +158,11 @@
                            </children>
                         </AnchorPane>
                      </content>
+                  </Tab>
+                  <Tab text="History">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
                   </Tab>
                 <Tab text="Admin">
                   <content>
