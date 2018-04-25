@@ -236,7 +236,7 @@ public class StudentController implements Initializable, iUserController{
             return;
         }
 
-        if (capstone == null){  //create new capstone and new committee
+        if (capstone == null || capstone.getCapstoneID() == null){  //create new capstone and new committee
             submitNewCapstone();
             submitNewCommittee();
         } else {    //update capstone
@@ -266,6 +266,7 @@ public class StudentController implements Initializable, iUserController{
         //Give some sort of feed back before returning
         student.setCapstonestart(LocalDate.now().toString());
         capstone =  new Capstone(newTitle, student.getUsername(), newType, newDesc, newDate.toString());
+            String capId = capstone.getCapstoneID();
     }
 
     /**
@@ -299,7 +300,6 @@ public class StudentController implements Initializable, iUserController{
      * Insert all inputs into capstone and update capstone using a put
      */
     protected void updateCapstone() {
-        //todo
         //Get information from from inputs
         String newTitle = newCapTitle.getText(),
                 newDesc = newCapAbstract.getText(),
@@ -375,6 +375,7 @@ public class StudentController implements Initializable, iUserController{
         this.student = new StudentDetails(username);
             student.fetch();
         this.capstone = new Capstone();
+        ArrayList<ArrayList<String>> data = capstone.fetch(student.getCapstoneId());
              if (capstone.fetch(student.getCapstoneId()).size() < 2){
                  capstone = null;
              }

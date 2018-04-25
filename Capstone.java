@@ -117,10 +117,10 @@ public class Capstone{
    *                                   METHODS                                       *
    **********************************************************************************/   
    
-   public ArrayList<ArrayList<String>> fetch(String _capstoneid){
+   public ArrayList<ArrayList<String>> fetch(String _capstoneid) {
       ArrayList<String> item = new ArrayList<String>();
       item.add(_capstoneid);
-      ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT * FROM capstone WHERE capstoneid = ?;",item);
+      ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT * FROM capstone WHERE capstoneid = ?;", item);
 
       if (!fetchData.isEmpty()) {
          capstoneid = fetchData.get(1).get(0);
@@ -130,10 +130,9 @@ public class Capstone{
          desc = fetchData.get(1).get(4);
          plagerismscore = fetchData.get(1).get(5);
          grade = fetchData.get(1).get(6);
-         
+
       }
-      return fetchData;               
-      
+      return fetchData;
    }
    
    public boolean put(){
@@ -169,8 +168,13 @@ public class Capstone{
           item.add(type);
           item.add(title);
           item.add(desc);
-      return capstone_project.setData("INSERT INTO capstone (username, typeid, title, abstract) VALUES (?,?,?,?);", item);
 
+      boolean bool = capstone_project.setData("INSERT INTO capstone (username, typeid, title, abstract) VALUES (?,?,?,?);", item);
+      StudentDetails student = new StudentDetails();
+         student.fetch(username);
+         capstoneid = student.getCapstoneId();
+
+      return bool;
    }
    
    public boolean delete(){
