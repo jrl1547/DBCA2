@@ -123,7 +123,7 @@ CREATE TABLE IF NOT EXISTS `cap`.`statushistory` (
   `capstoneid` INT NOT NULL,
   `date` DATETIME(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`statusid`, `capstoneid`),
-  UNIQUE INDEX `capstoneid_UNIQUE` (`capstoneid` ASC),
+  INDEX `capstoneid_UNIQUE` (`capstoneid` ASC),
   CONSTRAINT `fk_statushistory_capstone`
     FOREIGN KEY (`capstoneid`)
     REFERENCES `cap`.`capstone` (`capstoneid`)
@@ -171,11 +171,15 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cap`;
-INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`, `phone`, `department`) VALUES ('teststudent', sha1('password'), 1, 'Test Student', '', NULL, 'IST');
-INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`, `phone`, `department`) VALUES ('teststaff', sha1('password'), 2, 'Test Staff', NULL, NULL, NULL);
-INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`, `phone`, `department`) VALUES ('testfaculty', sha1('password'), 3, 'Test Faculty', NULL, NULL, NULL);
-INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`, `phone`, `department`) VALUES ('testfaculty2', sha1('password'), 3, 'Test Faculty', NULL, NULL, NULL);
-INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`, `phone`, `department`) VALUES ('testsuper', sha1('password'), 4, 'Test Super', NULL, NULL, NULL);
+INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`, `phone`, `department`) VALUES ('teststudent', sha1('password'), 1, 'Test Student', 'test1@test.com', '585-555-1234', 'IST');
+INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`, `phone`, `department`) VALUES ('teststaff', sha1('password'), 2, 'Test Staff', NULL, '585-555-1234', NULL);
+INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`, `phone`, `department`) VALUES ('testfaculty', sha1('password'), 3, 'Test Faculty', NULL, '585-555-1234', NULL);
+INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`, `phone`, `department`) VALUES ('testfaculty2', sha1('password'), 3, 'Test Faculty', NULL, '585-555-1234', NULL);
+INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`, `phone`, `department`) VALUES ('testsuper', sha1('password'), 4, 'Test Super', NULL, '585-555-1234', NULL);
+INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`, `phone`, `department`) VALUES ('teststudent2', sha1('password'), 1, 'Test Student2', 'test2@test.com', NULL, 'IST');
+INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`, `phone`, `department`) VALUES ('teststudent3', sha1('password'), 1, 'Test Student3', 'test3@test.com', NULL, 'IST');
+INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`, `phone`, `department`) VALUES ('teststudent4', sha1('password'), 1, 'Test Student4', 'test4@test.com', NULL, 'IST');
+INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`, `phone`, `department`) VALUES ('teststudent5', sha1('password'), 1, 'Test Student5', 'test5@test.com', NULL, 'IST');
 
 COMMIT;
 
@@ -185,6 +189,10 @@ COMMIT;
 START TRANSACTION;
 USE `cap`;
 INSERT INTO `cap`.`studentdetails` (`username`) VALUES ('teststudent');
+INSERT INTO `cap`.`studentdetails` (`username`) VALUES ('teststudent2');
+INSERT INTO `cap`.`studentdetails` (`username`) VALUES ('teststudent3');
+INSERT INTO `cap`.`studentdetails` (`username`) VALUES ('teststudent4');
+INSERT INTO `cap`.`studentdetails` (`username`) VALUES ('teststudent5');
 
 COMMIT;
 
@@ -195,6 +203,10 @@ COMMIT;
 START TRANSACTION;
 USE `cap`;
 INSERT INTO `cap`.`capstone` (`username`, `capstoneid`, `typeid`, `title`, `abstract`, `plagerismscore`, `grade`) VALUES ('teststudent', 1, 1, '\"A test capstone\"', '\"This is a test.\"', NULL, NULL);
+INSERT INTO `cap`.`capstone` (`username`, `capstoneid`, `typeid`, `title`, `abstract`, `plagerismscore`, `grade`) VALUES ('teststudent2', 2, 1, '\"A test capstone2\"', '\"This is a test2.\"', NULL, NULL);
+INSERT INTO `cap`.`capstone` (`username`, `capstoneid`, `typeid`, `title`, `abstract`, `plagerismscore`, `grade`) VALUES ('teststudent3', 3, 1, '\"A test capstone3\"', '\"This is a test3.\"', NULL, NULL);
+INSERT INTO `cap`.`capstone` (`username`, `capstoneid`, `typeid`, `title`, `abstract`, `plagerismscore`, `grade`) VALUES ('teststudent4', 4, 1, '\"A test capstone4\"', '\"This is a test4.\"', NULL, NULL);
+INSERT INTO `cap`.`capstone` (`username`, `capstoneid`, `typeid`, `title`, `abstract`, `plagerismscore`, `grade`) VALUES ('teststudent5', 5, 1, '\"A test capstone5\"', '\"This is a test5.\"', '85', 'F');
 
 COMMIT;
 
@@ -205,8 +217,14 @@ COMMIT;
 START TRANSACTION;
 USE `cap`;
 INSERT INTO `cap`.`committee` (`capstoneid`, `username`, `has_accepted`, `has_declined`, `positionid`, `tracking`) VALUES (1, 'teststudent', 0, 0, 1, 0);
+INSERT INTO `cap`.`committee` (`capstoneid`, `username`, `has_accepted`, `has_declined`, `positionid`, `tracking`) VALUES (2, 'teststudent2', 0, 0, 1, 0);
+INSERT INTO `cap`.`committee` (`capstoneid`, `username`, `has_accepted`, `has_declined`, `positionid`, `tracking`) VALUES (3, 'teststudent3', 0, 0, 1, 0);
+INSERT INTO `cap`.`committee` (`capstoneid`, `username`, `has_accepted`, `has_declined`, `positionid`, `tracking`) VALUES (4, 'teststudent4', 0, 0, 1, 0);
+INSERT INTO `cap`.`committee` (`capstoneid`, `username`, `has_accepted`, `has_declined`, `positionid`, `tracking`) VALUES (5, 'teststudent5', 0, 0, 1, 0);
 INSERT INTO `cap`.`committee` (`capstoneid`, `username`, `has_accepted`, `has_declined`, `positionid`, `tracking`) VALUES (1, 'teststaff', 1, 0, 1, 0);
 INSERT INTO `cap`.`committee` (`capstoneid`, `username`, `has_accepted`, `has_declined`, `positionid`, `tracking`) VALUES (1, 'testfaculty', 0, 1, 4, 1);
+INSERT INTO `cap`.`committee` (`capstoneid`, `username`, `has_accepted`, `has_declined`, `positionid`, `tracking`) VALUES (5, 'testfaculty', 1, 0, 4, 1);
+INSERT INTO `cap`.`committee` (`capstoneid`, `username`, `has_accepted`, `has_declined`, `positionid`, `tracking`) VALUES (2, 'testfaculty', 0, 0, 4, 1);
 
 COMMIT;
 
@@ -243,7 +261,15 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cap`;
-INSERT INTO `cap`.`statushistory` (`capstoneid`, `statusid`, `date`) VALUES (1, 100, NULL);
+INSERT INTO `cap`.`statushistory` (`capstoneid`, `statusid`, `date`) VALUES (5, 100, '2017-12-1 12:00:00');
+INSERT INTO `cap`.`statushistory` (`capstoneid`, `statusid`, `date`) VALUES (5, 200, '2017-12-2 12:00:00');
+INSERT INTO `cap`.`statushistory` (`capstoneid`, `statusid`, `date`) VALUES (5, 300, '2017-12-5 12:00:00');
+INSERT INTO `cap`.`statushistory` (`capstoneid`, `statusid`, `date`) VALUES (5, 400, '2017-12-6 12:00:00');
+INSERT INTO `cap`.`statushistory` (`capstoneid`, `statusid`, `date`) VALUES (5, 500, '2017-12-8 12:00:00');
+INSERT INTO `cap`.`statushistory` (`capstoneid`, `statusid`, `date`) VALUES (5, 600, '2017-12-15 12:00:00');
+INSERT INTO `cap`.`statushistory` (`capstoneid`, `statusid`, `date`) VALUES (5, 700, '2017-12-16 12:00:00');
+INSERT INTO `cap`.`statushistory` (`capstoneid`, `statusid`, `date`) VALUES (5, 800, '2017-12-21 12:00:00');
+INSERT INTO `cap`.`statushistory` (`capstoneid`, `statusid`, `date`) VALUES (5, 1600, '2017-12-22 12:00:00');
 
 COMMIT;
 
