@@ -5,13 +5,11 @@ public class viewTable {
 
     String id, name, username, abstrac, last_update, status, pscore, grade;
 
-    public viewTable(String id, String name, String username, String abstrac, String last_update, String status, String pscore, String grade) {
+    public viewTable(String id, String name, String username, String abstrac, String pscore, String grade) {
         this.id = id;
         this.name = name;
         this.username = username;
         this.abstrac = abstrac;
-        this.last_update = last_update;
-        this.status = status;
         this.pscore = pscore;
         this.grade = grade;
     }

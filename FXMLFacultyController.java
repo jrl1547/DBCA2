@@ -37,9 +37,10 @@ public class FXMLFacultyController implements iUserController{
     private TableColumn<trackTable, String> track_col_grade;
 
 
-    ObservableList<trackTable> trackobList = FXCollections.observableArrayList();
     //implement function in capstone to get capstone title/student name/username/abstract/lastupdate/status/pscore/grade returns arraylist<String>
     @FXML protected void handleTrackLoadButtonAction(ActionEvent event){
+        ObservableList<trackTable> trackobList = FXCollections.observableArrayList();
+        facultyTrackTable.setItems(trackobList);
         String username = "";
         //Check if the text box has anything in it
         if(trackText.getText() != null && trackText.getText() != ""){
@@ -47,7 +48,7 @@ public class FXMLFacultyController implements iUserController{
         }
         Committee trackComm = new Committee();
         ArrayList<ArrayList<String>> data = trackComm.getTrackedCapstones(curUser);
-        for (int x = 0; x < data.size(); x++) {//goes through each row
+        for (int x = 0; x < data.size(); x+=2) {//goes through each row
             trackobList.add(new trackTable(data.get(x).get(0), data.get(x).get(1), data.get(x).get(2), data.get(x).get(3), data.get(x).get(4), data.get(x).get(5)));
         }
         //needs implementation still
@@ -81,12 +82,13 @@ public class FXMLFacultyController implements iUserController{
     @FXML
     private TableColumn<acceptedTable, String> accepted_col_grade;
 
-    ObservableList<acceptedTable> acceptedobList = FXCollections.observableArrayList();
 
     @FXML protected void handleAcceptedLoadButtonAction(ActionEvent event){
+        ObservableList<acceptedTable> acceptedobList = FXCollections.observableArrayList();
+        facultyAcceptedTable.setItems(acceptedobList);
         Committee invComm = new Committee();
         ArrayList<ArrayList<String>> data = invComm.getAcceptedCapstones(curUser);
-        for (int x = 0; x < data.size(); x++) {//goes through each row
+        for (int x = 0; x < data.size(); x+=2) {//goes through each row
             acceptedobList.add(new acceptedTable(data.get(x).get(0), data.get(x).get(1), data.get(x).get(2), data.get(x).get(3), data.get(x).get(1), data.get(x).get(4)));
         }
         accepted_col_capstone.setCellValueFactory(new PropertyValueFactory<>("title"));
@@ -115,12 +117,13 @@ public class FXMLFacultyController implements iUserController{
     @FXML
     private TableColumn<acceptedTable, String> invited_col_status;
 
-    ObservableList<acceptedTable> invitedobList = FXCollections.observableArrayList();
 
     @FXML protected void handleInvitedLoadButtonAction(ActionEvent event) {
+        ObservableList<acceptedTable> invitedobList = FXCollections.observableArrayList();
+        facultyInvitedTable.setItems(invitedobList);
         Committee invComm = new Committee();
         ArrayList<ArrayList<String>> data = invComm.getInvitedCapstones(curUser);
-        for (int x = 0; x < data.size(); x++) {//goes through each row
+        for (int x = 0; x < data.size(); x+=2) {//goes through each row
             invitedobList.add(new acceptedTable(data.get(x).get(0), data.get(x).get(1), data.get(x).get(2), data.get(x).get(3), data.get(x).get(4), data.get(x).get(4)));
         }
         invited_col_capstone.setCellValueFactory(new PropertyValueFactory<>("title"));
@@ -147,18 +150,20 @@ public class FXMLFacultyController implements iUserController{
     @FXML
     private TextField historyText;
 
-    ObservableList<FacultyHistoryTable> historyobList = FXCollections.observableArrayList();
+
 
     @FXML protected void handleHistoryLoadButtonAction(ActionEvent event){
+        ObservableList<FacultyHistoryTable> historyobList = FXCollections.observableArrayList();
         String username = "";
-        if(historyText.getText() != null && historyText.getText() != ""){
+        if(historyText.getText() != null && !historyText.getText().equals("")){
             username = historyText.getText();
         }
+        historyTable.setItems(historyobList);
         Capstone getid = new Capstone();
         String capid = getid.getCapstoneId(username);
         StatusHistory hist = new StatusHistory();
         ArrayList<ArrayList<String>> data = hist.getCapstoneHistory(capid);
-        for(int x = 0; x < data.size(); x++){
+        for(int x = 0; x < data.size(); x+=2){
             historyobList.add(new FacultyHistoryTable(data.get(x).get(0), data.get(x).get(1), data.get(x).get(2), data.get(x).get(3), data.get(x).get(4)));
         }
         history_col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -181,7 +186,7 @@ public class FXMLFacultyController implements iUserController{
 
     @FXML protected void handleTrackTrackButtonAction(ActionEvent event){
         String username = "";
-        if(trackText.getText() != null && trackText.getText() != ""){
+        if(trackText.getText() != null && !trackText.getText().equals("")){
             username = trackText.getText();
         }
         //needs if statement to check if they are invited to committee, if they are, edit that record instead of creating one
@@ -195,7 +200,7 @@ public class FXMLFacultyController implements iUserController{
 
     @FXML protected void handleViewTrackButtonAction(ActionEvent event){
         String username = "";
-        if(viewText.getText() != null && viewText.getText() != ""){
+        if(viewText.getText() != null && !viewText.getText().equals("")){
             username = viewText.getText();
         }
         //needs if statement to check if they are invited to committee, if they are, edit that record instead of creating one
@@ -215,10 +220,10 @@ public class FXMLFacultyController implements iUserController{
     @FXML protected void handleAcceptedGradeButtonAction(ActionEvent event){
         String username = "";
         String grade = "";
-        if(accepted_grade_box.getText() != null && accepted_grade_box.getText() != ""){
+        if(accepted_grade_box.getText() != null && !accepted_grade_box.getText().equals("")){
             grade = accepted_grade_box.getText();
         }
-        if(accepted_username_box.getText() != null && accepted_username_box.getText() != ""){
+        if(accepted_username_box.getText() != null && !accepted_username_box.getText().equals("")){
             username = accepted_username_box.getText();
         }
         //get capstone item, set grade then post
@@ -248,7 +253,7 @@ public class FXMLFacultyController implements iUserController{
     //Takes in the username given from the invited_text_area and rejects the capstone for this.
     @FXML protected void handleInvitedRejectButtonAction(ActionEvent event){
         String username = "";
-        if(invited_text_area.getText() != null && invited_text_area.getText() != ""){
+        if(invited_text_area.getText() != null && !invited_text_area.getText().equals("")){
             username = invited_text_area.getText();
         }
         //get committee item, set declined to 1 then post
@@ -273,32 +278,25 @@ public class FXMLFacultyController implements iUserController{
     @FXML
     private TableColumn<viewTable, String> col_abstract;
     @FXML
-    private TableColumn<viewTable, String>  col_last_update;
-    @FXML
-    private TableColumn<viewTable, String>  col_status;
-    @FXML
     private TableColumn<viewTable, String>  col_pscore;
     @FXML
     private TableColumn<viewTable, String>  col_grade;
 
 
-    ObservableList<viewTable> viewobList = FXCollections.observableArrayList();
-
-    //should be good
     @FXML protected void handleViewViewButtonAction(){
+        ObservableList<viewTable> viewobList = FXCollections.observableArrayList();
+        facultyViewTable.setItems(viewobList);
         String capid = "";
-        if(viewText.getText() != null && viewText.getText() != ""){
+        if(viewText.getText() != null && !viewText.getText().equals("")){
             capid = viewText.getText();
         }
         Capstone viewCap = new Capstone();
         ArrayList<ArrayList<String>> capToView = viewCap.getView(capid);
-        viewobList.add(new viewTable(capToView.get(0).get(0), capToView.get(0).get(1), capToView.get(0).get(2), capToView.get(0).get(3), capToView.get(0).get(4), capToView.get(0).get(5), capToView.get(0).get(6), capToView.get(0).get(6)));
+        viewobList.add(new viewTable(capToView.get(0).get(0), capToView.get(0).get(1), capToView.get(0).get(2), capToView.get(0).get(3), capToView.get(0).get(4), capToView.get(0).get(5)));
         col_capstoneid.setCellValueFactory(new PropertyValueFactory<>("id"));
         col_studentName.setCellValueFactory(new PropertyValueFactory<>("name"));
         col_username.setCellValueFactory(new PropertyValueFactory<>("username"));
         col_abstract.setCellValueFactory(new PropertyValueFactory<>("abstrac"));
-        col_last_update.setCellValueFactory(new PropertyValueFactory<>("last_update"));
-        col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
         col_pscore.setCellValueFactory(new PropertyValueFactory<>("pscore"));
         col_grade.setCellValueFactory(new PropertyValueFactory<>("grade"));
 

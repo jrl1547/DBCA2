@@ -102,13 +102,8 @@ public class Committee{
    public ArrayList<ArrayList<String>> fetch(String _capstoneid){
       ArrayList<String> item = new ArrayList<String>();
       item.add(_capstoneid);
-      ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT * FROM committee WHERE capstoneid = ?;",item);
-      
-      if (fetchData.isEmpty()){
-         return fetchData;
-      } else {
-         fetchData.remove(0);
-      }
+      ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT * FROM committee WHERE capstoneid = ? AND username = ?;",item);
+      fetchData.remove(0);
       
       capstoneid     = fetchData.get(0).get(0).toString();
       username       = fetchData.get(0).get(1).toString();
@@ -164,7 +159,8 @@ public class Committee{
          item.add(position);
          item.add(tracking);
          item.add(""+capstoneid);
-      boolean put = capstone_project.setData("UPDATE committee SET username = ?, has_accepted = ?, has_declined = ?, positionid = ?, tracking = ? WHERE capstoneid = ?;", item);
+         item.add(username);
+      boolean put = capstone_project.setData("UPDATE committee SET username = ?, has_accepted = ?, has_declined = ?, positionid = ?, tracking = ? WHERE capstoneid = ? AND username = ?;", item);
       return put;
       
    }
@@ -210,7 +206,7 @@ public class Committee{
       ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT capstone.title, users.fullname, capstone.username, capstone.abstract, capstone.grade FROM capstone\n" +
               "JOIN users ON capstone.username = users.username\n" +
               "JOIN committee ON capstone.capstoneid = committee.capstoneid\n" +
-              "WHERE committee.username = ? AND committee.has_accepted = false AND committee.has_declined = false AND committee.positionid != '1';",item);
+              "WHERE committee.username = ? AND committee.has_accepted = false AND committee.has_declined = false AND committee.positionid != '1' AND committee.positionid != '4';",item);
       fetchData.remove(0);
       
       return fetchData;               
