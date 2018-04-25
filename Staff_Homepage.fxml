@@ -87,10 +87,13 @@
                               </Text>
                               <TableView fx:id="studentHistoryTable" layoutX="160.0" layoutY="126.0" prefHeight="326.0" prefWidth="960.0">
                                  <columns>
-                                    <TableColumn fx:id="hist_col_studentName" prefWidth="164.0" text="Student Name" />
-                                    <TableColumn fx:id="hist_col_studentStatus" prefWidth="86.0" text="Status" />
-                                    <TableColumn prefWidth="709.0" text="Status History" />
-                                 </columns>
+                                    <TableColumn fx:id="history_col_date" prefWidth="88.0" text="Date" />
+                                    <TableColumn fx:id="history_col_username" prefWidth="98.0" text="Username" />
+                                    <TableColumn fx:id="history_col_title" prefWidth="227.0" text="Title" />
+                                    <TableColumn fx:id="history_col_status" prefWidth="214.0" text="Status" />
+                                    <TableColumn fx:id="history_col_desc" prefWidth="477.0" text="Description" />
+                                </columns>
+                                
                               </TableView>
                               <Text layoutX="75.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search Student :" wrappingWidth="132.13671875">
                                  <font>

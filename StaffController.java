@@ -46,9 +46,16 @@ public class StaffController implements iUserController{
 //student history table
    @FXML private TableView<staffStudentHistory> studentHistoryTable;
    @FXML
-    private TableColumn<staffStudentHistory, String>  hist_col_studentName;
+    private TableColumn<staffStudentHistory, String>  history_col_date;
     @FXML
-    private TableColumn<staffStudentHistory, String>  hist_col_studentStatus;
+    private TableColumn<staffStudentHistory, String>  history_col_username;
+    @FXML
+    private TableColumn<staffStudentHistory, String>  history_col_title;
+    @FXML
+    private TableColumn<staffStudentHistory, String>  history_col_status;
+    @FXML
+    private TableColumn<staffStudentHistory, String>  history_col_desc;
+
     
     
     //update tab
@@ -101,24 +108,27 @@ public class StaffController implements iUserController{
      
      //function to handle studentHistoryHistorySearch
      System.out.println("pressed search button");
-     Capstone viewCap = new Capstone();
-     String user = "";
-        //Check if the text box has anything in it
+      String username = "";
         if(studentHistorySeachText.getText() != null && studentHistorySeachText.getText() != ""){
-            user = studentHistorySeachText.getText();
+            username = studentHistorySeachText.getText();
         }
-        
+        Capstone getid = new Capstone();
+        String capid = getid.getCapstoneId(username);
+        StatusHistory history = new StatusHistory();
+        ArrayList<ArrayList<String>> data = history.getCapstoneHistory(capid);
+        for(int x = 0; x < data.size(); x++){
+            staffStuHist.add(new staffStudentHistory(data.get(x).get(0), data.get(x).get(1), data.get(x).get(2), data.get(x).get(3), data.get(x).get(4)));
+        }
+        history_col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
+        history_col_username.setCellValueFactory(new PropertyValueFactory<>("username"));
+        history_col_title.setCellValueFactory(new PropertyValueFactory<>("title"));
+        history_col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
+        history_col_desc.setCellValueFactory(new PropertyValueFactory<>("desc"));
 
-     ArrayList<ArrayList<String>> students = viewCap.getStudentHistoryName(user);
-     ArrayList<ArrayList<String>> status = viewCap.getCapstonesStatusByName(user);
+        studentHistoryTable.setItems(staffStuHist);
 
-     staffStuHist.add(new staffStudentHistory(students.get(0).get(0),status.get(0).get(0)));
-     hist_col_studentName.setCellValueFactory(new PropertyValueFactory<>("name"));
-     hist_col_studentStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
-
-
-     studentHistoryTable.setItems(staffStuHist);
-     }
+    }
+     
 
     ObservableList<staffUpdate> staffUpdateOb = FXCollections.observableArrayList();
 
