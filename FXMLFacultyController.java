@@ -32,10 +32,6 @@ public class FXMLFacultyController implements iUserController{
     @FXML
     private TableColumn<trackTable, String> track_col_abstract;
     @FXML
-    private TableColumn<trackTable, String> track_col_last_update;
-    @FXML
-    private TableColumn<trackTable, String> track_col_status;
-    @FXML
     private TableColumn<trackTable, String> track_col_pscore;
     @FXML
     private TableColumn<trackTable, String> track_col_grade;
@@ -44,20 +40,22 @@ public class FXMLFacultyController implements iUserController{
     ObservableList<trackTable> trackobList = FXCollections.observableArrayList();
     //implement function in capstone to get capstone title/student name/username/abstract/lastupdate/status/pscore/grade returns arraylist<String>
     @FXML protected void handleTrackLoadButtonAction(ActionEvent event){
-        String capid = "";
+        String username = "";
         //Check if the text box has anything in it
         if(trackText.getText() != null && trackText.getText() != ""){
-            capid = trackText.getText();
+            username = trackText.getText();
         }
-
+        Committee trackComm = new Committee();
+        ArrayList<ArrayList<String>> data = trackComm.getTrackedCapstones(curUser);
+        for (int x = 0; x < data.size(); x++) {//goes through each row
+            trackobList.add(new trackTable(data.get(x).get(0), data.get(x).get(1), data.get(x).get(2), data.get(x).get(3), data.get(x).get(4), data.get(x).get(5)));
+        }
         //needs implementation still
         //the args for these are the variables set in the associated table (ie trackTable.java has four variables to set)
-        track_col_capstoneid.setCellValueFactory(new PropertyValueFactory<>("id"));
+        track_col_capstoneid.setCellValueFactory(new PropertyValueFactory<>("capname"));
         track_col_name.setCellValueFactory(new PropertyValueFactory<>("name"));
         track_col_username.setCellValueFactory(new PropertyValueFactory<>("username"));
         track_col_abstract.setCellValueFactory(new PropertyValueFactory<>("abstrac"));
-        track_col_last_update.setCellValueFactory(new PropertyValueFactory<>("lastUpdate"));
-        track_col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
         track_col_pscore.setCellValueFactory(new PropertyValueFactory<>("pscore"));
         track_col_grade.setCellValueFactory(new PropertyValueFactory<>("grade"));
 
@@ -134,6 +132,22 @@ public class FXMLFacultyController implements iUserController{
         facultyInvitedTable.setItems(invitedobList);
     }
 
+    @FXML
+    private TableView<FacultyHistoryTable> historyTable;
+    @FXML
+    private TableColumn<FacultyHistoryTable, String> history_col_date;
+    @FXML
+    private TableColumn<FacultyHistoryTable, String> history_col_username;
+    @FXML
+    private TableColumn<FacultyHistoryTable, String> history_col_title;
+    @FXML
+    private TableColumn<FacultyHistoryTable, String> history_col_status;
+    @FXML
+    private TableColumn<FacultyHistoryTable, String> history_col_desc;
+    @FXML
+    private TextField historyText;
+
+    ObservableList<FacultyHistoryTable> historyobList = FXCollections.observableArrayList();
 
     @FXML protected void handleHistoryLoadButtonAction(ActionEvent event){
         String username = "";
@@ -144,6 +158,17 @@ public class FXMLFacultyController implements iUserController{
         String capid = getid.getCapstoneId(username);
         StatusHistory hist = new StatusHistory();
         ArrayList<ArrayList<String>> data = hist.getCapstoneHistory(capid);
+        for(int x = 0; x < data.size(); x++){
+            historyobList.add(new FacultyHistoryTable(data.get(x).get(0), data.get(x).get(1), data.get(x).get(2), data.get(x).get(3), data.get(x).get(4)));
+        }
+        history_col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
+        history_col_username.setCellValueFactory(new PropertyValueFactory<>("username"));
+        history_col_title.setCellValueFactory(new PropertyValueFactory<>("title"));
+        history_col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
+        history_col_desc.setCellValueFactory(new PropertyValueFactory<>("desc"));
+
+        historyTable.setItems(historyobList);
+
     }
 
 
@@ -155,16 +180,30 @@ public class FXMLFacultyController implements iUserController{
     private TextField viewText;
 
     @FXML protected void handleTrackTrackButtonAction(ActionEvent event){
-        String capid = "";
+        String username = "";
         if(trackText.getText() != null && trackText.getText() != ""){
-            capid = trackText.getText();
-        }
-        if(viewText.getText() != null && viewText.getText() != ""){
-            capid = viewText.getText();
+            username = trackText.getText();
         }
         //needs if statement to check if they are invited to committee, if they are, edit that record instead of creating one
         //if they're not invited to the committee
-        Committee trackCom = new Committee(capid, curUser, "0", "0", "none", "1");
+        String capid = "";
+        Capstone toTrack = new Capstone();
+        capid = toTrack.getCapstoneId(username);
+        Committee trackCom = new Committee(curUser, capid, "0", "0", "4", "1");
+        trackCom.post();
+    }
+
+    @FXML protected void handleViewTrackButtonAction(ActionEvent event){
+        String username = "";
+        if(viewText.getText() != null && viewText.getText() != ""){
+            username = viewText.getText();
+        }
+        //needs if statement to check if they are invited to committee, if they are, edit that record instead of creating one
+        //if they're not invited to the committee
+        String capid = "";
+        Capstone toTrack = new Capstone();
+        capid = toTrack.getCapstoneId(username);
+        Committee trackCom = new Committee(curUser, capid, "0", "0", "4", "1");
         trackCom.post();
     }
 

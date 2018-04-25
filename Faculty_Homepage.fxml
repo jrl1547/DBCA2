@@ -67,12 +67,12 @@
                                     <TableColumn fx:id="invited_col_status" prefWidth="267.0" text="Status" />
                                  </columns>
                               </TableView>
-                              <Text layoutX="364.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capstone Information (Accepted)" textAlignment="CENTER" wrappingWidth="423.13671875">
+                              <Text layoutX="386.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capstone Information (Accepted)" textAlignment="CENTER" wrappingWidth="423.13671875">
                                  <font>
                                     <Font size="26.0" />
                                  </font>
                               </Text>
-                              <Text layoutX="386.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capstone Information (Invited)" textAlignment="CENTER" wrappingWidth="423.13671875">
+                              <Text layoutX="386.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capstone Information (Invited)" textAlignment="CENTER" wrappingWidth="423.13671875">
                                  <font>
                                     <Font size="26.0" />
                                  </font>
@@ -86,10 +86,10 @@
                               <Button fx:id="invited_load_button" layoutX="73.0" layoutY="566.0" mnemonicParsing="false" onAction="#handleInvitedLoadButtonAction" text="Load" />
                               <Button fx:id="invted_accept_button" layoutX="650.0" layoutY="566.0" mnemonicParsing="false" onAction="#handleInvitedAcceptButtonAction" text="Accept" />
                               <Button fx:id="invited_reject_button" layoutX="702.0" layoutY="566.0" mnemonicParsing="false" onAction="#handleInvitedRejectButtonAction" text="Reject" />
-                              <TextField fx:id="invited_text_area" layoutX="501.0" layoutY="566.0" />
-                              <TextField fx:id="accepted_username_box" layoutX="523.0" layoutY="298.0" />
-                              <TextField fx:id="accepted_grade_box" layoutX="672.0" layoutY="298.0" prefHeight="25.0" prefWidth="33.0" />
-                              <Button fx:id="accepted_grade_button" layoutX="717.0" layoutY="298.0" mnemonicParsing="false" onAction="#handleAcceptedGradeButtonAction" text="Submit Final Grade" />
+                              <TextField fx:id="invited_text_area" layoutX="501.0" layoutY="566.0" promptText="Username" />
+                              <TextField fx:id="accepted_username_box" layoutX="457.0" layoutY="298.0" promptText="Username" />
+                              <TextField fx:id="accepted_grade_box" layoutX="606.0" layoutY="298.0" prefHeight="25.0" prefWidth="47.0" promptText="Grade" />
+                              <Button fx:id="accepted_grade_button" layoutX="651.0" layoutY="298.0" mnemonicParsing="false" onAction="#handleAcceptedGradeButtonAction" text="Submit Final Grade" />
                            </children></AnchorPane>
                   </content>
                 </Tab>
@@ -101,12 +101,10 @@
                                  <columns>
                                     <TableColumn fx:id="track_col_capstoneid" prefWidth="116.0" text="Capstone" />
                                     <TableColumn fx:id="track_col_name" prefWidth="124.0" text="Student Name" />
-                                    <TableColumn fx:id="track_col_username" prefWidth="75.0" text="Username" />
-                                    <TableColumn fx:id="track_col_abstract" prefWidth="303.0" text="Abstract" />
-                                    <TableColumn fx:id="track_col_last_update" minWidth="0.0" prefWidth="96.0" text="Last Update" />
-                                    <TableColumn fx:id="track_col_status" prefWidth="302.0" text="Status" />
+                                    <TableColumn fx:id="track_col_username" prefWidth="110.0" text="Username" />
+                                    <TableColumn fx:id="track_col_abstract" prefWidth="607.0" text="Abstract" />
                                     <TableColumn fx:id="track_col_pscore" prefWidth="113.0" text="Plagiarism Score" />
-                                    <TableColumn fx:id="track_col_grade" prefWidth="76.0" text="Grade" />
+                                    <TableColumn fx:id="track_col_grade" prefWidth="135.0" text="Grade" />
                                  </columns>
                               </TableView>
                               <Text layoutX="364.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capstone Information (Tracking)" textAlignment="CENTER" wrappingWidth="423.13671875">
@@ -115,12 +113,7 @@
                                  </font>
                               </Text>
                               <Button fx:id="track_track_button" layoutX="648.0" layoutY="537.0" mnemonicParsing="false" onAction="#handleTrackTrackButtonAction" text="Track" />
-                              <TextField fx:id="trackText" layoutX="499.0" layoutY="536.0" promptText="Capstone ID" />
-                              <ImageView fitHeight="53.0" fitWidth="140.0" layoutX="596.0" layoutY="522.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Desktop/download.png" />
-                                 </image>
-                              </ImageView>
+                              <TextField fx:id="trackText" layoutX="499.0" layoutY="536.0" promptText="Username" />
                               <Button fx:id="track_load_button" layoutX="79.0" layoutY="536.0" mnemonicParsing="false" onAction="#handleTrackLoadButtonAction" text="Load" />
                            </children>
                         </AnchorPane>
@@ -148,8 +141,8 @@
                                  </font>
                               </Text>
                               <Button fx:id="view_view_button" layoutX="629.0" layoutY="509.0" mnemonicParsing="false" onAction="#handleViewViewButtonAction" text="View" />
-                              <TextField fx:id="viewText" layoutX="480.0" layoutY="509.0" promptText="Capstone ID" />
-                              <Button layoutX="671.0" layoutY="509.0" mnemonicParsing="false" onAction="#handleTrackTrackButtonAction" text="Track" />
+                              <TextField fx:id="viewText" layoutX="480.0" layoutY="509.0" promptText="Username" />
+                              <Button layoutX="671.0" layoutY="509.0" mnemonicParsing="false" onAction="#handleViewTrackButtonAction" text="Track" />
                               <ImageView fitHeight="53.0" fitWidth="140.0" layoutX="598.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../Desktop/download.png" />
@@ -161,7 +154,20 @@
                   </Tab>
                   <Tab text="History">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="historyTable" layoutX="67.0" layoutY="6.0" prefHeight="290.0" prefWidth="1105.0">
+                                <columns>
+                                  <TableColumn fx:id="history_col_date" prefWidth="88.0" text="Date" />
+                                  <TableColumn fx:id="history_col_username" prefWidth="98.0" text="Username" />
+                                    <TableColumn fx:id="history_col_title" prefWidth="227.0" text="Title" />
+                                    <TableColumn fx:id="history_col_status" prefWidth="214.0" text="Status" />
+                                    <TableColumn fx:id="history_col_desc" prefWidth="477.0" text="Description" />
+                                </columns>
+                              </TableView>
+                              <TextField fx:id="historyText" layoutX="519.0" layoutY="357.0" promptText="Username" />
+                              <Button layoutX="668.0" layoutY="357.0" mnemonicParsing="false" onAction="#handleHistoryLoadButtonAction" text="View History" />
+                           </children></AnchorPane>
                     </content>
                   </Tab>
                 <Tab text="Admin">

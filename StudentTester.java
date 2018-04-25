@@ -23,7 +23,7 @@ public class StudentTester extends Application
     public void start(Stage stage) throws Exception {
         StudentDetails student = new StudentDetails("teststudent");
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Student_Homepage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Faculty_Homepage.fxml"));
 
         Parent root = fxmlLoader.load();
         StudentController controller = fxmlLoader.getController();

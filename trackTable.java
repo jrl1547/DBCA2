@@ -11,13 +11,11 @@ public class trackTable {
     String pscore;
     String grade;
 
-    public trackTable(String capname, String name, String username, String abstrac, String lastUpdate, String status, String pscore, String grade) {
+    public trackTable(String capname, String name, String username, String abstrac, String pscore, String grade) {
         this.capname = capname;
         this.name = name;
         this.username = username;
         this.abstrac = abstrac;
-        this.lastUpdate = lastUpdate;
-        this.status = status;
         this.pscore = pscore;
         this.grade = grade;
     }

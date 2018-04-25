@@ -211,6 +211,19 @@ public class Committee{
       return fetchData;               
       
    }
+
+   public ArrayList<ArrayList<String>> getTrackedCapstones(String _username){
+      ArrayList<String> item = new ArrayList<String>();
+      item.add(_username);
+      ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT capstone.title, users.fullname, users.username, capstone.abstract, capstone.plagerismscore, capstone.grade FROM capstone\n" +
+              "JOIN users ON capstone.username = users.username\n" +
+              "JOIN committee ON capstone.capstoneid = committee.capstoneid\n" +
+              "WHERE committee.username = ? AND committee.tracking = 1;", item);
+      fetchData.remove(0);
+      return fetchData;
+   }
+
+
    public ArrayList<ArrayList<String>> getCommitteeFaculty(){
            ArrayList<String> item = new ArrayList<String>();
            item.add("1");

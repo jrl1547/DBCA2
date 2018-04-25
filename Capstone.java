@@ -1,3 +1,5 @@
+import com.sun.org.apache.xpath.internal.SourceTree;
+
 import java.util.*;
 
 public class Capstone{
@@ -189,9 +191,8 @@ public class Capstone{
       ArrayList<String> item = new ArrayList<String>();
       item.add(_username);
       ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT * FROM capstone WHERE username = ?;",item);
-
       if (!fetchData.isEmpty()) {
-         capstoneid = fetchData.get(1).get(1);
+         capstoneid = fetchData.get(1).get(0);
 
       }
       return capstoneid;
@@ -222,34 +223,27 @@ public class Capstone{
            ArrayList<String> item = new ArrayList<String>();
            item.add("-1");
            ArrayList<ArrayList<String>> fetchData = capstone_project.getData("select statusid from statushistory join capstone on capstone.capstoneid= statushistory.capstoneid WHERE(capstone.capstoneid != ?);",item);
-            fetchData.remove(0);
+           fetchData.remove(0);
                   return fetchData;
 
    }
 
-
-   
     public ArrayList<ArrayList<String>> getStudentHistoryName(String _username){
-           ArrayList<String> item = new ArrayList<String>();
-           item.add(_username);
-           ArrayList<ArrayList<String>> fetchData = capstone_project.getData("select username from capstone WHERE username = ?;",item);
-            fetchData.remove(0);
-                  return fetchData;
+       ArrayList<String> item = new ArrayList<String>();
+       item.add(_username);
+       ArrayList<ArrayList<String>> fetchData = capstone_project.getData("select username from capstone WHERE username = ?;",item);
+       fetchData.remove(0);
+       return fetchData;
+   }
 
-
- }
- 
- public ArrayList<ArrayList<String>> getCapstonesStatusByName(String _username){
-           ArrayList<String> item = new ArrayList<String>();
-           item.add(_username);
-           ArrayList<ArrayList<String>> fetchData = capstone_project.getData("select statusid from statushistory join capstone on capstone.capstoneid= statushistory.capstoneid WHERE capstone.username = ? ;",item);
-            fetchData.remove(0);
-                  return fetchData;
+   public ArrayList<ArrayList<String>> getCapstonesStatusByName(String _username){
+       ArrayList<String> item = new ArrayList<String>();
+       item.add(_username);
+       ArrayList<ArrayList<String>> fetchData = capstone_project.getData("select statusid from statushistory join capstone on capstone.capstoneid= statushistory.capstoneid WHERE capstone.username = ? ;",item);
+       fetchData.remove(0);
+       return fetchData;
 
    }
-   
-  
-
 
 }
    
