@@ -43,20 +43,6 @@ public class StaffTableController{
 
 @FXML protected void HandleCapstoneLoad(){
           try {
-            Database dbconn = new Database();
-            String select = "SELECT fullName,title,abstract,plagerismscore,grade FROM capstone JOIN users on capstone.username = users.username WHERE( capstone.title != ?);";
-            ArrayList<String> args = new ArrayList<String>();
-            args.add("-1");
-            ResultSet rs = dbconn.getResultSet(select, args);
-            System.out.println(rs);
-            while(rs.next()){
-               // homeobList.add(new staffHomeTable(rs.getString("fullName"), rs.getString("title"), rs.getString("abstract")));
-            }
-            dbconn.close();
-        }
-        catch(SQLException sqle){
-            sqle.printStackTrace();
-        }
         col_studentName.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         col_projectTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
         col_abstract.setCellValueFactory(new PropertyValueFactory<>("abstrac"));
@@ -65,8 +51,15 @@ public class StaffTableController{
         col_faculty.setCellValueFactory(new PropertyValueFactory<>("faculty"));
         col_declined.setCellValueFactory(new PropertyValueFactory<>("declined"));
         col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
+        
+        
 
 
         capstonesTable.setItems(homeobList);
-    }
+        }
+
+        catch(Exception e){
+            e.printStackTrace();
+        }
+       }
    }

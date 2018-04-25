@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import javafx.scene.control.ComboBox;
 
 
-public class StaffController{
+public class StaffController implements iUserController{
    @FXML private TextField studentHistorySeachText,
    updateStudentSearchStudentText,updateStudentPlagiarismScore,updateStudentEmail,
    updateStudentFN,updateStudentLN;
@@ -122,6 +122,12 @@ public class StaffController{
     
         return;
     }
+    
+     @Override
+      public void setUsername(String username) {
+
+    }
+
     
     
 
