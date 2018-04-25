@@ -31,7 +31,6 @@ public class FXMLLoginController {
          String loader = null;
          String role = userlogin.getRole( username.getText() );
          Parent root;
-         System.out.println(role);
          
          if( role.equals("student")){
             loader = "Student_Homepage.fxml";
@@ -49,15 +48,13 @@ public class FXMLLoginController {
             loader = "Admin_Login.fxml"; 
          }
          else{
-            loginstatus.setText("FAIL.");
+            loginstatus.setText("LOGIN FAILED.");
             return;
          }
          try{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(loader));
             root = fxmlLoader.load();
             iUserController controller = fxmlLoader.getController();
-            controller.setUsername(userlogin.getUsername());
-
             Stage stage = new Stage();
             stage.setTitle("RIT Capstone: " + loader);
             stage.setScene(new Scene(root, 1280, 800));
