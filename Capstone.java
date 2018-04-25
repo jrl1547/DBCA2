@@ -227,5 +227,17 @@ public class Capstone{
 
    }
 
+
+   
+    public ArrayList<ArrayList<String>> getStudentHistoryName(String _username){
+           ArrayList<String> item = new ArrayList<String>();
+           item.add(_username);
+           ArrayList<ArrayList<String>> fetchData = capstone_project.getData("select username from capstone WHERE username = ?;",item);
+            fetchData.remove(0);
+                  return fetchData;
+
+
+ }
+
 }
    

@@ -38,6 +38,13 @@ public class StaffTableController{
      private TableColumn<staffHomeTable, String>  col_declined;
 
    
+   @FXML
+    private TableView<staffStudentHistory> studentHistoryTable;
+   @FXML
+    private TableColumn<staffStudentHistory, String>  hist_col_studentName;
+
+    
+
     ObservableList<staffHomeTable> homeobList = FXCollections.observableArrayList();
 
 
@@ -62,4 +69,21 @@ public class StaffTableController{
             e.printStackTrace();
         }
        }
+       ObservableList<staffStudentHistory> histobList = FXCollections.observableArrayList();
+
+   @FXML protected void HandleStudentHistorySearchButtonAction(){
+          try {
+        hist_col_studentName.setCellValueFactory(new PropertyValueFactory<>("name"));        
+        
+
+
+        studentHistoryTable.setItems(histobList);
+        }
+
+        catch(Exception e){
+            e.printStackTrace();
+        }
+       }
+   
+   
    }

@@ -21,8 +21,7 @@ public class StaffController implements iUserController{
    
     @FXML private ComboBox updateStudentComboMenu;
     
-    @FXML private TableView updateStudentProjectTable,updateStudentInfoTable,
-                  studentHistoryTable;
+    @FXML private TableView updateStudentProjectTable,updateStudentInfoTable;
                   
    @FXML
     private TableView<staffHomeTable> capstonesTable;
@@ -43,6 +42,11 @@ public class StaffController implements iUserController{
    @FXML
     private TableColumn<staffHomeTable, String>  col_declined;
     
+
+
+   @FXML private TableView<staffStudentHistory> studentHistoryTable;
+   @FXML
+    private TableColumn<staffStudentHistory, String>  hist_col_studentName;
 
     ObservableList<staffHomeTable> viewobList = FXCollections.observableArrayList();
 
@@ -75,11 +79,25 @@ public class StaffController implements iUserController{
         capstonesTable.setItems(viewobList);
         
         }
-     
+     ObservableList<staffStudentHistory> staffStuHist = FXCollections.observableArrayList();
+
     @FXML protected void HandleStudentHistorySearchButtonAction(){
      
      //function to handle studentHistoryHistorySearch
-     return;
+     System.out.println("pressed search button");
+     Capstone viewCap = new Capstone();
+     String user = "";
+        //Check if the text box has anything in it
+        if(studentHistorySeachText.getText() != null && studentHistorySeachText.getText() != ""){
+            user = studentHistorySeachText.getText();
+        }
+        
+
+     ArrayList<ArrayList<String>> students = viewCap.getStudentHistoryName(user);
+     staffStuHist.add(new staffStudentHistory(students.get(0).get(0)));
+     hist_col_studentName.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+     studentHistoryTable.setItems(staffStuHist);
      }
 
 
