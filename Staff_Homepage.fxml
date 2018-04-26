@@ -60,19 +60,18 @@
                               </Text>
                               <TableView fx:id="capstonesTable" layoutX="14.0" layoutY="50.0" prefHeight="639.0" prefWidth="1265.0">
                                 <columns>
-                                  <TableColumn fx:id="col_studentName"  prefWidth="108.0" text="Student Name" />
+                                  <TableColumn fx:id="col_studentName" prefWidth="108.0" text="Student Name" />
                                   <TableColumn fx:id="col_projectTitle" prefWidth="96.0" text="Project Title" />
                                     <TableColumn fx:id="col_abstract" prefWidth="267.0" text="Abstract" />
                                     <TableColumn fx:id="col_status" minWidth="6.0" prefWidth="42.0" text="Status" />
                                     <TableColumn fx:id="col_plagarismScore" prefWidth="104.0" text="Plagiarism Score" />
                                     <TableColumn fx:id="col_grade" prefWidth="182.0" text="Grade" />
-                                    <TableColumn fx:id="col_faculty" prefWidth="194.0" text="Faculty" />
                                     <TableColumn fx:id="col_invited" prefWidth="76.0" text="Invited" />
                                     <TableColumn fx:id="col_declined" prefWidth="95.0" text="Declined" />
                                     <TableColumn fx:id="col_startDate" prefWidth="100.0" text="Start Date" />
                                 </columns>
                               </TableView>
-							  <Button fx:id="loadCapstoneTable" layoutX="41.0" layoutY="14.0" mnemonicParsing="false" onAction="#HandleCapstoneLoad"  text="Load" />
+							  <Button fx:id="loadCapstoneTable" layoutX="41.0" layoutY="14.0" mnemonicParsing="false" onAction="#HandleCapstoneLoad" text="Load" />
                            </children></AnchorPane>
                   </content>
                 </Tab>
@@ -124,19 +123,14 @@
                                     <Font name="Noto Sans Regular" size="17.0" />
                                  </font>
                               </Text>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="248.0" layoutX="690.0" layoutY="124.0" stroke="#00000089" strokeType="INSIDE" width="532.0">
-                                 <cursor>
-                                    <Cursor fx:constant="TEXT" />
-                                 </cursor>
-                              </Rectangle>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="248.0" layoutX="96.0" layoutY="124.0" stroke="#00000089" strokeType="INSIDE" width="457.0">
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="248.0" layoutX="412.0" layoutY="124.0" stroke="#00000089" strokeType="INSIDE" width="457.0">
                                  <cursor>
                                     <Cursor fx:constant="TEXT" />
                                  </cursor>
                               </Rectangle>
                               <TextField fx:id="updateStudentSearchStudentText" layoutX="213.0" layoutY="61.0" promptText="Student Name" />
                               <Button fx:id="updateStudentSearchStudentButton" layoutX="372.0" layoutY="61.0" mnemonicParsing="false" onAction="#HandleUpdateStudentSearchStudentButtonAction" text="Search" />
-                              <TableView fx:id="updateStudentProjectTable" disable="false" layoutX="117.0" layoutY="148.0" prefHeight="200.0" prefWidth="415.0">
+                              <TableView fx:id="updateStudentProjectTable" disable="false" layoutX="433.0" layoutY="148.0" prefHeight="200.0" prefWidth="415.0">
                                 <columns>
                                   <TableColumn fx:id="update_col_student" prefWidth="75.0" text="Student " />
                                   <TableColumn fx:id="update_col_title" prefWidth="103.0" text="Project Title" />
@@ -144,23 +138,10 @@
                                     <TableColumn fx:id="update_col_pscore" prefWidth="137.0" text="Plagarism Score" />
                                 </columns>
                               </TableView>
-                              <ComboBox fx:id="updateStudentComboMenu" disable="false" layoutX="132.0" layoutY="398.0" prefWidth="150.0" promptText="Status" />
-                              <TextField fx:id="updateStudentPlagiarismScore" disable="false" layoutX="383.0" layoutY="398.0" prefHeight="25.0" prefWidth="106.0" promptText="Plagiarism Score" />
-                              <TableView fx:id="updateStudentInfoTable" disable="false" layoutX="706.0" layoutY="148.0" prefHeight="200.0" prefWidth="500.0">
-                                 <columns>
-                                    <TableColumn prefWidth="103.0" text="First Name" />
-                                    <TableColumn prefWidth="99.0" text="Last Name" />
-                                    <TableColumn prefWidth="69.0" text="User ID" />
-                                    <TableColumn prefWidth="69.0" text="Email" />
-                                    <TableColumn prefWidth="69.0" text="Start Date" />
-                                 </columns>
-                              </TableView>
-                              <Button fx:id="updateStudentPlagiarismScoreButton" layoutX="501.0" layoutY="398.0" mnemonicParsing="false" onAction="#HandleUpdateStudentPlagiarismScoreButtonAction" text="Update" />
-                              <TextField fx:id="updateStudentEmail" disable="true" layoutX="706.0" layoutY="435.0" prefHeight="25.0" prefWidth="106.0" promptText="Email" />
-                              <TextField fx:id="updateStudentFN" disable="true" layoutX="706.0" layoutY="398.0" prefHeight="25.0" prefWidth="106.0" promptText="First Name" />
-                              <TextField fx:id="updateStudentLN" disable="true" layoutX="827.0" layoutY="398.0" prefHeight="25.0" prefWidth="106.0" promptText="Last Name" />
-                              <Button fx:id="updateStudentInfoButton" layoutX="827.0" layoutY="435.0" mnemonicParsing="false" onAction="#HandleUpdateStudentInfoButtonAction" text="Update" />
-                              <Button fx:id="updateStudentComboMenuButton" layoutX="288.0" layoutY="398.0" mnemonicParsing="false" onAction="#HandleUpdateStudentComboMenuButtonAction" text="Update" />
+                              <ComboBox fx:id="updateStudentComboMenu" disable="false" layoutX="438.0" layoutY="386.0" prefWidth="150.0" promptText="Status" />
+                              <TextField fx:id="updateStudentPlagiarismScore" disable="false" layoutX="669.0" layoutY="386.0" prefHeight="25.0" prefWidth="106.0" promptText="Plagiarism Score" />
+                              <Button fx:id="updateStudentPlagiarismScoreButton" layoutX="782.0" layoutY="386.0" mnemonicParsing="false" onAction="#HandleUpdateStudentPlagiarismScoreButtonAction" text="Update" />
+                              <Button fx:id="updateStudentComboMenuButton" layoutX="605.0" layoutY="386.0" mnemonicParsing="false" onAction="#HandleUpdateStudentComboMenuButtonAction" text="Update" />
                               <ImageView fitHeight="53.0" fitWidth="140.0" layoutX="1136.0" layoutY="642.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../Desktop/download.png" />
