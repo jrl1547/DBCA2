@@ -193,9 +193,7 @@ public class Capstone{
         ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT capstone.title, users.fullname, capstone.username, capstone.abstract, capstone.plagerismscore, capstone.grade FROM capstone\n" +
                 "JOIN users ON capstone.username = users.username\n" +
                 "WHERE grade IS NOT null AND capstone.capstoneid != ?;", item);
-        if(!fetchData.isEmpty()) {
-            fetchData.remove(0);
-        }
+        fetchData.remove(0);
         return fetchData;
     }
 
@@ -218,9 +216,7 @@ public class Capstone{
       ArrayList<ArrayList<String>> fetchData = capstone_project.getData("select capstone.title, users.fullname, capstone.username, capstone.abstract, capstone.plagerismscore, capstone.grade FROM capstone\n" +
               "JOIN users ON capstone.username = users.username\n" +
               "WHERE capstone.username = ?;",item);
-      if(!fetchData.isEmpty()){
-          fetchData.remove(0);
-      }
+      fetchData.remove(0);
       return fetchData;
 
    }
@@ -229,39 +225,34 @@ public class Capstone{
            ArrayList<String> item = new ArrayList<String>();
            item.add("-1");
            ArrayList<ArrayList<String>> fetchData = capstone_project.getData("select users.fullName,capstone.title,capstone.abstract,capstone.plagerismscore,capstone.grade FROM capstone JOIN users ON capstone.username = users.username WHERE( capstone.title != ?);",item);
-           if(!fetchData.isEmpty()) {
-               fetchData.remove(0);
-           }
-           return fetchData;
+            fetchData.remove(0);
+                  return fetchData;
+
    }
     public ArrayList<ArrayList<String>> getCapstonesStatus(){
            ArrayList<String> item = new ArrayList<String>();
            item.add("-1");
            ArrayList<ArrayList<String>> fetchData = capstone_project.getData("select statusid from statushistory join capstone on capstone.capstoneid= statushistory.capstoneid WHERE(capstone.capstoneid != ?);",item);
-        if(!fetchData.isEmpty()) {
-            fetchData.remove(0);
-        }
-        return fetchData;
+           fetchData.remove(0);
+                  return fetchData;
+
    }
 
     public ArrayList<ArrayList<String>> getStudentHistoryName(String _username){
        ArrayList<String> item = new ArrayList<String>();
        item.add(_username);
        ArrayList<ArrayList<String>> fetchData = capstone_project.getData("select username from capstone WHERE username = ?;",item);
-        if(!fetchData.isEmpty()) {
-            fetchData.remove(0);
-        }
-        return fetchData;
+       fetchData.remove(0);
+       return fetchData;
    }
 
    public ArrayList<ArrayList<String>> getCapstonesStatusByName(String _username){
        ArrayList<String> item = new ArrayList<String>();
        item.add(_username);
        ArrayList<ArrayList<String>> fetchData = capstone_project.getData("select statusid from statushistory join capstone on capstone.capstoneid= statushistory.capstoneid WHERE capstone.username = ? ;",item);
-       if(!fetchData.isEmpty()) {
-           fetchData.remove(0);
-       }
+       fetchData.remove(0);
        return fetchData;
+
    }
 
 
@@ -278,7 +269,12 @@ public class Capstone{
 
    }
    public ArrayList<ArrayList<String>> getStaffList(){
-           ArrayList<ArrayList<String>> fetchData = capstone_project.getData("select users.fullname, capstone.title, capstone.abstract,status.name,capstone.plagerismscore, capstone.grade,IFNULL(studentdetails.capstonestart,\"Not Set\") from users join capstone on capstone.username= users.username join statushistory on statushistory.capstoneid= capstone.capstoneid join committee on users.username = committee.username join studentdetails on users.username = studentdetails.username join status on statushistory.statusid = status.statusid ORDER BY capstone.capstoneid DESC LIMIT 1;");
+           ArrayList<ArrayList<String>> fetchData = capstone_project.getData("select users.fullname AS fullname, capstone.title, capstone.abstract,status.name,capstone.plagerismscore, capstone.grade,IFNULL(studentdetails.capstonestart,\"Not Set\") AS capstonestart from users \n" +
+                   "join capstone on capstone.username= users.username \n" +
+                   "join statushistory on statushistory.capstoneid= capstone.capstoneid \n" +
+                   "join committee on users.username = committee.username \n" +
+                   "join studentdetails on users.username = studentdetails.username \n" +
+                   "join status on statushistory.statusid = status.statusid GROUP BY fullname ORDER BY capstone.capstoneid DESC;");
            return fetchData;
    }
   }
