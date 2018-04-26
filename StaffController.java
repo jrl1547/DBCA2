@@ -184,7 +184,7 @@ public class StaffController implements iUserController{
       update_col_student.setCellValueFactory(new PropertyValueFactory<>("username"));
       update_col_title.setCellValueFactory(new PropertyValueFactory<>("title"));
       update_col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
-      update_col_pscore.setCellValueFactory(new PropertyValueFactory<>("plagiarismscore"));
+      update_col_pscore.setCellValueFactory(new PropertyValueFactory<>("plagerismscore"));
       updateStudentProjectTable.setItems(staffUpdateOb);
 
   
@@ -216,8 +216,9 @@ public class StaffController implements iUserController{
     
     @FXML protected void HandleUpdateStudentComboMenuButtonAction(){
         //function to handle updateStudentComboMenuButton
-        String status = updateStudentComboMenu.getPromptText();  //gets status name
+        String status = updateStudentComboMenu.getValue().toString();//gets status name
         Status getID = new Status();
+        System.out.println(status);
         getID.fetchStatusID(status);
         String statusID = getID.getSID();
         String username = "";
@@ -230,10 +231,11 @@ public class StaffController implements iUserController{
         StatusHistory updateStatus = new StatusHistory();
         updateStatus.fetch(capid);
         updateStatus.setSid(statusID);
+        updateStatus.setCapstoneid(capid);
         updateStatus.post();
-          //gets username of student to update
-        return;
-    }    
+    }     
+    
+        
     @FXML protected void loadCapstoneTab(){
     //function to load capstone tab
     

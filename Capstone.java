@@ -260,7 +260,7 @@ public class Capstone{
   public ArrayList<ArrayList<String>> getStaffUpdate(String _username){
            ArrayList<String> item = new ArrayList<String>();
            item.add(_username);
-           ArrayList<ArrayList<String>> fetchData = capstone_project.getData("select capstone.username, capstone.title ,statushistory.statusid from statushistory join capstone on capstone.capstoneid= statushistory.capstoneid WHERE capstone.username = ?;",item);
+           ArrayList<ArrayList<String>> fetchData = capstone_project.getData("select capstone.username, capstone.title ,statushistory.statusid, capstone.plagerismscore from statushistory join capstone on capstone.capstoneid= statushistory.capstoneid  WHERE capstone.username = ? ORDER BY statusid DESC LIMIT 1;",item);
             fetchData.remove(0);
             System.out.println(fetchData);
                   return fetchData;
