@@ -110,13 +110,14 @@ public class FXMLAdminController implements iUserController {
           
          Users user = new Users(tf_username.getText(), roleid, tf_pass.getText(), tf_fullname.getText(), tf_email.getText(), tf_phone.getText(), tf_dept.getText() );
          user.post(); 
-         
-         try{
-            StudentDetails details = new StudentDetails(tf_username.getText(), tf_mastersstart.getText(), tf_capstonestart.getText());
-            details.post();
-         }
-         catch(Exception e){
-            txt_result.setText("Master Start in YYYY-MM-DD format.");
+
+         if(roleid.equals("1")) {
+            try {
+               StudentDetails details = new StudentDetails(tf_username.getText(), tf_mastersstart.getText(), tf_capstonestart.getText());
+               details.post();
+            } catch (Exception e) {
+               txt_result.setText("Master Start in YYYY-MM-DD format.");
+            }
          }
          
          txt_result.setText("USER SUCCESSFULLY ADDED.");    
