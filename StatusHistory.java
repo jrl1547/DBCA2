@@ -75,8 +75,8 @@ public class StatusHistory {
         if(!fetchData.isEmpty()) {
             fetchData.remove(0);
             if (!fetchData.isEmpty()) {
-                capstoneid = fetchData.get(0).get(0);
                 sid = fetchData.get(0).get(1);
+                capstoneid = fetchData.get(0).get(0);
                 date = fetchData.get(0).get(2);
             }
         }
@@ -95,10 +95,9 @@ public class StatusHistory {
 
     public boolean post(){
         ArrayList<String> args = new ArrayList<String>();
-        args.add(capstoneid);
         args.add(sid);
-        args.add(date);
-        String insert = "INSERT INTO statushistory (capstoneid, sid, date) VALUES (?, ?, ?);";
+        args.add(capstoneid);
+        String insert = "INSERT INTO statushistory (statusid, capstoneid) VALUES (?, ?);";
         boolean post = capstone_project.setData(insert, args);
         return post;
     }
