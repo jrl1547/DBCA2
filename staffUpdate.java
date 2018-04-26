@@ -5,8 +5,10 @@ public class staffUpdate {
 
     String username,title,status,plagiarismscore;
 
-    public staffUpdate(String username, String title, String status) {
+    public staffUpdate(String username, String title, String status, String plagiarismscore) {
         this.username = username;
+        this.title=title;
+        this.plagiarismscore = plagiarismscore;
         this.status = status;
             }
 
@@ -39,7 +41,7 @@ public class staffUpdate {
     }
 
    public void setplagiarismscore(String plagiarismscore) {
-        this.title = plagiarismscore;
+        this.plagiarismscore = plagiarismscore;
     }
 
 

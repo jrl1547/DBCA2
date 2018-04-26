@@ -124,6 +124,24 @@ public class Status{
       return delete;
    }
 
+   public ArrayList<ArrayList<String>> fetchStatusID(String _status){
+      ArrayList<String> item = new ArrayList<String>();
+      item.add(_status);
+      ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT * FROM status WHERE name = ?;",item);
+      fetchData.remove(0);
+
+      sid         = fetchData.get(0).get(0);
+      name        = fetchData.get(0).get(1);
+      stepcode    = fetchData.get(0).get(2);
+      description = fetchData.get(0).get(3);
+
+      return fetchData;
+
+   }
+    public ArrayList<ArrayList<String>> getTypes(){
+        String query = "SELECT statusid,name FROM status";
+        return capstone_project.getData(query);
+    }
 
 
 }

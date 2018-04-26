@@ -19,6 +19,9 @@ public class StaffController implements iUserController{
    updateStudentSearchStudentText,updateStudentPlagiarismScore,updateStudentEmail,
    updateStudentFN,updateStudentLN;
    
+   private ArrayList<ArrayList<String>> statusTypeLookup = new ArrayList<>();
+   private Status statustypes = new Status();
+
     @FXML private ComboBox updateStudentComboMenu;
     
    // @FXML private updateStudentInfoTable;
@@ -65,9 +68,10 @@ public class StaffController implements iUserController{
     @FXML
     private TableColumn<staffUpdate, String>  update_col_title;
     @FXML
-    private TableColumn<staffUpdate, String>  update_col_status;
-    @FXML
     private TableColumn<staffUpdate, String>  update_col_pscore;
+    @FXML
+    private TableColumn<staffUpdate, String>  update_col_status;
+
 
 
 
@@ -150,7 +154,7 @@ public class StaffController implements iUserController{
         String capid = getid.getCapstoneId(username);
         StatusHistory history = new StatusHistory();
         ArrayList<ArrayList<String>> data = history.getCapstoneHistory(capid);
-        for(int x = 0; x < data.size(); x++){
+        for(int x = 0; x < data.size(); x+=2){
             staffStuHist.add(new staffStudentHistory(data.get(x).get(0), data.get(x).get(1), data.get(x).get(2), data.get(x).get(3), data.get(x).get(4)));
         }
         history_col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -176,20 +180,33 @@ public class StaffController implements iUserController{
         }
         
       ArrayList<ArrayList<String>> table = viewCap.getStaffUpdate(user);  
-      staffUpdateOb.add(new staffUpdate(table.get(0).get(0),table.get(0).get(1),table.get(0).get(2)));
+      staffUpdateOb.add(new staffUpdate(table.get(0).get(0),table.get(0).get(1),table.get(0).get(2),table.get(0).get(3)));
       update_col_student.setCellValueFactory(new PropertyValueFactory<>("username"));
       update_col_title.setCellValueFactory(new PropertyValueFactory<>("title"));
       update_col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
-     // update_col_pscore.setCellValueFactory(new PropertyValueFactory<>("plagiarismscore"));
+      update_col_pscore.setCellValueFactory(new PropertyValueFactory<>("plagiarismscore"));
       updateStudentProjectTable.setItems(staffUpdateOb);
 
   
     }
     
     @FXML protected void HandleUpdateStudentPlagiarismScoreButtonAction(){
-    //function to handle updateStudentPlagiarismScoreButton
-    return;
+        String username = "";
+        String pscore = "";
+        if(updateStudentPlagiarismScore.getText() != null && updateStudentPlagiarismScore.getText() != ""){
+            pscore = updateStudentPlagiarismScore.getText();
+        }
+        if(updateStudentSearchStudentText.getText() != null && updateStudentSearchStudentText.getText() != ""){
+            username = updateStudentSearchStudentText.getText();
+        }
+        //get capstone item, set grade then post
+        Capstone plag = new Capstone();
+        String capid = plag.getCapstoneId(username);
+        plag.fetch(capid);
+        plag.setPlagerismscore(pscore);
+        plag.put();
     }
+    
     
     
      @FXML protected void HandleUpdateStudentInfoButtonAction(){
@@ -198,10 +215,25 @@ public class StaffController implements iUserController{
     }
     
     @FXML protected void HandleUpdateStudentComboMenuButtonAction(){
-    //function to handle updateStudentComboMenuButton
-    return;
-    }
-    
+        //function to handle updateStudentComboMenuButton
+        String status = updateStudentComboMenu.getPromptText();  //gets status name
+        Status getID = new Status();
+        getID.fetchStatusID(status);
+        String statusID = getID.getSID();
+        String username = "";
+        if(updateStudentSearchStudentText.getText() != null && !updateStudentSearchStudentText.getText().equals("")){
+            username = updateStudentSearchStudentText.getText();
+        }
+        Capstone getCapid = new Capstone();
+        String capid = getCapid.getCapstoneId(username);
+
+        StatusHistory updateStatus = new StatusHistory();
+        updateStatus.fetch(capid);
+        updateStatus.setSid(statusID);
+        updateStatus.post();
+          //gets username of student to update
+        return;
+    }    
     @FXML protected void loadCapstoneTab(){
     //function to load capstone tab
     
@@ -215,8 +247,16 @@ public class StaffController implements iUserController{
     }
 
 
-     @FXML protected void loadStudentUpdateTab(){
+     @FXML public void loadStudentUpdateTab(){
     //function to load student Update tab
+       
+        statusTypeLookup = statustypes.getTypes();
+        ArrayList<String> temp = new ArrayList<>();
+        for ( ArrayList<String> arr: statusTypeLookup) {
+            temp.add(arr.get(1));
+        }
+        ObservableList<String> statusTypeList = FXCollections.observableArrayList(temp);
+        updateStudentComboMenu.setItems(statusTypeList);
     
         return;
     }
