@@ -40,10 +40,10 @@ public class StaffController implements iUserController{
     private TableColumn<staffHomeTable, String>  col_plagarismScore;
     @FXML
     private TableColumn<staffHomeTable, String>  col_grade;
-    @FXML
-    private TableColumn<staffHomeTable, String>  col_faculty;
-   @FXML
-    private TableColumn<staffHomeTable, String>  col_declined;
+    //@FXML
+   // private TableColumn<staffHomeTable, String>  col_faculty;
+   //@FXML
+   // private TableColumn<staffHomeTable, String>  col_declined;
     
 
 //student history table
@@ -118,11 +118,12 @@ public class StaffController implements iUserController{
 
      // String capid = "1";
         Capstone viewCap = new Capstone();
-        ArrayList<ArrayList<String>> capstones = viewCap.getCapstonesStatus();
+        ArrayList<ArrayList<String>> capstones = viewCap.getStaffList();
 
         System.out.println("got to add");
         for (int x = 0; x < capstones.size(); x++)
         {
+         System.out.println(capstones.get(x).get(1) + " " + capstones.get(x).get(2) + " " + capstones.get(x).get(3) + " " + capstones.get(x).get(4) + " " + capstones.get(x).get(5));
          viewobList.add(new staffHomeTable(capstones.get(x).get(0),capstones.get(x).get(1),capstones.get(x).get(2),capstones.get(x).get(3),capstones.get(x).get(4),capstones.get(x).get(5)));
         }
         System.out.println(viewobList);
