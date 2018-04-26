@@ -102,7 +102,7 @@ public class Committee{
    public ArrayList<ArrayList<String>> fetch(String _capstoneid){
       ArrayList<String> item = new ArrayList<String>();
       item.add(_capstoneid);
-      ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT * FROM committee WHERE capstoneid = ? AND username = ?;",item);
+      ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT * FROM committee WHERE capstoneid = ?;",item);
       fetchData.remove(0);
       
       capstoneid     = fetchData.get(0).get(0).toString();
