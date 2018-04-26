@@ -71,16 +71,50 @@ public class StaffController implements iUserController{
 
 
 
-    ObservableList<staffHomeTable> viewobList = FXCollections.observableArrayList();
+    @FXML
+    private TableView<CompletedTable> completedTable;
+    @FXML
+    private TableColumn<CompletedTable, String> completed_col_capstone;
+    @FXML
+    private TableColumn<CompletedTable, String> completed_col_name;
+    @FXML
+    private TableColumn<CompletedTable, String> completed_col_username;
+    @FXML
+    private TableColumn<CompletedTable, String> completed_col_abstract;
+    @FXML
+    private TableColumn<CompletedTable, String> completed_col_pscore;
+    @FXML
+    private TableColumn<CompletedTable, String> completed_col_grade;
+
+    @FXML protected void HandleCompletedLoadButtonAction(ActionEvent event){
+        ObservableList<CompletedTable> completedobList = FXCollections.observableArrayList();
+        Capstone findCompleted = new Capstone();
+        completedTable.setItems(completedobList);
+        ArrayList<ArrayList<String>> data = findCompleted.getCompletedCapstones();
+        for (int x = 0; x < data.size(); x+=2) {//goes through each row
+            completedobList.add(new CompletedTable(data.get(x).get(0), data.get(x).get(1), data.get(x).get(2), data.get(x).get(3), data.get(x).get(4), data.get(x).get(5)));
+        }
+
+        completed_col_capstone.setCellValueFactory(new PropertyValueFactory<>("capstone"));
+        completed_col_name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        completed_col_username.setCellValueFactory(new PropertyValueFactory<>("username"));
+        completed_col_abstract.setCellValueFactory(new PropertyValueFactory<>("abstrac"));
+        completed_col_pscore.setCellValueFactory(new PropertyValueFactory<>("pscore"));
+        completed_col_grade.setCellValueFactory(new PropertyValueFactory<>("grade"));
+
+        completedTable.setItems(completedobList);
+    }
 
     
    
     @FXML protected void HandleCapstoneLoad(ActionEvent event){
-    System.out.println("pressed load button");
+        ObservableList<staffHomeTable> viewobList = FXCollections.observableArrayList();
+        capstonesTable.setItems(viewobList);
+        System.out.println("pressed load button");
      
      // String capid = "1";
-      Capstone viewCap = new Capstone();
-      Committee viewCom = new Committee();
+        Capstone viewCap = new Capstone();
+        Committee viewCom = new Committee();
         ArrayList<ArrayList<String>> capToView = viewCap.getCapstonesStaff();
         ArrayList<ArrayList<String>> comToView = viewCom.getCommitteeFaculty();
         ArrayList<ArrayList<String>> comDeclined = viewCom.getDeclinedCommitteeFaculty();

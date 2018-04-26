@@ -151,6 +151,25 @@
                         </AnchorPane>
                      </content>
                   </Tab>
+                  <Tab text="Completed">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="completedTable" layoutX="126.0" layoutY="55.0" prefHeight="325.0" prefWidth="1000.0">
+                                <columns>
+                                  <TableColumn fx:id="completed_col_capstone" prefWidth="117.0" text="Capstone" />
+                                  <TableColumn fx:id="completed_col_name" prefWidth="115.0" text="Student" />
+                                    <TableColumn fx:id="completed_col_username" prefWidth="135.0" text="Username" />
+                                    <TableColumn fx:id="completed_col_abstract" prefWidth="476.0" text="Abstract" />
+                                    <TableColumn fx:id="completed_col_pscore" prefWidth="110.0" text="Plagarism Score" />
+                                    <TableColumn fx:id="completed_col_grade" prefWidth="46.0" text="Grade" />
+                                </columns>
+                              </TableView>
+                              <Button layoutX="182.0" layoutY="447.0" mnemonicParsing="false" onAction="#HandleCompletedLoadButtonAction" text="Load" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
               </tabs>
             </TabPane>
       </children>

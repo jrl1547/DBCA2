@@ -185,6 +185,18 @@ public class Capstone{
       boolean delete = capstone_project.setData("DELETE FROM capstone WHERE capstoneid = ?;",item);
       return delete;
    }
+
+
+    public ArrayList<ArrayList<String>> getCompletedCapstones(){
+        ArrayList<String> item = new ArrayList<String>();
+        item.add("-1");
+        ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT capstone.title, users.fullname, capstone.username, capstone.abstract, capstone.plagerismscore, capstone.grade FROM capstone\n" +
+                "JOIN users ON capstone.username = users.username\n" +
+                "WHERE grade IS NOT null AND capstone.capstoneid != ?;", item);
+        fetchData.remove(0);
+        return fetchData;
+    }
+
    
    public String getCapstoneId(String _username){
    
