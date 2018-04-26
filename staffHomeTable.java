@@ -1,19 +1,21 @@
 /**
  * Created by rs7386 on 4/19/2018.
+ * Editied by Matthew Fitzgerald (mjf7345) 4/26/18
  */
 public class staffHomeTable {
 
-    String name,title,abstrac,status,pscore,grade,faculty,declined;
+    String name,title,abstrac,status,pscore,grade,startDate;
 
-    public staffHomeTable(String name,String title,String abstrac, String status,String pscore, String grade) {
+    public staffHomeTable(String name,String title,String abstrac, String status,String pscore, String grade,String startDate) {
         this.name = name;
         this.title = title;
         this.abstrac = abstrac;
         this.status = status;
         this.pscore = pscore;
         this.grade = grade;
-        this.faculty = faculty;
-        this.declined = declined;
+        //this.faculty = faculty;
+        //this.declined = declined;
+        this.startDate = startDate;
     }
 
    
@@ -24,7 +26,7 @@ public class staffHomeTable {
     public void setName(String name) {
         this.name = name;
     }
-  /*  public String getFaculty() {
+/*    public String getFaculty() {
         return faculty;
     }
 
@@ -39,7 +41,6 @@ public class staffHomeTable {
     public void setdeclined(String declined) {
         this.declined = declined;
     }
-
 */
     public String getTitle() {
         return title;
@@ -78,5 +79,11 @@ public class staffHomeTable {
 
     public void setGrade(String grade) {
         this.grade = grade;
+    }
+    public String getStartDate(){
+        return startDate;
+    }
+    public void setStartDate(String grade) {
+        this.startDate = startDate;
     }
 }

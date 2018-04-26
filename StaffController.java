@@ -40,10 +40,12 @@ public class StaffController implements iUserController{
     private TableColumn<staffHomeTable, String>  col_plagarismScore;
     @FXML
     private TableColumn<staffHomeTable, String>  col_grade;
-    //@FXML
-   // private TableColumn<staffHomeTable, String>  col_faculty;
-   //@FXML
-   // private TableColumn<staffHomeTable, String>  col_declined;
+    @FXML
+    private TableColumn<staffHomeTable, String>  col_faculty;
+    @FXML
+    private TableColumn<staffHomeTable, String>  col_declined;
+    @FXML
+    private TableColumn<staffHomeTable, String>  col_startDate;
     
 
 //student history table
@@ -123,20 +125,24 @@ public class StaffController implements iUserController{
         System.out.println("got to add");
         for (int x = 0; x < capstones.size(); x++)
         {
-         System.out.println(capstones.get(x).get(1) + " " + capstones.get(x).get(2) + " " + capstones.get(x).get(3) + " " + capstones.get(x).get(4) + " " + capstones.get(x).get(5));
-         viewobList.add(new staffHomeTable(capstones.get(x).get(0),capstones.get(x).get(1),capstones.get(x).get(2),capstones.get(x).get(3),capstones.get(x).get(4),capstones.get(x).get(5)));
+         System.out.println(capstones.get(x).get(1) + " " + capstones.get(x).get(2) + " " + capstones.get(x).get(3) + " " + capstones.get(x).get(4) + " " + capstones.get(x).get(5) + " " +capstones.get(x).get(6));
+         viewobList.add(new staffHomeTable(capstones.get(x).get(0),capstones.get(x).get(1),capstones.get(x).get(2),capstones.get(x).get(3),capstones.get(x).get(4),capstones.get(x).get(5),capstones.get(x).get(6)));
         }
+        try
+        {
         System.out.println(viewobList);
         col_studentName.setCellValueFactory(new PropertyValueFactory<>("name"));
         col_projectTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
         col_abstract.setCellValueFactory(new PropertyValueFactory<>("abstrac"));
         col_plagarismScore.setCellValueFactory(new PropertyValueFactory<>("pscore"));
         col_grade.setCellValueFactory(new PropertyValueFactory<>("grade"));
-        //col_faculty.setCellValueFactory(new PropertyValueFactory<>("faculty"));
-        //col_declined.setCellValueFactory(new PropertyValueFactory<>("declined"));
         col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
-
-
+        col_startDate.setCellValueFactory(new PropertyValueFactory<>("startDate"));
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
         capstonesTable.setItems(viewobList);
 
         }    
