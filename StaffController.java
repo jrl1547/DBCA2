@@ -70,9 +70,9 @@ public class StaffController implements iUserController{
     @FXML
     private TableColumn<staffUpdate, String>  update_col_title;
     @FXML
-    private TableColumn<staffUpdate, String>  update_col_pscore;
-    @FXML
     private TableColumn<staffUpdate, String>  update_col_status;
+    @FXML
+    private TableColumn<staffUpdate, String>  update_col_pscore;
 
 
 
@@ -190,7 +190,7 @@ public class StaffController implements iUserController{
       update_col_student.setCellValueFactory(new PropertyValueFactory<>("username"));
       update_col_title.setCellValueFactory(new PropertyValueFactory<>("title"));
       update_col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
-      update_col_pscore.setCellValueFactory(new PropertyValueFactory<>("plagerismscore"));
+      update_col_pscore.setCellValueFactory(new PropertyValueFactory<>("pscore"));
       updateStudentProjectTable.setItems(staffUpdateOb);
 
   

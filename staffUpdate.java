@@ -3,12 +3,12 @@
  */
 public class staffUpdate {
 
-    String username,title,status,plagiarismscore;
+    String username,title,status,pscore;
 
-    public staffUpdate(String username, String title, String status, String plagiarismscore) {
+    public staffUpdate(String username, String title, String status, String pscore) {
         this.username = username;
         this.title=title;
-        this.plagiarismscore = plagiarismscore;
+        this.pscore = pscore;
         this.status = status;
             }
 
@@ -36,12 +36,12 @@ public class staffUpdate {
         this.title = title;
     }
     
-    public String getplagiarismscore() {
-        return plagiarismscore;
+    public String getPscore() {
+        return pscore;
     }
 
-   public void setplagiarismscore(String plagiarismscore) {
-        this.plagiarismscore = plagiarismscore;
+   public void setPScore(String pscore) {
+        this.pscore = pscore;
     }
 
 
