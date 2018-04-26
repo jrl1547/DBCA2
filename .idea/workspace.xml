@@ -3,8 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="68838bde-c6dd-4009-96a8-c10ef56b9e63" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/Capstone.java" afterPath="$PROJECT_DIR$/Capstone.java" />
+      <change beforePath="$PROJECT_DIR$/Committee.java" afterPath="$PROJECT_DIR$/Committee.java" />
       <change beforePath="$PROJECT_DIR$/Database.java" afterPath="$PROJECT_DIR$/Database.java" />
-      <change beforePath="$PROJECT_DIR$/FXMLLoginController.java" afterPath="$PROJECT_DIR$/FXMLLoginController.java" />
+      <change beforePath="$PROJECT_DIR$/StudentController.java" afterPath="$PROJECT_DIR$/StudentController.java" />
+      <change beforePath="$PROJECT_DIR$/StudentDetails.java" afterPath="$PROJECT_DIR$/StudentDetails.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,14 +21,13 @@
       <file leaf-file-name="StudentController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/StudentController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="375" column="28" lean-forward="true" selection-start-line="374" selection-start-column="7" selection-end-line="375" selection-end-column="28" />
+            <state relative-caret-position="277">
+              <caret line="102" column="47" lean-forward="false" selection-start-line="102" selection-start-column="47" selection-end-line="102" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1175#1176#0" expanded="true" />
                 <element signature="e#1204#1205#0" expanded="true" />
                 <element signature="method#loadProject#0;class#StudentController#0" expanded="false" />
-                <element signature="method#viewUpdates#0;class#StudentController#0" expanded="false" />
                 <element signature="method#loadAdmin#0;class#StudentController#0" expanded="false" />
                 <element signature="docComment;method#getTypeId#0;class#StudentController#0" expanded="false" />
                 <element signature="method#getTypeId#0;class#StudentController#0" expanded="false" />
@@ -35,11 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FXMLLoginController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FXMLLoginController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FXMLLoginController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="57" column="88" lean-forward="false" selection-start-line="57" selection-start-column="88" selection-end-line="57" selection-end-column="88" />
+            <state relative-caret-position="237">
+              <caret line="60" column="55" lean-forward="true" selection-start-line="60" selection-start-column="55" selection-end-line="60" selection-end-column="55" />
               <folding />
             </state>
           </provider>
@@ -48,8 +50,8 @@
       <file leaf-file-name="StudentDetails.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/StudentDetails.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1677">
-              <caret line="129" column="33" lean-forward="false" selection-start-line="129" selection-start-column="33" selection-end-line="130" selection-end-column="43" />
+            <state relative-caret-position="320">
+              <caret line="76" column="38" lean-forward="true" selection-start-line="76" selection-start-column="38" selection-end-line="76" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -58,7 +60,7 @@
       <file leaf-file-name="Database.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Database.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
+            <state relative-caret-position="528">
               <caret line="19" column="30" lean-forward="false" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -67,11 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Capstone.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Capstone.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Capstone.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="180" column="3" lean-forward="false" selection-start-line="180" selection-start-column="3" selection-end-line="180" selection-end-column="3" />
+            <state relative-caret-position="264">
+              <caret line="244" column="4" lean-forward="true" selection-start-line="244" selection-start-column="4" selection-end-line="244" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -80,8 +82,8 @@
       <file leaf-file-name="Committee.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Committee.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2673">
-              <caret line="109" column="13" lean-forward="false" selection-start-line="109" selection-start-column="13" selection-end-line="109" selection-end-column="13" />
+            <state relative-caret-position="155">
+              <caret line="108" column="33" lean-forward="true" selection-start-line="108" selection-start-column="33" selection-end-line="108" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -119,9 +121,6 @@
       </file>
       <file leaf-file-name="Student_Homepage.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Student_Homepage.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
-          </provider>
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2838">
               <caret line="181" column="31" lean-forward="false" selection-start-line="181" selection-start-column="31" selection-end-line="181" selection-end-column="31" />
@@ -130,6 +129,9 @@
                 <element signature="n#Tab#1;n#tabs#0;n#TabPane#0;n#children#0;n#AnchorPane#0;n#children#0;n#VBox#0;n#!!top" expanded="false" />
               </folding>
             </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
           </provider>
         </entry>
       </file>
@@ -164,12 +166,12 @@
         <option value="$PROJECT_DIR$/ProjectTypes.java" />
         <option value="$PROJECT_DIR$/Student_Homepage.fxml" />
         <option value="$PROJECT_DIR$/Users.java" />
+        <option value="$PROJECT_DIR$/FXMLLoginController.java" />
+        <option value="$PROJECT_DIR$/Database.java" />
+        <option value="$PROJECT_DIR$/StudentDetails.java" />
         <option value="$PROJECT_DIR$/Committee.java" />
         <option value="$PROJECT_DIR$/Capstone.java" />
         <option value="$PROJECT_DIR$/StudentController.java" />
-        <option value="$PROJECT_DIR$/StudentDetails.java" />
-        <option value="$PROJECT_DIR$/Database.java" />
-        <option value="$PROJECT_DIR$/FXMLLoginController.java" />
       </list>
     </option>
   </component>
@@ -196,18 +198,6 @@
     <panes>
       <pane id="AndroidView" />
       <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="DBCA2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DBCA2" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -219,11 +209,23 @@
           <select />
         </subPane>
       </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="DBCA2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DBCA2" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/dca/mysql-connector-java-5.1.45-bin.jar!/" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
@@ -379,6 +381,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="69" y="-9" width="1860" height="1098" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -388,7 +391,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3277487" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3277487" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -444,13 +447,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/StudentController.java</url>
-          <line>238</line>
-          <properties />
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/StudentController.java</url>
-          <line>266</line>
+          <line>268</line>
           <properties />
           <option name="timeStamp" value="29" />
         </line-breakpoint>
@@ -526,7 +523,6 @@
             <element signature="e#1175#1176#0" expanded="true" />
             <element signature="e#1204#1205#0" expanded="true" />
             <element signature="method#loadProject#0;class#StudentController#0" expanded="false" />
-            <element signature="method#viewUpdates#0;class#StudentController#0" expanded="false" />
             <element signature="method#loadAdmin#0;class#StudentController#0" expanded="false" />
             <element signature="docComment;method#getTypeId#0;class#StudentController#0" expanded="false" />
             <element signature="method#getTypeId#0;class#StudentController#0" expanded="false" />
@@ -569,9 +565,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Student_Homepage.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7425">
           <caret line="225" column="42" lean-forward="true" selection-start-line="225" selection-start-column="42" selection-end-line="225" selection-end-column="42" />
@@ -580,6 +573,9 @@
             <element signature="n#Tab#1;n#tabs#0;n#TabPane#0;n#children#0;n#AnchorPane#0;n#children#0;n#VBox#0;n#!!top" expanded="false" />
           </folding>
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/StudentDetails.java">
@@ -615,7 +611,6 @@
             <element signature="e#1175#1176#0" expanded="true" />
             <element signature="e#1204#1205#0" expanded="true" />
             <element signature="method#loadProject#0;class#StudentController#0" expanded="false" />
-            <element signature="method#viewUpdates#0;class#StudentController#0" expanded="false" />
             <element signature="method#loadAdmin#0;class#StudentController#0" expanded="false" />
             <element signature="docComment;method#getTypeId#0;class#StudentController#0" expanded="false" />
             <element signature="method#getTypeId#0;class#StudentController#0" expanded="false" />
@@ -648,9 +643,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Student_Homepage.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5643">
           <caret line="171" column="61" lean-forward="false" selection-start-line="171" selection-start-column="47" selection-end-line="171" selection-end-column="61" />
@@ -659,6 +651,9 @@
             <element signature="n#Tab#1;n#tabs#0;n#TabPane#0;n#children#0;n#AnchorPane#0;n#children#0;n#VBox#0;n#!!top" expanded="false" />
           </folding>
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ModelTable.java">
@@ -767,9 +762,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Student_Homepage.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2838">
           <caret line="181" column="31" lean-forward="false" selection-start-line="181" selection-start-column="31" selection-end-line="181" selection-end-column="31" />
@@ -778,6 +770,9 @@
             <element signature="n#Tab#1;n#tabs#0;n#TabPane#0;n#children#0;n#AnchorPane#0;n#children#0;n#VBox#0;n#!!top" expanded="false" />
           </folding>
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ProjectTypes.java">
@@ -803,25 +798,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Committee.java">
+    <entry file="file://$PROJECT_DIR$/FXMLLoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2673">
-          <caret line="109" column="13" lean-forward="false" selection-start-line="109" selection-start-column="13" selection-end-line="109" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Capstone.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="180" column="3" lean-forward="false" selection-start-line="180" selection-start-column="3" selection-end-line="180" selection-end-column="3" />
+        <state relative-caret-position="237">
+          <caret line="60" column="55" lean-forward="true" selection-start-line="60" selection-start-column="55" selection-end-line="60" selection-end-column="55" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Database.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
+        <state relative-caret-position="528">
           <caret line="19" column="30" lean-forward="false" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -831,22 +818,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/StudentDetails.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1677">
-          <caret line="129" column="33" lean-forward="false" selection-start-line="129" selection-start-column="33" selection-end-line="130" selection-end-column="43" />
+        <state relative-caret-position="320">
+          <caret line="76" column="38" lean-forward="true" selection-start-line="76" selection-start-column="38" selection-end-line="76" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Committee.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="108" column="33" lean-forward="true" selection-start-line="108" selection-start-column="33" selection-end-line="108" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/StudentController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="375" column="28" lean-forward="true" selection-start-line="374" selection-start-column="7" selection-end-line="375" selection-end-column="28" />
+        <state relative-caret-position="277">
+          <caret line="102" column="47" lean-forward="false" selection-start-line="102" selection-start-column="47" selection-end-line="102" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1175#1176#0" expanded="true" />
             <element signature="e#1204#1205#0" expanded="true" />
             <element signature="method#loadProject#0;class#StudentController#0" expanded="false" />
-            <element signature="method#viewUpdates#0;class#StudentController#0" expanded="false" />
             <element signature="method#loadAdmin#0;class#StudentController#0" expanded="false" />
             <element signature="docComment;method#getTypeId#0;class#StudentController#0" expanded="false" />
             <element signature="method#getTypeId#0;class#StudentController#0" expanded="false" />
@@ -855,10 +849,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FXMLLoginController.java">
+    <entry file="file://$PROJECT_DIR$/Capstone.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="57" column="88" lean-forward="false" selection-start-line="57" selection-start-column="88" selection-end-line="57" selection-end-column="88" />
+        <state relative-caret-position="264">
+          <caret line="244" column="4" lean-forward="true" selection-start-line="244" selection-start-column="4" selection-end-line="244" selection-end-column="4" />
           <folding />
         </state>
       </provider>

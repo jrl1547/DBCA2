@@ -17,7 +17,7 @@ public class Database{
       //"jdbc:mysql://localhost/capstone_project?autoReconnect=true&useSSL=false";
    String driver = "com.mysql.jdbc.Driver";      
    String user = "root";
-   String password = "student";
+   String password = "password";
    Statement smt = null;
 
 

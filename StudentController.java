@@ -95,12 +95,12 @@ public class StudentController implements Initializable, iUserController{
                     status.fetch(historyInfo.get(1).get(0));
                     updateInfo2.setText(status.getName());
                 }else {   //no status history
-                    updateInfo1.setText("");
-                    updateInfo2.setText("");
+                    updateInfo1.setText("No updates");
+                    updateInfo2.setText("No updates");
                 }
             } else {    //give no info
-                updateInfo1.setText("");
-                updateInfo2.setText("");
+                updateInfo1.setText("No updates");
+                updateInfo2.setText("No updates");
             }
         }
     }
@@ -145,15 +145,15 @@ public class StudentController implements Initializable, iUserController{
         ObservableList<String> typeList = FXCollections.observableArrayList(temp);
         newCapType.setItems(typeList);
 
-        if(capstone != null){
+        if(capstone != null && capstone.getCapstoneID() != null){
             //newCapType.types.getTypeName(capstone.getType());
             newCapTitle.setText(capstone.getTitle());
             newCapAbstract.setText(capstone.getDesc());
-            if(capstone.getDefensedate() != null) {
-                String[] dd = capstone.getDefensedate().split("-");
-                newCapDefenseDate.setValue(LocalDate.of(Integer.parseInt(dd[0]), Integer.parseInt(dd[1]),
-                        Integer.parseInt(dd[02])));
-            }
+//            if(capstone.getDefensedate() != null) {
+//                String[] dd = capstone.getDefensedate().split("-");
+//                newCapDefenseDate.setValue(LocalDate.of(Integer.parseInt(dd[0]), Integer.parseInt(dd[1]),
+//                        Integer.parseInt(dd[02])));
+//            }
             newCapType.setValue(types.getTypeName(capstone.getType()));
         }
 
@@ -239,9 +239,11 @@ public class StudentController implements Initializable, iUserController{
         if (capstone == null || capstone.getCapstoneID() == null){  //create new capstone and new committee
             submitNewCapstone();
             submitNewCommittee();
+            newCapErrors.setText("Successfully Created your capstone and committee");
         } else {    //update capstone
             updateCapstone();
             updateCommittee();
+            newCapErrors.setText("Successfully updated your capstone and committee");
         }
     }
 

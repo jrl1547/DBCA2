@@ -193,7 +193,9 @@ public class Capstone{
         ArrayList<ArrayList<String>> fetchData = capstone_project.getData("SELECT capstone.title, users.fullname, capstone.username, capstone.abstract, capstone.plagerismscore, capstone.grade FROM capstone\n" +
                 "JOIN users ON capstone.username = users.username\n" +
                 "WHERE grade IS NOT null AND capstone.capstoneid != ?;", item);
-        fetchData.remove(0);
+        if(!fetchData.isEmpty()) {
+            fetchData.remove(0);
+        }
         return fetchData;
     }
 
@@ -216,7 +218,9 @@ public class Capstone{
       ArrayList<ArrayList<String>> fetchData = capstone_project.getData("select capstone.title, users.fullname, capstone.username, capstone.abstract, capstone.plagerismscore, capstone.grade FROM capstone\n" +
               "JOIN users ON capstone.username = users.username\n" +
               "WHERE capstone.username = ?;",item);
-      fetchData.remove(0);
+      if(!fetchData.isEmpty()){
+          fetchData.remove(0);
+      }
       return fetchData;
 
    }
@@ -225,34 +229,39 @@ public class Capstone{
            ArrayList<String> item = new ArrayList<String>();
            item.add("-1");
            ArrayList<ArrayList<String>> fetchData = capstone_project.getData("select users.fullName,capstone.title,capstone.abstract,capstone.plagerismscore,capstone.grade FROM capstone JOIN users ON capstone.username = users.username WHERE( capstone.title != ?);",item);
-            fetchData.remove(0);
-                  return fetchData;
-
+           if(!fetchData.isEmpty()) {
+               fetchData.remove(0);
+           }
+           return fetchData;
    }
     public ArrayList<ArrayList<String>> getCapstonesStatus(){
            ArrayList<String> item = new ArrayList<String>();
            item.add("-1");
            ArrayList<ArrayList<String>> fetchData = capstone_project.getData("select statusid from statushistory join capstone on capstone.capstoneid= statushistory.capstoneid WHERE(capstone.capstoneid != ?);",item);
-           fetchData.remove(0);
-                  return fetchData;
-
+        if(!fetchData.isEmpty()) {
+            fetchData.remove(0);
+        }
+        return fetchData;
    }
 
     public ArrayList<ArrayList<String>> getStudentHistoryName(String _username){
        ArrayList<String> item = new ArrayList<String>();
        item.add(_username);
        ArrayList<ArrayList<String>> fetchData = capstone_project.getData("select username from capstone WHERE username = ?;",item);
-       fetchData.remove(0);
-       return fetchData;
+        if(!fetchData.isEmpty()) {
+            fetchData.remove(0);
+        }
+        return fetchData;
    }
 
    public ArrayList<ArrayList<String>> getCapstonesStatusByName(String _username){
        ArrayList<String> item = new ArrayList<String>();
        item.add(_username);
        ArrayList<ArrayList<String>> fetchData = capstone_project.getData("select statusid from statushistory join capstone on capstone.capstoneid= statushistory.capstoneid WHERE capstone.username = ? ;",item);
-       fetchData.remove(0);
+       if(!fetchData.isEmpty()) {
+           fetchData.remove(0);
+       }
        return fetchData;
-
    }
 
 

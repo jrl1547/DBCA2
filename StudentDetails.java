@@ -71,10 +71,15 @@ public class StudentDetails{
         String select = "SELECT * from studentdetails WHERE username = ?;";
         args.add(_username);
         ArrayList<ArrayList<String>> fetchData = capstone_project.getData(select, args);
-        fetchData.remove(0);
-        username = fetchData.get(0).get(0);
-        mastersstart = fetchData.get(0).get(1);
-        capstonestart = fetchData.get(0).get(2);
+
+        if (!fetchData.isEmpty()) {
+            fetchData.remove(0);
+            if(!fetchData.isEmpty()) {
+                username = fetchData.get(0).get(0);
+                mastersstart = fetchData.get(0).get(1);
+                capstonestart = fetchData.get(0).get(2);
+            }
+        }
         return fetchData;
     }
 
