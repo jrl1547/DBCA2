@@ -5,7 +5,7 @@ public class staffHomeTable {
 
     String name,title,abstrac,status,pscore,grade,faculty,declined;
 
-    public staffHomeTable(String name,String title,String abstrac, String pscore, String grade, String faculty, String declined, String status) {
+    public staffHomeTable(String name,String title,String abstrac, String pscore, String grade, String status) {
         this.name = name;
         this.title = title;
         this.abstrac = abstrac;
@@ -24,7 +24,7 @@ public class staffHomeTable {
     public void setName(String name) {
         this.name = name;
     }
-    public String getFaculty() {
+  /*  public String getFaculty() {
         return faculty;
     }
 
@@ -40,7 +40,7 @@ public class staffHomeTable {
         this.declined = declined;
     }
 
-
+*/
     public String getTitle() {
         return title;
     }

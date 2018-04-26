@@ -268,5 +268,9 @@ public class Capstone{
 
 
    }
+   public ArrayList<ArrayList<String>> getStaffList(){
+           ArrayList<ArrayList<String>> fetchData = capstone_project.getData("select users.fullname, capstone.title, capstone.abstract, statushistory.statusid,capstone.plagerismscore, capstone.grade from users join capstone on capstone.username= users.username join statushistory on statushistory.capstoneid= capstone.capstoneid ORDER BY statusid DESC LIMIT 1;");
+           return fetchData;
+   }
   }
    
