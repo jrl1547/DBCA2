@@ -122,7 +122,6 @@ CREATE TABLE IF NOT EXISTS `cap`.`statushistory` (
   `statusid` INT NOT NULL,
   `capstoneid` INT NOT NULL,
   `date` DATETIME(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`statusid`, `capstoneid`),
   INDEX `capstoneid_UNIQUE` (`capstoneid` ASC),
   CONSTRAINT `fk_statushistory_capstone`
     FOREIGN KEY (`capstoneid`)
