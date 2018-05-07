@@ -179,11 +179,13 @@ INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`
 INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`, `phone`, `department`) VALUES ('teststudent3', sha1('password'), 1, 'Test Student3', 'test3@test.com', NULL, 'IST');
 INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`, `phone`, `department`) VALUES ('teststudent4', sha1('password'), 1, 'Test Student4', 'test4@test.com', NULL, 'IST');
 INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`, `phone`, `department`) VALUES ('teststudent5', sha1('password'), 1, 'Test Student5', 'test5@test.com', NULL, 'IST');
+INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`, `phone`, `department`) VALUES ('dryu', sha1('password'), 3, 'Dr Yu', 'yu@test.com', NULL, 'IST');
+INSERT INTO `cap`.`users` (`username`, `password`, `roleid`, `fullname`, `email`, `phone`, `department`) VALUES ('dryuStaff', sha1('password'), 2, 'Dr Yu', 'yu@test.com', NULL, 'IST');
 
 COMMIT;
 
 -- -----------------------------------------------------
--- Data for table `capstone`.`users`
+-- Data for table `capstone`.`students`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cap`;
