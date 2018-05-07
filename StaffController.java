@@ -117,6 +117,7 @@ public class StaffController implements iUserController{
         ObservableList<staffHomeTable> viewobList = FXCollections.observableArrayList();
         capstonesTable.setItems(viewobList);
         System.out.println("pressed load button");
+        capstonesTable.getItems().clear();
 
      // String capid = "1";
         Capstone viewCap = new Capstone();
@@ -156,6 +157,7 @@ public class StaffController implements iUserController{
         if(studentHistorySeachText.getText() != null && studentHistorySeachText.getText() != ""){
             username = studentHistorySeachText.getText();
         }
+        studentHistoryTable.getItems().clear();
         Capstone getid = new Capstone();
         String capid = getid.getCapstoneId(username);
         StatusHistory history = new StatusHistory();
@@ -180,11 +182,12 @@ public class StaffController implements iUserController{
     //function to handle updateSearchStudentButton
     Capstone viewCap = new Capstone();
     String user = "";
+    
 
     if(updateStudentSearchStudentText.getText() != null && updateStudentSearchStudentText.getText() != ""){
             user = updateStudentSearchStudentText.getText();
         }
-        
+      updateStudentProjectTable.getItems().clear();  
       ArrayList<ArrayList<String>> table = viewCap.getStaffUpdate(user);  
       staffUpdateOb.add(new staffUpdate(table.get(0).get(0),table.get(0).get(1),table.get(0).get(2),table.get(0).get(3)));
       update_col_student.setCellValueFactory(new PropertyValueFactory<>("username"));
