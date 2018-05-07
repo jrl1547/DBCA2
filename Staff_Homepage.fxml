@@ -39,7 +39,7 @@
       <children>
             <TabPane prefHeight="725.0" prefWidth="1281.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
-                <Tab onSelectionChanged="#loadCapstoneTab" text="Capstones">
+                <Tab text="Capstones">
                   <content>
                     <AnchorPane prefHeight="576.0" prefWidth="820.0">
                            <children>
@@ -73,7 +73,7 @@
                            </children></AnchorPane>
                   </content>
                 </Tab>
-                <Tab onSelectionChanged="#loadStudentHistoryTab" text="Student History">
+                <Tab text="Student History">
                   <content>
                     <AnchorPane disable="true" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>

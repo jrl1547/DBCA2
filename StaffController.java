@@ -15,6 +15,9 @@ import javafx.scene.control.ComboBox;
 
 
 public class StaffController implements iUserController{
+/*
+ Declare FXML Objects
+*/
    @FXML private TextField studentHistorySeachText,
    updateStudentSearchStudentText,updateStudentPlagiarismScore,updateStudentEmail,
    updateStudentFN,updateStudentLN;
@@ -22,11 +25,11 @@ public class StaffController implements iUserController{
    private ArrayList<ArrayList<String>> statusTypeLookup = new ArrayList<>();
    private Status statustypes = new Status();
 
-    @FXML private ComboBox updateStudentComboMenu;
+   @FXML private ComboBox updateStudentComboMenu;
     
    // @FXML private updateStudentInfoTable;
                   
-   @FXML
+    @FXML
     private TableView<staffHomeTable> capstonesTable;
     @FXML
     private TableColumn<staffHomeTable, String>  col_studentName;
@@ -48,7 +51,10 @@ public class StaffController implements iUserController{
     private TableColumn<staffHomeTable, String>  col_startDate;
     
 
-//student history table
+/*
+ FXML Objects for Student History Table
+*/
+  
    @FXML private TableView<staffStudentHistory> studentHistoryTable;
    @FXML
     private TableColumn<staffStudentHistory, String>  history_col_date;
@@ -63,7 +69,9 @@ public class StaffController implements iUserController{
 
     
     
-    //update tab
+  /*
+ FXML Objects for Updte Table
+  */
     @FXML private TableView<staffUpdate> updateStudentProjectTable;
     @FXML
     private TableColumn<staffUpdate, String>  update_col_student;
@@ -75,7 +83,9 @@ public class StaffController implements iUserController{
     private TableColumn<staffUpdate, String>  update_col_pscore;
 
 
-
+  /*
+ FXML Objects for Completed Capstones Table
+  */
 
     @FXML
     private TableView<CompletedTable> completedTable;
@@ -91,6 +101,10 @@ public class StaffController implements iUserController{
     private TableColumn<CompletedTable, String> completed_col_pscore;
     @FXML
     private TableColumn<CompletedTable, String> completed_col_grade;
+    
+ /*
+ Button to load all student information into history table
+  */
 
     @FXML protected void HandleCompletedLoadButtonAction(ActionEvent event){
         ObservableList<CompletedTable> completedobList = FXCollections.observableArrayList();
@@ -112,26 +126,25 @@ public class StaffController implements iUserController{
     }
 
     
-   
+    /*
+    Button to load all capstone information for entered student into table
+  */
     @FXML protected void HandleCapstoneLoad(ActionEvent event){
         ObservableList<staffHomeTable> viewobList = FXCollections.observableArrayList();
         capstonesTable.setItems(viewobList);
-        System.out.println("pressed load button");
-        capstonesTable.getItems().clear();
+        capstonesTable.getItems().clear(); //clears out previous results from table
 
-     // String capid = "1";
+    
         Capstone viewCap = new Capstone();
         ArrayList<ArrayList<String>> capstones = viewCap.getStaffList();
 
-        System.out.println("got to add");
         for (int x = 0; x < capstones.size(); x++)
         {
-         System.out.println(capstones.get(x).get(1) + " " + capstones.get(x).get(2) + " " + capstones.get(x).get(3) + " " + capstones.get(x).get(4) + " " + capstones.get(x).get(5) + " " +capstones.get(x).get(6));
-         viewobList.add(new staffHomeTable(capstones.get(x).get(0),capstones.get(x).get(1),capstones.get(x).get(2),capstones.get(x).get(3),capstones.get(x).get(4),capstones.get(x).get(5),capstones.get(x).get(6)));
+                viewobList.add(new staffHomeTable(capstones.get(x).get(0),capstones.get(x).get(1),capstones.get(x).get(2),capstones.get(x).get(3),capstones.get(x).get(4),capstones.get(x).get(5),capstones.get(x).get(6)));
         }
         try
         {
-        System.out.println(viewobList);
+       
         col_studentName.setCellValueFactory(new PropertyValueFactory<>("name"));
         col_projectTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
         col_abstract.setCellValueFactory(new PropertyValueFactory<>("abstrac"));
@@ -149,15 +162,17 @@ public class StaffController implements iUserController{
         }    
          ObservableList<staffStudentHistory> staffStuHist = FXCollections.observableArrayList();
 
+   /*
+    Button to load capstone history for a selected student
+  */
+   
     @FXML protected void HandleStudentHistorySearchButtonAction(){
-     
-     //function to handle studentHistoryHistorySearch
-     System.out.println("pressed search button");
-      String username = "";
+  
+         String username = "";
         if(studentHistorySeachText.getText() != null && studentHistorySeachText.getText() != ""){
             username = studentHistorySeachText.getText();
         }
-        studentHistoryTable.getItems().clear();
+        studentHistoryTable.getItems().clear();//clears results of previous queries from table
         Capstone getid = new Capstone();
         String capid = getid.getCapstoneId(username);
         StatusHistory history = new StatusHistory();
@@ -177,9 +192,13 @@ public class StaffController implements iUserController{
      
 
     ObservableList<staffUpdate> staffUpdateOb = FXCollections.observableArrayList();
-
+ /*
+    Button to set student for updating status and plagarism scores
+    
+    
+  */
     @FXML protected void HandleUpdateStudentSearchStudentButtonAction(){
-    //function to handle updateSearchStudentButton
+
     Capstone viewCap = new Capstone();
     String user = "";
     
@@ -199,6 +218,11 @@ public class StaffController implements iUserController{
   
     }
     
+    /*
+    Button to set plagarism score for student set in text field    
+    
+  */
+
     @FXML protected void HandleUpdateStudentPlagiarismScoreButtonAction(){
         String username = "";
         String pscore = "";
@@ -218,16 +242,16 @@ public class StaffController implements iUserController{
     
     
     
-     @FXML protected void HandleUpdateStudentInfoButtonAction(){
+    /* @FXML protected void HandleUpdateStudentInfoButtonAction(){
     //function to handle updateStudentInfoButton
     return;
-    }
+    }*/
     
     @FXML protected void HandleUpdateStudentComboMenuButtonAction(){
         //function to handle updateStudentComboMenuButton
         String status = updateStudentComboMenu.getValue().toString();//gets status name
         Status getID = new Status();
-        System.out.println(status);
+      
         getID.fetchStatusID(status);
         String statusID = getID.getSID();
         String username = "";
@@ -245,7 +269,7 @@ public class StaffController implements iUserController{
     }     
     
         
-    @FXML protected void loadCapstoneTab(){
+   /* @FXML protected void loadCapstoneTab(){
     //function to load capstone tab
     
         return;
@@ -257,9 +281,10 @@ public class StaffController implements iUserController{
         return;
     }
 
-
+*/
+    //populates dropdown menu with available statuses
      @FXML public void loadStudentUpdateTab(){
-    //function to load student Update tab
+
        
         statusTypeLookup = statustypes.getTypes();
         ArrayList<String> temp = new ArrayList<>();
