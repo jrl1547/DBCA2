@@ -164,6 +164,7 @@ public class Capstone{
       return post;
    }
 
+   //Post capstone as a new capstone
    public boolean postInit(){
       ArrayList<String> item = new ArrayList<String>();
           item.add(username);
@@ -176,6 +177,11 @@ public class Capstone{
          student.fetch(username);
          capstoneid = student.getCapstoneId();
 
+      //Post initial status into status history
+      StatusHistory status = new StatusHistory();
+          status.setCapstoneid(capstoneid);
+          status.setSid("100");
+          status.post();
       return bool;
    }
    
