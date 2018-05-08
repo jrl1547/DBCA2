@@ -110,6 +110,7 @@ public class StaffController implements iUserController{
         ObservableList<CompletedTable> completedobList = FXCollections.observableArrayList();
         Capstone findCompleted = new Capstone();
         completedTable.setItems(completedobList);
+        completedTable.getItems().clear();
         ArrayList<ArrayList<String>> data = findCompleted.getCompletedCapstones();
         for (int x = 0; x < data.size(); x+=2) {//goes through each row
             completedobList.add(new CompletedTable(data.get(x).get(0), data.get(x).get(1), data.get(x).get(2), data.get(x).get(3), data.get(x).get(4), data.get(x).get(5)));

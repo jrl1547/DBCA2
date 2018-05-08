@@ -266,10 +266,9 @@ public class Capstone{
   public ArrayList<ArrayList<String>> getStaffUpdate(String _username){
            ArrayList<String> item = new ArrayList<String>();
            item.add(_username);
-           ArrayList<ArrayList<String>> fetchData = capstone_project.getData("select capstone.username, capstone.title ,statushistory.statusid, statushistory.date, plagerismscore from statushistory join capstone on capstone.capstoneid= statushistory.capstoneid  WHERE capstone.username = ? ORDER BY date DESC LIMIT 1;",item);
+           ArrayList<ArrayList<String>> fetchData = capstone_project.getData("select capstone.username, capstone.title ,statushistory.statusid, capstone.plagerismscore, statushistory.date  from statushistory join capstone on capstone.capstoneid= statushistory.capstoneid  WHERE capstone.username = ? ORDER BY date DESC LIMIT 1;",item);
             fetchData.remove(0);
-            System.out.println(fetchData);
-                  return fetchData;
+                             return fetchData;
 
 
 
